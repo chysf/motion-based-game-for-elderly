@@ -206,11 +206,11 @@ ADDED from C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\exam
 	android:name
 		ADDED from C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:34:15-51
 activity#org.tensorflow.lite.examples.posenet.MainActivity
-ADDED from C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:35:7-40:16
+ADDED from C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:35:5-40:16
 	android:exported
-		ADDED from C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:35:46-69
+		ADDED from C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:35:44-67
 	android:name
-		ADDED from C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:35:17-45
+		ADDED from C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:35:15-43
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:36:7-39:23
 action#android.intent.action.MAIN

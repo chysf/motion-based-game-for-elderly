@@ -19,9 +19,9 @@ class MainActivity: AppCompatActivity() {
                     startActivity(intent)
                 }
                 R.id.eatingGameBtn -> {
-                    val intent = Intent(this, EatingActivity::class.java)
+                    val intent2 = Intent(this, EatingActivity::class.java)
                     // start your next activity
-                    startActivity(intent)
+                    startActivity(intent2)
                 }
             }
         }

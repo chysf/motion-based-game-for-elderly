@@ -14,6 +14,7 @@ import java.util.*
 import kotlin.random.Random
 
 class EatingActivity: AppCompatActivity() {
+
     private lateinit var scoreLabel: TextView
     private lateinit var startLabel: TextView
     private lateinit var mouth: ImageView
