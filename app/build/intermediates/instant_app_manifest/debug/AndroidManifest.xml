@@ -22,6 +22,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/MaterialTheme" >
         <activity
             android:name="org.tensorflow.lite.examples.posenet.TestActivity"
@@ -30,6 +31,21 @@
         </activity>
         <activity
             android:name="org.tensorflow.lite.examples.posenet.CameraActivity"
+            android:exported="true" >
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN"/> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name="org.tensorflow.lite.examples.posenet.EatingActivity"
+            android:exported="true" />
+        <activity
+            android:name="org.tensorflow.lite.examples.posenet.EatingResultActivity"
+            android:exported="true" />
+        <activity
+            android:name="org.tensorflow.lite.examples.posenet.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

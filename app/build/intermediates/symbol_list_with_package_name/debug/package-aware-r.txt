@@ -999,12 +999,14 @@ drawable abc_vector_test
 drawable action
 drawable avd_hide_password
 drawable avd_show_password
+drawable background
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable grape
 drawable ic_launcher
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -1012,6 +1014,8 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable image
+drawable lemon
+drawable mouth
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
 drawable navigation_empty_icon
@@ -1027,6 +1031,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable shit
 drawable tfl2_logo
 drawable tfl2_logo_dark
 drawable tooltip_frame_dark
@@ -1034,6 +1039,7 @@ drawable tooltip_frame_light
 id ALT
 id CTRL
 id FUNCTION
+id HighScoreLabel
 id META
 id SHIFT
 id SYM
@@ -1092,6 +1098,7 @@ id design_navigation_view
 id dimensions
 id direct
 id disableHome
+id eatingGameBtn
 id edit_query
 id end
 id enterAlways
@@ -1105,8 +1112,10 @@ id fill_vertical
 id filled
 id fixed
 id forever
+id frame
 id ghost_view
 id gone
+id grape
 id group_divider
 id groups
 id home
@@ -1122,6 +1131,7 @@ id item_touch_helper_previous_elevation
 id labeled
 id largeLabel
 id left
+id lemon
 id line1
 id line3
 id listMode
@@ -1130,6 +1140,8 @@ id masked
 id message
 id middle
 id mini
+id motionGameBtn
+id mouth
 id mtrl_child_content_container
 id mtrl_internal_children_alpha_tag
 id multiply
@@ -1158,6 +1170,7 @@ id right_side
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
+id scoreLabel
 id screen
 id scroll
 id scrollIndicatorDown
@@ -1177,6 +1190,7 @@ id search_voice_btn
 id select_dialog_listview
 id selected
 id setButton
+id shit
 id shortcut
 id showCustom
 id showHome
@@ -1195,6 +1209,7 @@ id src_in
 id src_over
 id standard
 id start
+id startLabel
 id stretch
 id submenuarrow
 id submit_area
@@ -1282,6 +1297,9 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_camera
+layout activity_eating
+layout activity_eating_result
+layout activity_main
 layout activity_posenet
 layout activity_test
 layout design_bottom_navigation_item

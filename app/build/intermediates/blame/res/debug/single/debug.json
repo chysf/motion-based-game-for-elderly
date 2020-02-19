@@ -4,20 +4,24 @@
         "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\4c25cf35bedc16016b5e69ee8ed549d7\\appcompat-1.0.0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
-        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_dialog_multichoice_material.xml.flat",
+        "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\4c25cf35bedc16016b5e69ee8ed549d7\\appcompat-1.0.0\\res\\layout\\select_dialog_multichoice_material.xml"
     },
     {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_menu_item_layout.xml.flat",
         "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\4c25cf35bedc16016b5e69ee8ed549d7\\appcompat-1.0.0\\res\\layout\\abc_action_menu_item_layout.xml"
     },
     {
-        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_dialog_multichoice_material.xml.flat",
-        "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\4c25cf35bedc16016b5e69ee8ed549d7\\appcompat-1.0.0\\res\\layout\\select_dialog_multichoice_material.xml"
+        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_menu_item.xml.flat",
         "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\0416376b440701d87f805a468bb49c91\\material-1.0.0\\res\\layout\\design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_lemon.png.flat",
+        "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\drawable\\lemon.png"
     },
     {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_list_menu_item_layout.xml.flat",
@@ -28,6 +32,10 @@
         "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\0416376b440701d87f805a468bb49c91\\material-1.0.0\\res\\layout\\design_menu_item_action_area.xml"
     },
     {
+        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grape.png.flat",
+        "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\drawable\\grape.png"
+    },
+    {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_part_chronometer.xml.flat",
         "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\ef320b9bfa0886ee95614c4630d8cc12\\core-1.0.0\\res\\layout\\notification_template_part_chronometer.xml"
     },
@@ -36,12 +44,12 @@
         "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_bar_title_item.xml.flat",
-        "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\4c25cf35bedc16016b5e69ee8ed549d7\\appcompat-1.0.0\\res\\layout\\abc_action_bar_title_item.xml"
-    },
-    {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_screen_toolbar.xml.flat",
         "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\4c25cf35bedc16016b5e69ee8ed549d7\\appcompat-1.0.0\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_bar_title_item.xml.flat",
+        "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\4c25cf35bedc16016b5e69ee8ed549d7\\appcompat-1.0.0\\res\\layout\\abc_action_bar_title_item.xml"
     },
     {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_item_separator.xml.flat",
@@ -56,6 +64,10 @@
         "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_action_info.png"
     },
     {
+        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_shit.png.flat",
+        "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\drawable\\shit.png"
+    },
+    {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_expanded_menu_layout.xml.flat",
         "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\4c25cf35bedc16016b5e69ee8ed549d7\\appcompat-1.0.0\\res\\layout\\abc_expanded_menu_layout.xml"
     },
@@ -66,6 +78,10 @@
     {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_layout_tab_text.xml.flat",
         "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\0416376b440701d87f805a468bb49c91\\material-1.0.0\\res\\layout\\design_layout_tab_text.xml"
+    },
+    {
+        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
@@ -84,6 +100,10 @@
         "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\0416376b440701d87f805a468bb49c91\\material-1.0.0\\res\\layout-sw600dp-v13\\design_layout_snackbar.xml"
     },
     {
+        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_eating_result.xml.flat",
+        "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\layout\\activity_eating_result.xml"
+    },
+    {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_activity_chooser_view_list_item.xml.flat",
         "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\4c25cf35bedc16016b5e69ee8ed549d7\\appcompat-1.0.0\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
@@ -100,12 +120,12 @@
         "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\ef320b9bfa0886ee95614c4630d8cc12\\core-1.0.0\\res\\layout-v21\\notification_template_custom_big.xml"
     },
     {
-        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
-    },
-    {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\raw_piano.wav.flat",
         "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\raw\\piano.wav"
+    },
+    {
+        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_menu.xml.flat",
@@ -114,6 +134,14 @@
     {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_dialog_item_material.xml.flat",
         "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\4c25cf35bedc16016b5e69ee8ed549d7\\appcompat-1.0.0\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_background.jpg.flat",
+        "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\drawable\\background.jpg"
+    },
+    {
+        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_mouth.png.flat",
+        "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\drawable\\mouth.png"
     },
     {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_menu_layout.xml.flat",
@@ -126,6 +154,10 @@
     {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_screen_simple_overlay_action_mode.xml.flat",
         "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\4c25cf35bedc16016b5e69ee8ed549d7\\appcompat-1.0.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_eating.xml.flat",
+        "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\layout\\activity_eating.xml"
     },
     {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_mode_close_item_material.xml.flat",

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:background="@drawable/background"
+
+    >
+
+<TextView
+    android:id="@+id/scoreLabel"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:text="Score: 300"
+    android:textSize="18sp"
+    android:paddingLeft="10dp"
+    android:gravity="center_vertical"
+    />
+
+<FrameLayout
+    android:id="@+id/frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/startLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tap To Start"
+        android:textSize="30sp"
+        android:layout_marginTop="130dp"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <ImageView
+        android:id="@+id/mouth"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/mouth"/>
+
+    <ImageView
+        android:id="@+id/shit"
+        android:layout_height="100dp"
+        android:layout_width="100dp"
+        android:src="@drawable/shit"/>
+
+    <ImageView
+        android:id="@+id/grape"
+        android:layout_height="20dp"
+        android:layout_width="20dp"
+        android:layout_marginLeft="100dp"
+        android:src="@drawable/grape"/>
+
+    <ImageView
+        android:id="@+id/lemon"
+        android:layout_height="20dp"
+        android:layout_width="20dp"
+        android:layout_marginLeft="200dp"
+        android:src="@drawable/lemon"/>
+
+
+</FrameLayout>
+
+
+
+</LinearLayout>
