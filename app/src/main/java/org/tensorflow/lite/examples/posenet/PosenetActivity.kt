@@ -290,6 +290,11 @@ class PosenetActivity :
     super.onPause()
   }
 
+  override fun onStop() {
+    closeCamera()
+    super.onStop()
+  }
+
   override fun onDestroy() {
     super.onDestroy()
     posenet.close()
@@ -592,8 +597,6 @@ class PosenetActivity :
         canvas.drawCircle(adjustedX, adjustedY, circleRadius, paint)
       }
     }
-  //TIMESS
-    canvas.drawText("2", (15.0f * widthRatio), (60.0f * heightRatio + bottom), paint)
     for (line in bodyJoints) {
       if (
         (person.keyPoints[line.first.ordinal].score > minConfidence) and

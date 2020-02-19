@@ -1,7 +1,9 @@
 package org.tensorflow.lite.examples.posenet
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -31,5 +33,9 @@ class EatingResultActivity: AppCompatActivity() {
             val tmp = "High Score : $highScore"
             highScoreLabel.text = tmp
         }
+    }
+
+    fun tryAgain(view: View){
+        startActivity(Intent(applicationContext, EatingResultActivity::class.java))
     }
 }

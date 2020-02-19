@@ -1072,6 +1072,7 @@ id barrier
 id beginning
 id blocking
 id bottom
+id button
 id buttonPanel
 id center
 id center_horizontal
@@ -1223,6 +1224,7 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textView
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -1299,6 +1301,7 @@ layout abc_tooltip
 layout activity_camera
 layout activity_eating
 layout activity_eating_result
+layout activity_hello
 layout activity_main
 layout activity_posenet
 layout activity_test

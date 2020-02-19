@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\0416376b440701d87f805a468bb49c91\\material-1.0.0\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\0cc5975dd2941528c49deead002bcf83\\material-1.0.0\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\4c25cf35bedc16016b5e69ee8ed549d7\\appcompat-1.0.0\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\8db66f52be50781bf44b86bff9b4c3a9\\appcompat-1.0.0\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",

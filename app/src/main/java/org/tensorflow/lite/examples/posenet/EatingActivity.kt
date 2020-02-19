@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.MotionEvent
 import android.view.View
+import android.view.WindowManager
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
@@ -54,9 +55,9 @@ class EatingActivity: AppCompatActivity() {
         grape = findViewById(R.id.grape)
         shit = findViewById(R.id.shit)
 
-        var wm = windowManager
-        var disp = wm.defaultDisplay
-        lateinit var size: Point
+
+        var disp = windowManager.defaultDisplay
+        var size = Point(0,0)
         disp.getSize(size)
 
         screenWidth = size.x

@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\ef320b9bfa0886ee95614c4630d8cc12\\core-1.0.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\f44f1ee4f4fc84fb0f701165ff7a0a93\\core-1.0.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\4c25cf35bedc16016b5e69ee8ed549d7\\appcompat-1.0.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\SFiend\\.gradle\\caches\\transforms-2\\files-2.1\\8db66f52be50781bf44b86bff9b4c3a9\\appcompat-1.0.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

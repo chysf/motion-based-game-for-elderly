@@ -12,16 +12,21 @@ class MainActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val clickListener = View.OnClickListener { view ->
-            when(view.getId()){
+            when(view.id){
                 R.id.motionGameBtn -> {
                     val intent = Intent(this, CameraActivity::class.java)
                     // start your next activity
                     startActivity(intent)
                 }
                 R.id.eatingGameBtn -> {
-                    val intent2 = Intent(this, EatingActivity::class.java)
+                    val intent = Intent(this, EatingActivity::class.java)
                     // start your next activity
-                    startActivity(intent2)
+                    startActivity(intent)
+                }
+                R.id.button -> {
+                    val intent = Intent(this, HelloActivity::class.java)
+                    // start your next activity
+                    startActivity(intent)
                 }
             }
         }
@@ -29,7 +34,8 @@ class MainActivity: AppCompatActivity() {
         motionGameBtn.setOnClickListener(clickListener)
         val eatingGameBtn: Button = findViewById(R.id.eatingGameBtn)
         eatingGameBtn.setOnClickListener(clickListener)
-
+        val btn: Button = findViewById(R.id.button)
+        btn.setOnClickListener(clickListener)
     }
 
 }
