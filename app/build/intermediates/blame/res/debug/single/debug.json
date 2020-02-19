@@ -4,10 +4,6 @@
         "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_hello.xml.flat",
-        "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\layout\\activity_hello.xml"
-    },
-    {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_lemon.png.flat",
         "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\drawable\\lemon.png"
     },
@@ -36,12 +32,12 @@
         "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\layout\\activity_test.xml"
     },
     {
-        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_action_info.png.flat",
-        "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_action_info.png"
-    },
-    {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_tfl2_logo_dark.png.flat",
         "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\drawable-xxhdpi\\tfl2_logo_dark.png"
+    },
+    {
+        "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_action_info.png.flat",
+        "source": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_action_info.png"
     },
     {
         "merged": "C:\\Users\\SFiend\\Desktop\\FYP\\examples-master\\examples-master\\lite\\examples\\posenet\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_action.png.flat",

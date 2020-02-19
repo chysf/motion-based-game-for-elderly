@@ -17,7 +17,7 @@ class EatingResultActivity: AppCompatActivity() {
         val highScoreLabel: TextView = findViewById(R.id.HighScoreLabel)
 
         val score = intent.getIntExtra("Score", 0)
-        val tmp = "$score "
+        val tmp = "$score"
         scoreLabel.text = tmp
 
         val settings = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
@@ -36,6 +36,6 @@ class EatingResultActivity: AppCompatActivity() {
     }
 
     fun tryAgain(view: View){
-        startActivity(Intent(applicationContext, EatingResultActivity::class.java))
+        startActivity(Intent(applicationContext, EatingActivity::class.java))
     }
 }

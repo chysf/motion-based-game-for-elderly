@@ -23,19 +23,12 @@ class MainActivity: AppCompatActivity() {
                     // start your next activity
                     startActivity(intent)
                 }
-                R.id.button -> {
-                    val intent = Intent(this, HelloActivity::class.java)
-                    // start your next activity
-                    startActivity(intent)
-                }
             }
         }
         val motionGameBtn: Button = findViewById(R.id.motionGameBtn)
         motionGameBtn.setOnClickListener(clickListener)
         val eatingGameBtn: Button = findViewById(R.id.eatingGameBtn)
         eatingGameBtn.setOnClickListener(clickListener)
-        val btn: Button = findViewById(R.id.button)
-        btn.setOnClickListener(clickListener)
     }
 
 }

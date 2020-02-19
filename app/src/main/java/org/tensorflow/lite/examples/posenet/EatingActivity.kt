@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.MotionEvent
 import android.view.View
-import android.view.WindowManager
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
@@ -140,7 +139,7 @@ class EatingActivity: AppCompatActivity() {
         if (shitCenterX in 0..boxsize && shitCenterY in boxY..(boxY + boxsize)) {
             timer.cancel()
             val intent = Intent(this, EatingResultActivity::class.java)
-            // start your next activity
+            intent.putExtra("Score", score)
             startActivity(intent)
         }
     }

@@ -23,7 +23,7 @@
 14-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:8:17-65
 15
 16    <application
-16-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:12:3-44:17
+16-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:12:3-43:17
 17        android:allowBackup="true"
 17-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:13:7-33
 18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -65,26 +65,23 @@
 40        <activity android:name="org.tensorflow.lite.examples.posenet.EatingResultActivity" />
 40-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:33:5-63
 40-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:33:15-51
-41        <activity android:name="org.tensorflow.lite.examples.posenet.HelloActivity" />
-41-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:34:5-56
-41-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:34:15-44
-42        <activity
-42-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:35:5-40:16
-43            android:name="org.tensorflow.lite.examples.posenet.MainActivity"
-43-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:35:15-43
-44            android:exported="true" >
-44-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:35:44-67
-45            <intent-filter>
-45-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:36:7-39:23
-46                <action android:name="android.intent.action.MAIN" />
-46-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:37:9-60
-46-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:37:17-58
-47
-48                <category android:name="android.intent.category.LAUNCHER" />
-48-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:38:9-68
-48-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:38:19-66
-49            </intent-filter>
-50        </activity>
-51    </application>
-52
-53</manifest>
+41        <activity
+41-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:34:5-39:16
+42            android:name="org.tensorflow.lite.examples.posenet.MainActivity"
+42-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:34:15-43
+43            android:exported="true" >
+43-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:34:44-67
+44            <intent-filter>
+44-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:35:7-38:23
+45                <action android:name="android.intent.action.MAIN" />
+45-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:36:9-60
+45-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:36:17-58
+46
+47                <category android:name="android.intent.category.LAUNCHER" />
+47-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:37:9-68
+47-->C:\Users\SFiend\Desktop\FYP\examples-master\examples-master\lite\examples\posenet\android\app\src\main\AndroidManifest.xml:37:19-66
+48            </intent-filter>
+49        </activity>
+50    </application>
+51
+52</manifest>
