@@ -89,7 +89,7 @@ class EatingActivity: AppCompatActivity() {
             dialogInterface.cancel()
         })
         builder.setPositiveButton("Back Home", DialogInterface.OnClickListener{ dialogInterface, i ->
-
+            finish()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         })
