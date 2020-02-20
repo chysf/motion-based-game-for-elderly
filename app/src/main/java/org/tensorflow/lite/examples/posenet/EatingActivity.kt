@@ -85,9 +85,6 @@ class EatingActivity: AppCompatActivity() {
         builder.setCancelable(true)
         builder.setNegativeButton("No", DialogInterface.OnClickListener{ dialogInterface, i ->
 
-            timer.run {  }
-
-
             dialogInterface.cancel()
         })
         builder.setPositiveButton("Back Home", DialogInterface.OnClickListener{ dialogInterface, i ->
