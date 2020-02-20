@@ -1,9 +1,11 @@
 package org.tensorflow.lite.examples.posenet
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity: AppCompatActivity() {
@@ -30,5 +32,32 @@ class MainActivity: AppCompatActivity() {
         val eatingGameBtn: Button = findViewById(R.id.eatingGameBtn)
         eatingGameBtn.setOnClickListener(clickListener)
     }
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
+
+        val builder = AlertDialog.Builder(this)
+
+        builder.setMessage("Are you sure to Exit?")
+        builder.setCancelable(true)
+
+        builder.setNegativeButton("No", DialogInterface.OnClickListener{ dialogInterface, i ->
+
+            dialogInterface.cancel()
+        })
+        builder.setPositiveButton("Exit", DialogInterface.OnClickListener{ dialogInterface, i ->
+
+            finish()
+        })
+
+        val alertDialog = builder.create()
+        alertDialog.show()
+
+    }
+
+
+
+
+
 
 }

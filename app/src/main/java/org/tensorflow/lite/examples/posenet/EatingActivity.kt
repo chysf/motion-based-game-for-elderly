@@ -1,5 +1,6 @@
 package org.tensorflow.lite.examples.posenet
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Point
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 import kotlin.random.Random
@@ -71,6 +73,35 @@ class EatingActivity: AppCompatActivity() {
 
         scoreLabel.text = "Score: 0"
     }
+
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        timer.cancel()
+        val builder = AlertDialog.Builder(this)
+
+        builder.setMessage("Are you sure to back Homepage?")
+
+        builder.setCancelable(true)
+        builder.setNegativeButton("No", DialogInterface.OnClickListener{ dialogInterface, i ->
+
+            timer.run {  }
+
+
+            dialogInterface.cancel()
+        })
+        builder.setPositiveButton("Back Home", DialogInterface.OnClickListener{ dialogInterface, i ->
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        })
+
+        val alertDialog = builder.create()
+        alertDialog.show()
+
+    }
+
+
 
     fun changePos(){
 
