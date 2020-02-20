@@ -77,13 +77,14 @@ class EatingActivity: AppCompatActivity() {
 
     override fun onBackPressed() {
         //super.onBackPressed()
-        timer.cancel()
+
         val builder = AlertDialog.Builder(this)
 
         builder.setMessage("Are you sure to back Homepage?")
 
         builder.setCancelable(true)
         builder.setNegativeButton("No", DialogInterface.OnClickListener{ dialogInterface, i ->
+
 
             dialogInterface.cancel()
         })
