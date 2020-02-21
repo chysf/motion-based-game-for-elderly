@@ -55,6 +55,9 @@ class EatingActivity: AppCompatActivity() {
         lemon = findViewById(R.id.lemon)
         grape = findViewById(R.id.grape)
         shit = findViewById(R.id.shit)
+        lemon.visibility = View.INVISIBLE
+        grape.visibility = View.INVISIBLE
+        shit.visibility = View.INVISIBLE
 
 
         var disp = windowManager.defaultDisplay
@@ -89,6 +92,7 @@ class EatingActivity: AppCompatActivity() {
             dialogInterface.cancel()
         })
         builder.setPositiveButton("Back Home", DialogInterface.OnClickListener{ dialogInterface, i ->
+            timer.cancel()
             finish()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -104,7 +108,9 @@ class EatingActivity: AppCompatActivity() {
     fun changePos(){
 
         hitCheck()
-
+        lemon.visibility = View.VISIBLE
+        grape.visibility = View.VISIBLE
+        shit.visibility = View.VISIBLE
         lemonX -= 12
         if(lemonX < 0){
             lemonX = screenWidth + 20

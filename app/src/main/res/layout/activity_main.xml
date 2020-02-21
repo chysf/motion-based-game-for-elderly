@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+
+    >
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical"
-        >
+        android:background="@drawable/mainbg"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/motionGameBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Motion Game" />
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="290dp"
+            android:text="Motion Game"
+            android:layout_centerInParent="true"/>
+
+        //android:layout_gravity="center"
+
 
         <Button
             android:id="@+id/eatingGameBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="Eating Game" />
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Eating Game"
+            android:layout_centerInParent="true"
+            />
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
