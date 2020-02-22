@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/game.iml" filepath="$PROJECT_DIR$/game.iml" />
-      <module fileurl="file://$PROJECT_DIR$/posenet/posenet.iml" filepath="$PROJECT_DIR$/posenet/posenet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GameCollection.iml" filepath="$PROJECT_DIR$/GameCollection.iml" group="GameCollection" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="GameCollection/app" />
+      <module fileurl="file://$PROJECT_DIR$/posenet/posenet.iml" filepath="$PROJECT_DIR$/posenet/posenet.iml" group="GameCollection/posenet" />
     </modules>
   </component>
 </project>
