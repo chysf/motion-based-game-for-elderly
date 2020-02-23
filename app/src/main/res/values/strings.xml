@@ -24,4 +24,6 @@
        Currently, posenet demo app detects the body parts of a single person on-device in real-time.
     ]]>
   </string>
+  <string name="p1">Mismatch: 0</string>
+  <string name="exit_game">Exit</string>
 </resources>
