@@ -14,6 +14,7 @@
  limitations under the License.
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -58,5 +59,50 @@
       android:layout_alignParentRight="true"
       android:layout_marginTop="50dp"
       app:srcCompat="@android:drawable/ic_media_play" />
+
+    <ImageView
+        android:id="@+id/upleftcompass"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#E91E63"
+        app:srcCompat="@android:drawable/ic_menu_compass"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/uprightcompass"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentRight="true"
+        android:background="#E91E63"
+        app:srcCompat="@android:drawable/ic_menu_compass"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/downleftcompass"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:background="#E91E63"
+        app:srcCompat="@android:drawable/ic_menu_compass"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/downrightcompass"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="#E91E63"
+        app:srcCompat="@android:drawable/ic_menu_compass"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/motion"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="N/A"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>

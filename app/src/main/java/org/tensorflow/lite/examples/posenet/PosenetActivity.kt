@@ -19,6 +19,7 @@ package org.tensorflow.lite.examples.posenet
 import android.Manifest
 import android.app.AlertDialog
 import android.app.Dialog
+import android.app.ProgressDialog.show
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -56,9 +57,15 @@ import android.view.Surface
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_posenet.*
 import java.util.concurrent.Semaphore
 import java.util.concurrent.TimeUnit
 import kotlin.math.abs
@@ -170,8 +177,17 @@ class PosenetActivity :
   private lateinit var silence10: MediaPlayer
   private lateinit var silence20: MediaPlayer
 
-  private var rnd = Random.nextInt(0,3)
+  private lateinit var motion: TextView
+  private lateinit var upLeftCompass: ImageView
+  private lateinit var upRightCompass: ImageView
+  private lateinit var downLeftCompass: ImageView
+  private lateinit var downRightCompass: ImageView
+
+  private var rnd = Random.nextInt(0, 3)
   private var match = false
+  private var playButtonPressed = false
+  //private var lefthand = false //true: up; false: down
+  //private var armspos = IntArray(4)
 
   /** [CameraDevice.StateCallback] is called when [CameraDevice] changes its state.   */
   private val stateCallback = object : CameraDevice.StateCallback() {
@@ -234,42 +250,78 @@ class PosenetActivity :
     surfaceView = view.findViewById(R.id.surfaceView)
     surfaceHolder = surfaceView!!.holder
 
-    bgm = MediaPlayer.create(activity,R.raw.piano)
+    bgm = MediaPlayer.create(activity, R.raw.piano)
     bgm.isLooping = true
-    bgm.setVolume(0.3f,0.3f)
+    bgm.setVolume(0.3f, 0.3f)
     bgm.start()
-    cmd = MediaPlayer.create(activity,R.raw.begin)
-    cmd.setVolume(0.5f,0.5f)
-    leftUp = MediaPlayer.create(activity,R.raw.leftup)
-    leftDown = MediaPlayer.create(activity,R.raw.leftdown)
-    rightUp = MediaPlayer.create(activity,R.raw.rightup)
-    rightDown = MediaPlayer.create(activity,R.raw.rightdown)
-    silence5 = MediaPlayer.create(activity,R.raw.silence5)
-    silence10 = MediaPlayer.create(activity,R.raw.silence10)
-    silence20 = MediaPlayer.create(activity,R.raw.silence20)
+    cmd = MediaPlayer.create(activity, R.raw.begin)
+    cmd.setVolume(0.5f, 0.5f)
+    leftUp = MediaPlayer.create(activity, R.raw.leftup)
+    leftDown = MediaPlayer.create(activity, R.raw.leftdown)
+    rightUp = MediaPlayer.create(activity, R.raw.rightup)
+    rightDown = MediaPlayer.create(activity, R.raw.rightdown)
+    silence5 = MediaPlayer.create(activity, R.raw.silence5)
+    silence10 = MediaPlayer.create(activity, R.raw.silence10)
+    silence20 = MediaPlayer.create(activity, R.raw.silence20)
+
+    motion = view.findViewById(R.id.motion)
+    upLeftCompass = view.findViewById(R.id.upleftcompass)
+    upRightCompass = view.findViewById(R.id.uprightcompass)
+    downLeftCompass = view.findViewById(R.id.downleftcompass)
+    downRightCompass = view.findViewById(R.id.downrightcompass)
 
     val clickListener = View.OnClickListener { view ->
-      when(view.getId()){
+      when (view.id) {
         R.id.playButton -> {
-          rnd = Random.nextInt(0,3)
-          match = false
-          cmd.start()
-          if(rnd == 0){
-            leftUp.start()
-          }else if(rnd == 1){
-            leftDown.start()
-          }else if(rnd == 2){
-            rightUp.start()
-          }else{
-            rightDown.start()
-          }
-          silence5.start()
+          //playButtonPressed = true
+          playRandomCommand()
         }
       }
     }
     val bt: ImageButton = view.findViewById(R.id.playButton)
     bt.setOnClickListener(clickListener)
   }
+
+  private fun playRandomCommand(){
+    //if(!match) ErrorDialog.newInstance("failed.").show(childFragmentManager, FRAGMENT_DIALOG)
+//    if(upLeftCompass.visibility == VISIBLE) upLeftCompass.visibility = GONE
+//    if(upRightCompass.visibility == VISIBLE) upRightCompass.visibility = GONE
+//    if(downLeftCompass.visibility == VISIBLE) downLeftCompass.visibility = GONE
+//    if(downRightCompass.visibility == VISIBLE) downRightCompass.visibility = GONE
+    if(cmd.isPlaying) cmd.pause()
+    if(leftUp.isPlaying) leftUp.pause()
+    if(leftDown.isPlaying) leftDown.pause()
+    if(rightUp.isPlaying) rightUp.pause()
+    if(rightDown.isPlaying) rightDown.pause()
+    if(silence20.isPlaying) silence20.pause()
+    cmd.start()
+    match = false
+    rnd = Random.nextInt(0, 3)
+    when (rnd) {
+        0 -> {
+//          upLeftCompass.visibility = VISIBLE
+          motion.text = "raise up left hand"
+          leftUp.start()
+        }
+        1 -> {
+//          downLeftCompass.visibility = VISIBLE
+          motion.text = "put down left hand"
+          leftDown.start()
+        }
+        2 -> {
+//          upRightCompass.visibility = VISIBLE
+          motion.text = "raise up right hand"
+          rightUp.start()
+        }
+        else -> {
+//          downRightCompass.visibility = VISIBLE
+          motion.text = "put down right hand"
+          rightDown.start()
+        }
+    }
+    silence20.start()
+  }
+
 
   override fun onResume() {
     super.onResume()
@@ -280,6 +332,7 @@ class PosenetActivity :
     super.onStart()
     openCamera()
     posenet = Posenet(this.context!!)
+
     bgm.start()
   }
 
@@ -615,15 +668,25 @@ class PosenetActivity :
 
           if(y2 > y1){
             canvas.drawText("up", (15.0f * widthRatio), (20.0f * heightRatio + bottom), paint)
-            if((leftUp.isPlaying||silence5.isPlaying) && rnd == 0 && !match) {
-              showToast("raised left hand")
+            if((!leftUp.isPlaying && silence20.isPlaying) && rnd == 0 && !match) {
+//              showToast("raised left hand")
+//              motion.text = "raised left hand"
+              silence20.pause()
+//              leftUp.pause()
               match = true
+//              upLeftCompass.visibility = GONE
+              playRandomCommand()
             }
           }else{
             canvas.drawText("down", (15.0f * widthRatio), (20.0f * heightRatio + bottom), paint)
-            if((leftDown.isPlaying||silence5.isPlaying) && rnd == 1  && !match) {
-              showToast("put down left hand")
+            if((!leftDown.isPlaying && silence20.isPlaying) && rnd == 1 && !match) {
+//              showToast("put down left hand")
+//              motion.text = "put down left hand"
+              silence20.pause()
+//              leftDown.pause()
               match = true
+//              downLeftCompass.visibility = GONE
+              playRandomCommand()
             }
           }
         }
@@ -631,16 +694,26 @@ class PosenetActivity :
           val y1 = person.keyPoints[line.first.ordinal].position.y.toFloat()
           val y2 = person.keyPoints[line.second.ordinal].position.y.toFloat()
           if(y2 < y1){
-            canvas.drawText("up", (15.0f * widthRatio), (40.0f * heightRatio + bottom), paint)
-            if((rightUp.isPlaying||silence5.isPlaying) && rnd == 2 && !match) {
-              showToast("raised right hand")
+            canvas.drawText("up", (100.0f * widthRatio), (20.0f * heightRatio + bottom), paint)
+            if((!rightUp.isPlaying && silence20.isPlaying) && rnd == 2 && !match) {
+//              showToast("raised right hand")
+//              motion.text = "raised right hand"
+              silence20.pause()
+//              rightUp.pause()
               match = true
+//              upRightCompass.visibility = GONE
+              playRandomCommand()
             }
           }else{
-            canvas.drawText("down", (15.0f * widthRatio), (40.0f * heightRatio + bottom), paint)
-            if((rightDown.isPlaying||silence5.isPlaying) && rnd == 3  && !match) {
-              showToast("put down right hand")
+            canvas.drawText("down", (100.0f * widthRatio), (20.0f * heightRatio + bottom), paint)
+            if((!rightDown.isPlaying && silence20.isPlaying) && rnd == 3 && !match) {
+//              showToast("put down right hand")
+//              motion.text = "put down right hand"
+              silence20.pause()
+//              rightDown.pause()
               match = true
+//              downRightCompass.visibility = GONE
+              playRandomCommand()
             }
           }
         }
