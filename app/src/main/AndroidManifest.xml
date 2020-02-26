@@ -16,7 +16,9 @@
       android:roundIcon="@drawable/ic_icon"
       android:supportsRtl="true"
       android:theme="@style/MaterialTheme">
-
+      <service
+            android:name=".MusicService"
+            android:enabled="true" />
       <activity
           android:name=".MainActivity"
           android:exported="true">
