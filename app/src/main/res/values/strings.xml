@@ -25,5 +25,5 @@
     ]]>
   </string>
   <string name="p1">Mismatch: 0</string>
-  <string name="exit_game">Exit</string>
+  <string name="exit_game">Close</string>
 </resources>
