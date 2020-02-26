@@ -65,7 +65,7 @@ class MemoryActivity : AppCompatActivity() {
 
                     val alertDialogBuilder = AlertDialog.Builder(this@MemoryActivity)
                     alertDialogBuilder
-                        .setMessage("Are you sure?")
+                        .setMessage("Are you sure you want to leave?")
                         .setCancelable(true)
                         .setPositiveButton("No") { _, _ ->
                             val alertDialog = alertDialogBuilder.create()
