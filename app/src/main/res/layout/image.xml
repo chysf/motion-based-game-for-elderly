@@ -25,7 +25,7 @@
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
             android:layout_marginEnd="7dp"
-            android:src="@drawable/custom_ic_question" />
+            android:src="@drawable/ic_question" />
 
         <ImageView
             android:id="@+id/iv12"
@@ -38,7 +38,7 @@
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
             android:layout_marginEnd="7dp"
-            android:src="@drawable/custom_ic_question" />
+            android:src="@drawable/ic_question" />
 
         <ImageView
             android:id="@+id/iv13"
@@ -51,7 +51,7 @@
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
             android:layout_marginEnd="7dp"
-            android:src="@drawable/custom_ic_question" />
+            android:src="@drawable/ic_question" />
 
     </LinearLayout>
 
@@ -61,32 +61,6 @@
         android:weightSum="3"
         android:layout_weight="1"
         android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/iv21"
-            android:scaleType="centerInside"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            tools:ignore="contentDescription"
-            android:layout_marginStart="7dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_marginEnd="7dp"
-            android:src="@drawable/custom_ic_question" />
-
-        <ImageView
-            android:id="@+id/iv22"
-            android:scaleType="centerInside"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            tools:ignore="contentDescription"
-            android:layout_marginStart="7dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_marginEnd="7dp"
-            android:src="@drawable/custom_ic_question" />
 
         <ImageView
             android:id="@+id/iv23"
@@ -99,7 +73,36 @@
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
             android:layout_marginEnd="7dp"
-            android:src="@drawable/custom_ic_question" />
+            android:src="@drawable/ic_question"
+            android:scaleX="-1"/>
+
+        <ImageView
+            android:id="@+id/iv22"
+            android:scaleType="centerInside"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:ignore="contentDescription"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginEnd="7dp"
+            android:src="@drawable/ic_question"
+            android:scaleX="-1"/>
+
+        <ImageView
+            android:id="@+id/iv21"
+            android:scaleType="centerInside"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:ignore="contentDescription"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginEnd="7dp"
+            android:src="@drawable/ic_question"
+            android:scaleX="-1"/>
 
     </LinearLayout>
 
@@ -121,7 +124,7 @@
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
             android:layout_marginEnd="7dp"
-            android:src="@drawable/custom_ic_question" />
+            android:src="@drawable/ic_question" />
 
         <ImageView
             android:id="@+id/iv32"
@@ -134,7 +137,7 @@
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
             android:layout_marginEnd="7dp"
-            android:src="@drawable/custom_ic_question" />
+            android:src="@drawable/ic_question" />
 
         <ImageView
             android:id="@+id/iv33"
@@ -147,7 +150,7 @@
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
             android:layout_marginEnd="7dp"
-            android:src="@drawable/custom_ic_question" />
+            android:src="@drawable/ic_question" />
 
     </LinearLayout>
 
@@ -157,32 +160,6 @@
         android:weightSum="3"
         android:layout_weight="1"
         android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/iv41"
-            android:scaleType="centerInside"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            tools:ignore="contentDescription"
-            android:layout_marginStart="7dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_marginEnd="7dp"
-            android:src="@drawable/custom_ic_question" />
-
-        <ImageView
-            android:id="@+id/iv42"
-            android:scaleType="centerInside"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            tools:ignore="contentDescription"
-            android:layout_marginStart="7dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_marginEnd="7dp"
-            android:src="@drawable/custom_ic_question" />
 
         <ImageView
             android:id="@+id/iv43"
@@ -195,7 +172,36 @@
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
             android:layout_marginEnd="7dp"
-            android:src="@drawable/custom_ic_question" />
+            android:src="@drawable/ic_question"
+            android:scaleX="-1" />
+
+        <ImageView
+            android:id="@+id/iv42"
+            android:scaleType="centerInside"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:ignore="contentDescription"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginEnd="7dp"
+            android:src="@drawable/ic_question"
+            android:scaleX="-1"/>
+
+        <ImageView
+            android:id="@+id/iv41"
+            android:scaleType="centerInside"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:ignore="contentDescription"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginEnd="7dp"
+            android:src="@drawable/ic_question"
+            android:scaleX="-1"/>
 
     </LinearLayout>
 
