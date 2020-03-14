@@ -9,37 +9,18 @@
     android:orientation="vertical"
     tools:context=".MemoryActivity">
 
-    <RelativeLayout
-        android:id="@+id/activity_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp">
-
-        <include
-            layout="@layout/image"
-            android:layout_width="wrap_content"
-            android:layout_height="550dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true" />
-
-        <TextView
-            android:id="@+id/tvp1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@id/tvp1"
-            android:text="@string/p1"
-            android:textColor="#FF72A0"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
+        <RelativeLayout
+            android:id="@+id/layoutRR"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00FFFFFF"
+            android:clickable="true"
+            android:focusable="true"
+            android:elevation="7dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/btn1"
@@ -47,11 +28,60 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:elevation="7dp"
             android:text="@string/exit_game"
-            android:textSize="15sp" 
-            android:textColor="#0D47A1"
+            android:textColor="#FF0000"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout101"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            layout="@layout/image"
+            android:layout_width="wrap_content"
+            android:layout_height="550dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp" />
+
+        <include
+            layout="@layout/image020"
+            android:layout_width="wrap_content"
+            android:layout_height="550dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/tvp1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/p1"
+            android:textColor="#FF72A0"
+            android:textSize="24sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp" />
 
     </RelativeLayout>
 
