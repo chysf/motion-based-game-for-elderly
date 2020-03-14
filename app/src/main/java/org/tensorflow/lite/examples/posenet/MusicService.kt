@@ -1,4 +1,4 @@
-package com.example.memorygame
+package org.tensorflow.lite.examples.posenet
 
 import android.app.Service
 import android.content.Intent
