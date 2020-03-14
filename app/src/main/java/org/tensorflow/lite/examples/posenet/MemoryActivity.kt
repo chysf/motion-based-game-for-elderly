@@ -8,12 +8,14 @@ import android.os.Handler
 import android.view.View
 import android.widget.*
 import android.content.Intent
+import android.os.Build
 import android.view.KeyEvent
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 
 
-class MainActivity : AppCompatActivity() {
+class MemoryActivity : AppCompatActivity() {
 
     private lateinit var tvp1: TextView
     private lateinit var btn1: Button
@@ -99,6 +101,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_memory)
@@ -197,6 +200,7 @@ class MainActivity : AppCompatActivity() {
         val ha = Handler()
         ha.postDelayed(object : Runnable {
 
+            @RequiresApi(Build.VERSION_CODES.M)
             override fun run() {
                 Handler().postDelayed({
                     //Set foreground image and move to next
