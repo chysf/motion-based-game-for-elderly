@@ -19,7 +19,6 @@ package org.tensorflow.lite.examples.posenet
 import android.Manifest
 import android.app.AlertDialog
 import android.app.Dialog
-import android.app.ProgressDialog.show
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -45,6 +44,7 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
+import android.os.Looper
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
@@ -57,7 +57,6 @@ import android.view.Surface
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.view.View
-import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.View.GONE
 import android.view.ViewGroup
@@ -183,11 +182,11 @@ class PosenetActivity :
   private lateinit var downLeftCompass: ImageView
   private lateinit var downRightCompass: ImageView
 
-  private var rnd = Random.nextInt(0, 3)
+  private var rnd = 0
   private var match = false
-  private var playButtonPressed = false
+//  private var playButtonPressed = false
   //private var lefthand = false //true: up; false: down
-  //private var armspos = IntArray(4)
+  private var armspos  = intArrayOf(0,0,0,0)
 
   /** [CameraDevice.StateCallback] is called when [CameraDevice] changes its state.   */
   private val stateCallback = object : CameraDevice.StateCallback() {
@@ -282,42 +281,41 @@ class PosenetActivity :
     bt.setOnClickListener(clickListener)
   }
 
-  private fun playRandomCommand(){
-    //if(!match) ErrorDialog.newInstance("failed.").show(childFragmentManager, FRAGMENT_DIALOG)
-//    if(upLeftCompass.visibility == VISIBLE) upLeftCompass.visibility = GONE
-//    if(upRightCompass.visibility == VISIBLE) upRightCompass.visibility = GONE
-//    if(downLeftCompass.visibility == VISIBLE) downLeftCompass.visibility = GONE
-//    if(downRightCompass.visibility == VISIBLE) downRightCompass.visibility = GONE
-    if(cmd.isPlaying) cmd.pause()
-    if(leftUp.isPlaying) leftUp.pause()
-    if(leftDown.isPlaying) leftDown.pause()
-    if(rightUp.isPlaying) rightUp.pause()
-    if(rightDown.isPlaying) rightDown.pause()
-    if(silence20.isPlaying) silence20.pause()
+  private fun playRandomCommand() {
+    if(upLeftCompass.visibility == VISIBLE) upLeftCompass.visibility = GONE
+    if(upRightCompass.visibility == VISIBLE) upRightCompass.visibility = GONE
+    if(downLeftCompass.visibility == VISIBLE) downLeftCompass.visibility = GONE
+    if(downRightCompass.visibility == VISIBLE) downRightCompass.visibility = GONE
+    if (cmd.isPlaying) cmd.pause()
+    if (leftUp.isPlaying) leftUp.pause()
+    if (leftDown.isPlaying) leftDown.pause()
+    if (rightUp.isPlaying) rightUp.pause()
+    if (rightDown.isPlaying) rightDown.pause()
+    if (silence20.isPlaying) silence20.pause()
     cmd.start()
     match = false
-    rnd = Random.nextInt(0, 3)
+    rnd = Random.nextInt(0, 4)
     when (rnd) {
-        0 -> {
-//          upLeftCompass.visibility = VISIBLE
-          motion.text = "raise up left hand"
-          leftUp.start()
-        }
-        1 -> {
-//          downLeftCompass.visibility = VISIBLE
-          motion.text = "put down left hand"
-          leftDown.start()
-        }
-        2 -> {
-//          upRightCompass.visibility = VISIBLE
-          motion.text = "raise up right hand"
-          rightUp.start()
-        }
-        else -> {
-//          downRightCompass.visibility = VISIBLE
-          motion.text = "put down right hand"
-          rightDown.start()
-        }
+      0 -> {
+          upLeftCompass.visibility = VISIBLE
+        motion.text = "raise up left hand"
+        leftUp.start()
+      }
+      1 -> {
+          downLeftCompass.visibility = VISIBLE
+        motion.text = "put down left hand"
+        leftDown.start()
+      }
+      2 -> {
+          upRightCompass.visibility = VISIBLE
+        motion.text = "raise up right hand"
+        rightUp.start()
+      }
+      else -> {
+          downRightCompass.visibility = VISIBLE
+        motion.text = "put down right hand"
+        rightDown.start()
+      }
     }
     silence20.start()
   }
@@ -395,6 +393,7 @@ class PosenetActivity :
         val cameraDirection = characteristics.get(CameraCharacteristics.LENS_FACING)
         if (cameraDirection != null &&
           cameraDirection == CameraCharacteristics.LENS_FACING_FRONT
+//          cameraDirection == CameraCharacteristics.LENS_FACING_BACK
         ) {
           continue
         }
@@ -547,6 +546,10 @@ class PosenetActivity :
       // Create rotated version for portrait display
       val rotateMatrix = Matrix()
       rotateMatrix.postRotate(90.0f)
+//      rotateMatrix.postRotate(-90.0f)
+//      val cx = imageBitmap.width / 2f
+//      val cy = imageBitmap.height / 2f
+//      rotateMatrix.postScale(-1f, 1f, cx, cy);
 
       val rotatedBitmap = Bitmap.createBitmap(
         imageBitmap, 0, 0, previewWidth, previewHeight,
@@ -662,58 +665,46 @@ class PosenetActivity :
           person.keyPoints[line.second.ordinal].position.y.toFloat() * heightRatio + top,
           paint
         )
-        if(line == Pair(BodyPart.LEFT_ELBOW, BodyPart.LEFT_SHOULDER)) {
+        if(line == Pair(BodyPart.RIGHT_SHOULDER, BodyPart.RIGHT_ELBOW)) {
           val y1 = person.keyPoints[line.first.ordinal].position.y.toFloat()
           val y2 = person.keyPoints[line.second.ordinal].position.y.toFloat()
 
-          if(y2 > y1){
+          if(y2 < y1){
             canvas.drawText("up", (15.0f * widthRatio), (20.0f * heightRatio + bottom), paint)
             if((!leftUp.isPlaying && silence20.isPlaying) && rnd == 0 && !match) {
-//              showToast("raised left hand")
-//              motion.text = "raised left hand"
               silence20.pause()
-//              leftUp.pause()
               match = true
-//              upLeftCompass.visibility = GONE
-              playRandomCommand()
+              val refresh = Handler(Looper.getMainLooper())
+              refresh.post( Runnable{playRandomCommand()})
             }
           }else{
             canvas.drawText("down", (15.0f * widthRatio), (20.0f * heightRatio + bottom), paint)
             if((!leftDown.isPlaying && silence20.isPlaying) && rnd == 1 && !match) {
-//              showToast("put down left hand")
-//              motion.text = "put down left hand"
               silence20.pause()
-//              leftDown.pause()
               match = true
-//              downLeftCompass.visibility = GONE
-              playRandomCommand()
+              val refresh = Handler(Looper.getMainLooper())
+              refresh.post( Runnable{playRandomCommand()})
             }
           }
         }
-        if(line == Pair(BodyPart.RIGHT_SHOULDER, BodyPart.RIGHT_ELBOW)) {
+        if(line == Pair(BodyPart.LEFT_ELBOW, BodyPart.LEFT_SHOULDER)) {
           val y1 = person.keyPoints[line.first.ordinal].position.y.toFloat()
           val y2 = person.keyPoints[line.second.ordinal].position.y.toFloat()
-          if(y2 < y1){
+          if(y2 > y1){
             canvas.drawText("up", (100.0f * widthRatio), (20.0f * heightRatio + bottom), paint)
             if((!rightUp.isPlaying && silence20.isPlaying) && rnd == 2 && !match) {
-//              showToast("raised right hand")
-//              motion.text = "raised right hand"
               silence20.pause()
-//              rightUp.pause()
               match = true
-//              upRightCompass.visibility = GONE
-              playRandomCommand()
+              val refresh = Handler(Looper.getMainLooper())
+              refresh.post( Runnable{playRandomCommand()})
             }
           }else{
             canvas.drawText("down", (100.0f * widthRatio), (20.0f * heightRatio + bottom), paint)
             if((!rightDown.isPlaying && silence20.isPlaying) && rnd == 3 && !match) {
-//              showToast("put down right hand")
-//              motion.text = "put down right hand"
               silence20.pause()
-//              rightDown.pause()
               match = true
-//              downRightCompass.visibility = GONE
-              playRandomCommand()
+              val refresh = Handler(Looper.getMainLooper())
+              refresh.post( Runnable{playRandomCommand()})
             }
           }
         }
