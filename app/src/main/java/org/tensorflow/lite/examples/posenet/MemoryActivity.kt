@@ -105,10 +105,6 @@ class MemoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_memory)
 
-        val pose = Intent(applicationContext, CameraActivity::class.java)
-        startActivity(pose)
-
-
         //Close the app
         btn1 = findViewById(R.id.btn1)
         btn1.setOnClickListener {
