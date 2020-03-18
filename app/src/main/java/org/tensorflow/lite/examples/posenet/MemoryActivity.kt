@@ -5,17 +5,19 @@ import android.annotation.SuppressLint as AnnotationSuppressLint
 
 import android.os.Bundle
 import android.os.Handler
-import android.view.View
+import android.os.Build
 import android.widget.*
 import android.content.Intent
-import android.os.Build
-import android.view.KeyEvent
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
+import android.app.AlertDialog
+import android.media.MediaPlayer
+import android.view.View.*
 import androidx.core.content.ContextCompat
 
 
 class MemoryActivity : AppCompatActivity() {
+
+    private lateinit var musicTT: MediaPlayer
 
     private lateinit var tvp1: TextView
     private lateinit var btn1: Button
@@ -86,20 +88,17 @@ class MemoryActivity : AppCompatActivity() {
 
     private var mismatchPoints = 0
 
-    //Close Activity when BACK clicked
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
 
-        return when (keyCode) {
-            KeyEvent.KEYCODE_BACK -> {
-
-                stopService(Intent(this, MusicService::class.java))
-                this.finish()
-
-                true
-            }
-            else -> super.onKeyDown(keyCode, event)
-        }
+    override fun onStart() {
+        super.onStart()
+        musicTT.start()
     }
+
+    override fun onPause() {
+        musicTT.pause()
+        super.onPause()
+    }
+
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -118,8 +117,7 @@ class MemoryActivity : AppCompatActivity() {
                     val alertDialog = alertDialogBuilder.create()
                     alertDialog.cancel()
                 }
-                .setNegativeButton("Yes") { _, _ -> finish()
-                    stopService(Intent(this, MusicService::class.java))}
+                .setNegativeButton("Yes") { _, _ -> finish()}
             val alertDialog = alertDialogBuilder.create()
             alertDialog.show()
         }
@@ -168,18 +166,18 @@ class MemoryActivity : AppCompatActivity() {
         iv42.tag = "10"
         iv43.tag = "11"
 
-        iv011.visibility = View.INVISIBLE
-        iv012.visibility = View.INVISIBLE
-        iv013.visibility = View.INVISIBLE
-        iv021.visibility = View.INVISIBLE
-        iv022.visibility = View.INVISIBLE
-        iv023.visibility = View.INVISIBLE
-        iv031.visibility = View.INVISIBLE
-        iv032.visibility = View.INVISIBLE
-        iv033.visibility = View.INVISIBLE
-        iv041.visibility = View.INVISIBLE
-        iv042.visibility = View.INVISIBLE
-        iv043.visibility = View.INVISIBLE
+        iv011.visibility = INVISIBLE
+        iv012.visibility = INVISIBLE
+        iv013.visibility = INVISIBLE
+        iv021.visibility = INVISIBLE
+        iv022.visibility = INVISIBLE
+        iv023.visibility = INVISIBLE
+        iv031.visibility = INVISIBLE
+        iv032.visibility = INVISIBLE
+        iv033.visibility = INVISIBLE
+        iv041.visibility = INVISIBLE
+        iv042.visibility = INVISIBLE
+        iv043.visibility = INVISIBLE
 
 
         //Loading the card images
@@ -191,9 +189,10 @@ class MemoryActivity : AppCompatActivity() {
         cardsArray = mutableList.toList()
 
         //Background music
-        val music = Intent()
-        music.setClass(this, MusicService::class.java)
-        startService(music)
+        musicTT = MediaPlayer.create(this, R.raw.mg_bgmusic)
+        musicTT.isLooping = true
+        musicTT.setVolume(0.3f, 0.3f)
+        musicTT.start()
 
 
             //Set 12 time intervals and loop
@@ -206,14 +205,14 @@ class MemoryActivity : AppCompatActivity() {
                     //Set foreground image and move to next
                     iv43.foreground = null
                     iv11.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv043.visibility = View.INVISIBLE
-                    if(iv11.visibility == View.INVISIBLE) {
-                        iv011.visibility = View.VISIBLE
+                    iv043.visibility = INVISIBLE
+                    if(iv11.visibility == INVISIBLE) {
+                        iv011.visibility = VISIBLE
                     }
                     //Use one button to handle 12 image buttons
                     layoutRR.setOnClickListener {
                         clicked01++
-                        if (clicked01 == 1 && iv11.visibility == View.VISIBLE) {
+                        if (clicked01 == 1 && iv11.visibility == VISIBLE) {
                             iv11.callOnClick()
                         }}
                     //Check if first click and second click are not the same image
@@ -227,13 +226,13 @@ class MemoryActivity : AppCompatActivity() {
                 Handler().postDelayed({
                     iv11.foreground = null
                     iv12.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv011.visibility = View.INVISIBLE
-                    if(iv12.visibility == View.INVISIBLE) {
-                        iv012.visibility = View.VISIBLE
+                    iv011.visibility = INVISIBLE
+                    if(iv12.visibility == INVISIBLE) {
+                        iv012.visibility = VISIBLE
                     }
                     layoutRR.setOnClickListener {
                         clicked02++
-                        if (clicked02 == 1 && iv12.visibility == View.VISIBLE) {
+                        if (clicked02 == 1 && iv12.visibility == VISIBLE) {
                             iv12.callOnClick()
                         }}
                     if (clicked02 > 0 || clicked03 > 0 || clicked04 > 0 ||
@@ -246,13 +245,13 @@ class MemoryActivity : AppCompatActivity() {
                 Handler().postDelayed({
                     iv12.foreground = null
                     iv13.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv012.visibility = View.INVISIBLE
-                    if(iv13.visibility == View.INVISIBLE) {
-                        iv013.visibility = View.VISIBLE
+                    iv012.visibility = INVISIBLE
+                    if(iv13.visibility == INVISIBLE) {
+                        iv013.visibility = VISIBLE
                     }
                     layoutRR.setOnClickListener {
                         clicked03++
-                        if (clicked03 == 1 && iv13.visibility == View.VISIBLE) {
+                        if (clicked03 == 1 && iv13.visibility == VISIBLE) {
                             iv13.callOnClick()
                         }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked04 > 0 ||
@@ -265,13 +264,13 @@ class MemoryActivity : AppCompatActivity() {
                 Handler().postDelayed({
                     iv13.foreground = null
                     iv21.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv013.visibility = View.INVISIBLE
-                    if(iv21.visibility == View.INVISIBLE) {
-                        iv021.visibility = View.VISIBLE
+                    iv013.visibility = INVISIBLE
+                    if(iv21.visibility == INVISIBLE) {
+                        iv021.visibility = VISIBLE
                     }
                     layoutRR.setOnClickListener {
                         clicked04++
-                        if (clicked04 == 1 && iv21.visibility == View.VISIBLE) {
+                        if (clicked04 == 1 && iv21.visibility == VISIBLE) {
                             iv21.callOnClick()
                         }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -284,13 +283,13 @@ class MemoryActivity : AppCompatActivity() {
                 Handler().postDelayed({
                     iv21.foreground = null
                     iv22.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv021.visibility = View.INVISIBLE
-                    if(iv22.visibility == View.INVISIBLE) {
-                        iv022.visibility = View.VISIBLE
+                    iv021.visibility = INVISIBLE
+                    if(iv22.visibility == INVISIBLE) {
+                        iv022.visibility = VISIBLE
                     }
                     layoutRR.setOnClickListener {
                         clicked05++
-                        if (clicked05 == 1 && iv22.visibility == View.VISIBLE) {
+                        if (clicked05 == 1 && iv22.visibility == VISIBLE) {
                             iv22.callOnClick()
                         }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -303,13 +302,13 @@ class MemoryActivity : AppCompatActivity() {
                 Handler().postDelayed({
                     iv22.foreground = null
                     iv23.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv022.visibility = View.INVISIBLE
-                    if(iv23.visibility == View.INVISIBLE) {
-                        iv023.visibility = View.VISIBLE
+                    iv022.visibility = INVISIBLE
+                    if(iv23.visibility == INVISIBLE) {
+                        iv023.visibility = VISIBLE
                     }
                     layoutRR.setOnClickListener {
                         clicked06++
-                        if (clicked06 == 1 && iv23.visibility == View.VISIBLE) {
+                        if (clicked06 == 1 && iv23.visibility == VISIBLE) {
                             iv23.callOnClick()
                         }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -322,13 +321,13 @@ class MemoryActivity : AppCompatActivity() {
                 Handler().postDelayed({
                     iv23.foreground = null
                     iv31.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv023.visibility = View.INVISIBLE
-                    if(iv31.visibility == View.INVISIBLE) {
-                        iv031.visibility = View.VISIBLE
+                    iv023.visibility = INVISIBLE
+                    if(iv31.visibility == INVISIBLE) {
+                        iv031.visibility = VISIBLE
                     }
                     layoutRR.setOnClickListener {
                         clicked07++
-                        if (clicked07 == 1 && iv31.visibility == View.VISIBLE) {
+                        if (clicked07 == 1 && iv31.visibility == VISIBLE) {
                             iv31.callOnClick()
                         }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -341,13 +340,13 @@ class MemoryActivity : AppCompatActivity() {
                 Handler().postDelayed({
                     iv31.foreground = null
                     iv32.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv031.visibility = View.INVISIBLE
-                    if(iv32.visibility == View.INVISIBLE) {
-                        iv032.visibility = View.VISIBLE
+                    iv031.visibility = INVISIBLE
+                    if(iv32.visibility == INVISIBLE) {
+                        iv032.visibility = VISIBLE
                     }
                     layoutRR.setOnClickListener {
                         clicked08++
-                        if (clicked08 == 1 && iv32.visibility == View.VISIBLE) {
+                        if (clicked08 == 1 && iv32.visibility == VISIBLE) {
                             iv32.callOnClick()
                         }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -360,13 +359,13 @@ class MemoryActivity : AppCompatActivity() {
                 Handler().postDelayed({
                     iv32.foreground = null
                     iv33.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv032.visibility = View.INVISIBLE
-                    if(iv33.visibility == View.INVISIBLE) {
-                        iv033.visibility = View.VISIBLE
+                    iv032.visibility = INVISIBLE
+                    if(iv33.visibility == INVISIBLE) {
+                        iv033.visibility = VISIBLE
                     }
                     layoutRR.setOnClickListener {
                         clicked09++
-                        if (clicked09 == 1 && iv33.visibility == View.VISIBLE) {
+                        if (clicked09 == 1 && iv33.visibility == VISIBLE) {
                             iv33.callOnClick()
                         }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -379,13 +378,13 @@ class MemoryActivity : AppCompatActivity() {
                 Handler().postDelayed({
                     iv33.foreground = null
                     iv41.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv033.visibility = View.INVISIBLE
-                    if(iv41.visibility == View.INVISIBLE) {
-                        iv041.visibility = View.VISIBLE
+                    iv033.visibility = INVISIBLE
+                    if(iv41.visibility == INVISIBLE) {
+                        iv041.visibility = VISIBLE
                     }
                     layoutRR.setOnClickListener {
                         clicked10++
-                        if (clicked10 == 1 && iv41.visibility == View.VISIBLE) {
+                        if (clicked10 == 1 && iv41.visibility == VISIBLE) {
                             iv41.callOnClick()
                         }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -398,13 +397,13 @@ class MemoryActivity : AppCompatActivity() {
                 Handler().postDelayed({
                     iv41.foreground = null
                     iv42.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv041.visibility = View.INVISIBLE
-                    if(iv42.visibility == View.INVISIBLE) {
-                        iv042.visibility = View.VISIBLE
+                    iv041.visibility = INVISIBLE
+                    if(iv42.visibility == INVISIBLE) {
+                        iv042.visibility = VISIBLE
                     }
                     layoutRR.setOnClickListener {
                         clicked11++
-                        if (clicked11 == 1 && iv42.visibility == View.VISIBLE) {
+                        if (clicked11 == 1 && iv42.visibility == VISIBLE) {
                             iv42.callOnClick()
                         }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -417,13 +416,13 @@ class MemoryActivity : AppCompatActivity() {
                 Handler().postDelayed({
                     iv42.foreground = null
                     iv43.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv042.visibility = View.INVISIBLE
-                    if(iv43.visibility == View.INVISIBLE) {
-                        iv043.visibility = View.VISIBLE
+                    iv042.visibility = INVISIBLE
+                    if(iv43.visibility == INVISIBLE) {
+                        iv043.visibility = VISIBLE
                     }
                     layoutRR.setOnClickListener {
                         clicked12++
-                        if (clicked12 == 1 && iv43.visibility == View.VISIBLE) {
+                        if (clicked12 == 1 && iv43.visibility == VISIBLE) {
                             iv43.callOnClick()
                         }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -442,14 +441,14 @@ class MemoryActivity : AppCompatActivity() {
             //Set foreground image and move to next
             iv43.foreground = null
             iv11.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv043.visibility = View.INVISIBLE
-            if(iv11.visibility == View.INVISIBLE) {
-                iv011.visibility = View.VISIBLE
+            iv043.visibility = INVISIBLE
+            if(iv11.visibility == INVISIBLE) {
+                iv011.visibility = VISIBLE
             }
             //Use one button to handle 12 image buttons
             layoutRR.setOnClickListener {
                 clicked01++
-                if (clicked01 == 1 && iv11.visibility == View.VISIBLE) {
+                if (clicked01 == 1 && iv11.visibility == VISIBLE) {
                     iv11.callOnClick()
                 }}
             //Check if first click and second click are not the same image
@@ -463,13 +462,13 @@ class MemoryActivity : AppCompatActivity() {
         Handler().postDelayed({
             iv11.foreground = null
             iv12.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv011.visibility = View.INVISIBLE
-            if(iv12.visibility == View.INVISIBLE) {
-                iv012.visibility = View.VISIBLE
+            iv011.visibility = INVISIBLE
+            if(iv12.visibility == INVISIBLE) {
+                iv012.visibility = VISIBLE
             }
             layoutRR.setOnClickListener {
                 clicked02++
-                if (clicked02 == 1 && iv12.visibility == View.VISIBLE) {
+                if (clicked02 == 1 && iv12.visibility == VISIBLE) {
                     iv12.callOnClick()
                 }}
             if (clicked02 > 0 || clicked03 > 0 || clicked04 > 0 ||
@@ -482,13 +481,13 @@ class MemoryActivity : AppCompatActivity() {
         Handler().postDelayed({
             iv12.foreground = null
             iv13.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv012.visibility = View.INVISIBLE
-            if(iv13.visibility == View.INVISIBLE) {
-                iv013.visibility = View.VISIBLE
+            iv012.visibility = INVISIBLE
+            if(iv13.visibility == INVISIBLE) {
+                iv013.visibility = VISIBLE
             }
             layoutRR.setOnClickListener {
                 clicked03++
-                if (clicked03 == 1 && iv13.visibility == View.VISIBLE) {
+                if (clicked03 == 1 && iv13.visibility == VISIBLE) {
                     iv13.callOnClick()
                 }}
             if (clicked01 > 0 || clicked02 > 0 || clicked04 > 0 ||
@@ -501,13 +500,13 @@ class MemoryActivity : AppCompatActivity() {
         Handler().postDelayed({
             iv13.foreground = null
             iv21.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv013.visibility = View.INVISIBLE
-            if(iv21.visibility == View.INVISIBLE) {
-                iv021.visibility = View.VISIBLE
+            iv013.visibility = INVISIBLE
+            if(iv21.visibility == INVISIBLE) {
+                iv021.visibility = VISIBLE
             }
             layoutRR.setOnClickListener {
                 clicked04++
-                if (clicked04 == 1 && iv21.visibility == View.VISIBLE) {
+                if (clicked04 == 1 && iv21.visibility == VISIBLE) {
                     iv21.callOnClick()
                 }}
             if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -520,13 +519,13 @@ class MemoryActivity : AppCompatActivity() {
         Handler().postDelayed({
             iv21.foreground = null
             iv22.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv021.visibility = View.INVISIBLE
-            if(iv22.visibility == View.INVISIBLE) {
-                iv022.visibility = View.VISIBLE
+            iv021.visibility = INVISIBLE
+            if(iv22.visibility == INVISIBLE) {
+                iv022.visibility = VISIBLE
             }
             layoutRR.setOnClickListener {
                 clicked05++
-                if (clicked05 == 1 && iv22.visibility == View.VISIBLE) {
+                if (clicked05 == 1 && iv22.visibility == VISIBLE) {
                     iv22.callOnClick()
                 }}
             if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -539,13 +538,13 @@ class MemoryActivity : AppCompatActivity() {
         Handler().postDelayed({
             iv22.foreground = null
             iv23.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv022.visibility = View.INVISIBLE
-            if(iv23.visibility == View.INVISIBLE) {
-                iv023.visibility = View.VISIBLE
+            iv022.visibility = INVISIBLE
+            if(iv23.visibility == INVISIBLE) {
+                iv023.visibility = VISIBLE
             }
             layoutRR.setOnClickListener {
                 clicked06++
-                if (clicked06 == 1 && iv23.visibility == View.VISIBLE) {
+                if (clicked06 == 1 && iv23.visibility == VISIBLE) {
                     iv23.callOnClick()
                 }}
             if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -558,13 +557,13 @@ class MemoryActivity : AppCompatActivity() {
         Handler().postDelayed({
             iv23.foreground = null
             iv31.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv023.visibility = View.INVISIBLE
-            if(iv31.visibility == View.INVISIBLE) {
-                iv031.visibility = View.VISIBLE
+            iv023.visibility = INVISIBLE
+            if(iv31.visibility == INVISIBLE) {
+                iv031.visibility = VISIBLE
             }
             layoutRR.setOnClickListener {
                 clicked07++
-                if (clicked07 == 1 && iv31.visibility == View.VISIBLE) {
+                if (clicked07 == 1 && iv31.visibility == VISIBLE) {
                     iv31.callOnClick()
                 }}
             if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -577,13 +576,13 @@ class MemoryActivity : AppCompatActivity() {
         Handler().postDelayed({
             iv31.foreground = null
             iv32.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv031.visibility = View.INVISIBLE
-            if(iv32.visibility == View.INVISIBLE) {
-                iv032.visibility = View.VISIBLE
+            iv031.visibility = INVISIBLE
+            if(iv32.visibility == INVISIBLE) {
+                iv032.visibility = VISIBLE
             }
             layoutRR.setOnClickListener {
                 clicked08++
-                if (clicked08 == 1 && iv32.visibility == View.VISIBLE) {
+                if (clicked08 == 1 && iv32.visibility == VISIBLE) {
                     iv32.callOnClick()
                 }}
             if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -596,13 +595,13 @@ class MemoryActivity : AppCompatActivity() {
         Handler().postDelayed({
             iv32.foreground = null
             iv33.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv032.visibility = View.INVISIBLE
-            if(iv33.visibility == View.INVISIBLE) {
-                iv033.visibility = View.VISIBLE
+            iv032.visibility = INVISIBLE
+            if(iv33.visibility == INVISIBLE) {
+                iv033.visibility = VISIBLE
             }
             layoutRR.setOnClickListener {
                 clicked09++
-                if (clicked09 == 1 && iv33.visibility == View.VISIBLE) {
+                if (clicked09 == 1 && iv33.visibility == VISIBLE) {
                     iv33.callOnClick()
                 }}
             if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -615,13 +614,13 @@ class MemoryActivity : AppCompatActivity() {
         Handler().postDelayed({
             iv33.foreground = null
             iv41.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv033.visibility = View.INVISIBLE
-            if(iv41.visibility == View.INVISIBLE) {
-                iv041.visibility = View.VISIBLE
+            iv033.visibility = INVISIBLE
+            if(iv41.visibility == INVISIBLE) {
+                iv041.visibility = VISIBLE
             }
             layoutRR.setOnClickListener {
                 clicked10++
-                if (clicked10 == 1 && iv41.visibility == View.VISIBLE) {
+                if (clicked10 == 1 && iv41.visibility == VISIBLE) {
                     iv41.callOnClick()
                 }}
             if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -634,13 +633,13 @@ class MemoryActivity : AppCompatActivity() {
         Handler().postDelayed({
             iv41.foreground = null
             iv42.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv041.visibility = View.INVISIBLE
-            if(iv42.visibility == View.INVISIBLE) {
-                iv042.visibility = View.VISIBLE
+            iv041.visibility = INVISIBLE
+            if(iv42.visibility == INVISIBLE) {
+                iv042.visibility = VISIBLE
             }
             layoutRR.setOnClickListener {
                 clicked11++
-                if (clicked11 == 1 && iv42.visibility == View.VISIBLE) {
+                if (clicked11 == 1 && iv42.visibility == VISIBLE) {
                     iv42.callOnClick()
                 }}
             if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -653,13 +652,13 @@ class MemoryActivity : AppCompatActivity() {
         Handler().postDelayed({
             iv42.foreground = null
             iv43.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv042.visibility = View.INVISIBLE
-            if(iv43.visibility == View.INVISIBLE) {
-                iv043.visibility = View.VISIBLE
+            iv042.visibility = INVISIBLE
+            if(iv43.visibility == INVISIBLE) {
+                iv043.visibility = VISIBLE
             }
             layoutRR.setOnClickListener {
                 clicked12++
-                if (clicked12 == 1 && iv43.visibility == View.VISIBLE) {
+                if (clicked12 == 1 && iv43.visibility == VISIBLE) {
                     iv43.callOnClick()
                 }}
             if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
@@ -802,33 +801,33 @@ class MemoryActivity : AppCompatActivity() {
         //If Images are equal remove them otherwise add Mismatch point
         if (firstCard == secondCard) {
             when (clickedFirst) {
-                0 -> iv11.visibility = View.INVISIBLE
-                1 -> iv12.visibility = View.INVISIBLE
-                2 -> iv13.visibility = View.INVISIBLE
-                3 -> iv21.visibility = View.INVISIBLE
-                4 -> iv22.visibility = View.INVISIBLE
-                5 -> iv23.visibility = View.INVISIBLE
-                6 -> iv31.visibility = View.INVISIBLE
-                7 -> iv32.visibility = View.INVISIBLE
-                8 -> iv33.visibility = View.INVISIBLE
-                9 -> iv41.visibility = View.INVISIBLE
-                10 -> iv42.visibility = View.INVISIBLE
-                11 -> iv43.visibility = View.INVISIBLE
+                0 -> iv11.visibility = INVISIBLE
+                1 -> iv12.visibility = INVISIBLE
+                2 -> iv13.visibility = INVISIBLE
+                3 -> iv21.visibility = INVISIBLE
+                4 -> iv22.visibility = INVISIBLE
+                5 -> iv23.visibility = INVISIBLE
+                6 -> iv31.visibility = INVISIBLE
+                7 -> iv32.visibility = INVISIBLE
+                8 -> iv33.visibility = INVISIBLE
+                9 -> iv41.visibility = INVISIBLE
+                10 -> iv42.visibility = INVISIBLE
+                11 -> iv43.visibility = INVISIBLE
             }
 
             when (clickedSecond) {
-                0 -> iv11.visibility = View.INVISIBLE
-                1 -> iv12.visibility = View.INVISIBLE
-                2 -> iv13.visibility = View.INVISIBLE
-                3 -> iv21.visibility = View.INVISIBLE
-                4 -> iv22.visibility = View.INVISIBLE
-                5 -> iv23.visibility = View.INVISIBLE
-                6 -> iv31.visibility = View.INVISIBLE
-                7 -> iv32.visibility = View.INVISIBLE
-                8 -> iv33.visibility = View.INVISIBLE
-                9 -> iv41.visibility = View.INVISIBLE
-                10 -> iv42.visibility = View.INVISIBLE
-                11 -> iv43.visibility = View.INVISIBLE
+                0 -> iv11.visibility = INVISIBLE
+                1 -> iv12.visibility = INVISIBLE
+                2 -> iv13.visibility = INVISIBLE
+                3 -> iv21.visibility = INVISIBLE
+                4 -> iv22.visibility = INVISIBLE
+                5 -> iv23.visibility = INVISIBLE
+                6 -> iv31.visibility = INVISIBLE
+                7 -> iv32.visibility = INVISIBLE
+                8 -> iv33.visibility = INVISIBLE
+                9 -> iv41.visibility = INVISIBLE
+                10 -> iv42.visibility = INVISIBLE
+                11 -> iv43.visibility = INVISIBLE
             }
 
 
@@ -859,18 +858,19 @@ class MemoryActivity : AppCompatActivity() {
     }
 
     private fun checkEnd() {
-        if (iv11.visibility == View.INVISIBLE &&
-            iv12.visibility == View.INVISIBLE &&
-            iv13.visibility == View.INVISIBLE &&
-            iv21.visibility == View.INVISIBLE &&
-            iv22.visibility == View.INVISIBLE &&
-            iv23.visibility == View.INVISIBLE &&
-            iv31.visibility == View.INVISIBLE &&
-            iv32.visibility == View.INVISIBLE &&
-            iv33.visibility == View.INVISIBLE &&
-            iv41.visibility == View.INVISIBLE &&
-            iv42.visibility == View.INVISIBLE &&
-            iv43.visibility == View.INVISIBLE)
+        if (iv11.visibility == INVISIBLE &&
+            iv12.visibility == INVISIBLE &&
+            iv13.visibility == INVISIBLE &&
+            iv21.visibility == INVISIBLE &&
+            iv22.visibility == INVISIBLE &&
+            iv23.visibility == INVISIBLE &&
+            iv31.visibility == INVISIBLE &&
+            iv32.visibility == INVISIBLE &&
+            iv33.visibility == INVISIBLE &&
+            iv41.visibility == INVISIBLE &&
+            iv42.visibility == INVISIBLE &&
+            iv43.visibility == INVISIBLE
+        )
 
         {
             val alertDialogBuilder = AlertDialog.Builder(this@MemoryActivity)
@@ -882,9 +882,7 @@ class MemoryActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }
-                .setNegativeButton("EXIT") { _, _ -> finish()
-                    stopService(Intent(this, MusicService::class.java))
-                }
+                .setNegativeButton("EXIT") { _, _ -> finish()}
             val alertDialog = alertDialogBuilder.create()
             alertDialog.show()
         }
