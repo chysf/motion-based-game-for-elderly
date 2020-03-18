@@ -297,22 +297,22 @@ class PosenetActivity :
     rnd = Random.nextInt(0, 4)
     when (rnd) {
       0 -> {
-          upLeftCompass.visibility = VISIBLE
+        upLeftCompass.visibility = VISIBLE
         motion.text = "raise up left hand"
         leftUp.start()
       }
       1 -> {
-          downLeftCompass.visibility = VISIBLE
+        downLeftCompass.visibility = VISIBLE
         motion.text = "put down left hand"
         leftDown.start()
       }
       2 -> {
-          upRightCompass.visibility = VISIBLE
+        upRightCompass.visibility = VISIBLE
         motion.text = "raise up right hand"
         rightUp.start()
       }
       else -> {
-          downRightCompass.visibility = VISIBLE
+        downRightCompass.visibility = VISIBLE
         motion.text = "put down right hand"
         rightDown.start()
       }
@@ -330,7 +330,6 @@ class PosenetActivity :
     super.onStart()
     openCamera()
     posenet = Posenet(this.context!!)
-
     bgm.start()
   }
 
@@ -650,7 +649,7 @@ class PosenetActivity :
         val position = keyPoint.position
         val adjustedX: Float = position.x.toFloat() * widthRatio + left
         val adjustedY: Float = position.y.toFloat() * heightRatio + top
-        canvas.drawCircle(adjustedX, adjustedY, circleRadius, paint)
+//        canvas.drawCircle(adjustedX, adjustedY, circleRadius, paint)
       }
     }
     for (line in bodyJoints) {
@@ -658,14 +657,21 @@ class PosenetActivity :
         (person.keyPoints[line.first.ordinal].score > minConfidence) and
         (person.keyPoints[line.second.ordinal].score > minConfidence)
       ) {
-        canvas.drawLine(
-          person.keyPoints[line.first.ordinal].position.x.toFloat() * widthRatio + left,
-          person.keyPoints[line.first.ordinal].position.y.toFloat() * heightRatio + top,
-          person.keyPoints[line.second.ordinal].position.x.toFloat() * widthRatio + left,
-          person.keyPoints[line.second.ordinal].position.y.toFloat() * heightRatio + top,
-          paint
-        )
+//        canvas.drawLine(
+//          person.keyPoints[line.first.ordinal].position.x.toFloat() * widthRatio + left,
+//          person.keyPoints[line.first.ordinal].position.y.toFloat() * heightRatio + top,
+//          person.keyPoints[line.second.ordinal].position.x.toFloat() * widthRatio + left,
+//          person.keyPoints[line.second.ordinal].position.y.toFloat() * heightRatio + top,
+//          paint
+//        )
         if(line == Pair(BodyPart.RIGHT_SHOULDER, BodyPart.RIGHT_ELBOW)) {
+          canvas.drawLine(
+            person.keyPoints[line.first.ordinal].position.x.toFloat() * widthRatio + left,
+            person.keyPoints[line.first.ordinal].position.y.toFloat() * heightRatio + top,
+            person.keyPoints[line.second.ordinal].position.x.toFloat() * widthRatio + left,
+            person.keyPoints[line.second.ordinal].position.y.toFloat() * heightRatio + top,
+            paint
+          )
           val y1 = person.keyPoints[line.first.ordinal].position.y.toFloat()
           val y2 = person.keyPoints[line.second.ordinal].position.y.toFloat()
 
@@ -688,6 +694,13 @@ class PosenetActivity :
           }
         }
         if(line == Pair(BodyPart.LEFT_ELBOW, BodyPart.LEFT_SHOULDER)) {
+          canvas.drawLine(
+            person.keyPoints[line.first.ordinal].position.x.toFloat() * widthRatio + left,
+            person.keyPoints[line.first.ordinal].position.y.toFloat() * heightRatio + top,
+            person.keyPoints[line.second.ordinal].position.x.toFloat() * widthRatio + left,
+            person.keyPoints[line.second.ordinal].position.y.toFloat() * heightRatio + top,
+            paint
+          )
           val y1 = person.keyPoints[line.first.ordinal].position.y.toFloat()
           val y2 = person.keyPoints[line.second.ordinal].position.y.toFloat()
           if(y2 > y1){
