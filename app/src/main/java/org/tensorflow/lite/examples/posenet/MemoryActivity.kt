@@ -101,9 +101,22 @@ class MemoryActivity : AppCompatActivity() {
 
 
     @RequiresApi(Build.VERSION_CODES.M)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_memory)
+
+
+        savedInstanceState ?: supportFragmentManager.beginTransaction()
+            .replace(R.id.container, PosenetActivity())
+            .commit()
+
+
+
+
+
+
+
 
         //Close the app
         btn1 = findViewById(R.id.btn1)

@@ -31,6 +31,11 @@ class MainActivity: AppCompatActivity() {
                     // start your next activity
                     startActivity(intent)
                 }
+                R.id.testBtn -> {
+                    val intent = Intent(this, TestActivity::class.java)
+                    // start your next activity
+                    startActivity(intent)
+                }
             }
         }
         val motionGameBtn: Button = findViewById(R.id.motionGameBtn)
@@ -39,6 +44,8 @@ class MainActivity: AppCompatActivity() {
         eatingGameBtn.setOnClickListener(clickListener)
         val memoryGameBtn: Button = findViewById(R.id.memoryGameBtn)
         memoryGameBtn.setOnClickListener(clickListener)
+        val testBtn: Button = findViewById(R.id.testBtn)
+        testBtn.setOnClickListener(clickListener)
 
 
     }

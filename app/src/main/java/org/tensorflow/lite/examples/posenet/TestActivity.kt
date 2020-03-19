@@ -33,7 +33,7 @@ import org.tensorflow.lite.examples.posenet.lib.Posenet as Posenet
 class TestActivity : AppCompatActivity() {
   /** Returns a resized bitmap of the drawable image.    */
   private fun drawableToBitmap(drawable: Drawable): Bitmap {
-    val bitmap = Bitmap.createBitmap(257, 353, Bitmap.Config.ARGB_8888)
+    val bitmap = Bitmap.createBitmap(257, 257, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(bitmap)
 
     drawable.setBounds(0, 0, canvas.width, canvas.height)
@@ -57,7 +57,7 @@ class TestActivity : AppCompatActivity() {
 
     // Draw the keypoints over the image.
     val paint = Paint()
-    paint.color = Color.RED
+    paint.color = Color.YELLOW
     val size = 2.0f
 
     val mutableBitmap = imageBitmap.copy(Bitmap.Config.ARGB_8888, true)
