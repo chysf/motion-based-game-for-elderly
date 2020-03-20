@@ -77,6 +77,20 @@ class PosenetActivity :
   Fragment(),
   ActivityCompat.OnRequestPermissionsResultCallback {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   /** List of body joints that should be connected.    */
   private val bodyJoints = listOf(
     Pair(BodyPart.LEFT_WRIST, BodyPart.LEFT_ELBOW),
@@ -92,6 +106,9 @@ class PosenetActivity :
     Pair(BodyPart.RIGHT_HIP, BodyPart.RIGHT_KNEE),
     Pair(BodyPart.RIGHT_KNEE, BodyPart.RIGHT_ANKLE)
   )
+
+
+
 
   /** Threshold for confidence score. */
   private val minConfidence = 0.5

@@ -16,21 +16,35 @@
 
 package org.tensorflow.lite.examples.posenet
 
+import android.content.DialogInterface
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import kotlinx.android.synthetic.main.activity_posenet.*
 
 class CameraActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+
+
+
+
+
     setContentView(R.layout.activity_camera)
     savedInstanceState ?: supportFragmentManager.beginTransaction()
       .replace(R.id.container, PosenetActivity())
       .commit()
+
   }
+
+
+
 
 }

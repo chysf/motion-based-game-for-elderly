@@ -21,8 +21,11 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.drawable.Drawable
+import android.hardware.camera2.CameraCaptureSession
+import android.hardware.camera2.CameraDevice
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.util.Size
 import android.view.View
 import android.widget.Button
 import androidx.core.content.res.ResourcesCompat
@@ -31,8 +34,9 @@ import android.widget.ImageView
 import org.tensorflow.lite.examples.posenet.lib.Posenet as Posenet
 
 class TestActivity : AppCompatActivity() {
+
   /** Returns a resized bitmap of the drawable image.    */
-  private fun drawableToBitmap(drawable: Drawable): Bitmap {
+ private fun drawableToBitmap(drawable: Drawable): Bitmap {
     val bitmap = Bitmap.createBitmap(257, 257, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(bitmap)
 
