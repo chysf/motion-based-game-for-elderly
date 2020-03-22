@@ -13,6 +13,7 @@ import android.app.AlertDialog
 import android.media.MediaPlayer
 import android.view.View.*
 import androidx.core.content.ContextCompat
+import org.tensorflow.lite.examples.posenet.PosenetActivity.Companion.handup
 
 
 class MemoryActivity : AppCompatActivity() {
@@ -222,12 +223,19 @@ class MemoryActivity : AppCompatActivity() {
                     if(iv11.visibility == INVISIBLE) {
                         iv011.visibility = VISIBLE
                     }
-                    //Use one button to handle 12 image buttons
-                    layoutRR.setOnClickListener {
+                    if(handup){
                         clicked01++
                         if (clicked01 == 1 && iv11.visibility == VISIBLE) {
                             iv11.callOnClick()
-                        }}
+                            handup = false
+                        }
+                    }
+                    //Use one button to handle 12 image buttons
+//                    layoutRR.setOnClickListener {
+//                        clicked01++
+//                        if (clicked01 == 1 && iv11.visibility == VISIBLE) {
+//                            iv11.callOnClick()
+//                        }}
                     //Check if first click and second click are not the same image
                     if (clicked02 > 0 || clicked03 > 0 || clicked04 > 0 ||
                         clicked05 > 0 || clicked06 > 0 || clicked07 > 0 ||
@@ -243,12 +251,19 @@ class MemoryActivity : AppCompatActivity() {
                     if(iv12.visibility == INVISIBLE) {
                         iv012.visibility = VISIBLE
                     }
-                    layoutRR.setOnClickListener {
+                    if(handup){
                         clicked02++
                         if (clicked02 == 1 && iv12.visibility == VISIBLE) {
                             iv12.callOnClick()
-                        }}
-                    if (clicked02 > 0 || clicked03 > 0 || clicked04 > 0 ||
+                            handup = false
+                        }
+                    }
+//                    layoutRR.setOnClickListener {
+//                        clicked02++
+//                        if (clicked02 == 1 && iv12.visibility == VISIBLE) {
+//                            iv12.callOnClick()
+//                        }}
+                    if (clicked01 > 0 || clicked03 > 0 || clicked04 > 0 ||
                         clicked05 > 0 || clicked06 > 0 || clicked07 > 0 ||
                         clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
                         clicked11 > 0 || clicked12 > 0 ) {
@@ -262,11 +277,18 @@ class MemoryActivity : AppCompatActivity() {
                     if(iv13.visibility == INVISIBLE) {
                         iv013.visibility = VISIBLE
                     }
-                    layoutRR.setOnClickListener {
+                    if(handup){
                         clicked03++
                         if (clicked03 == 1 && iv13.visibility == VISIBLE) {
                             iv13.callOnClick()
-                        }}
+                            handup = false
+                        }
+                    }
+//                    layoutRR.setOnClickListener {
+//                        clicked03++
+//                        if (clicked03 == 1 && iv13.visibility == VISIBLE) {
+//                            iv13.callOnClick()
+//                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked04 > 0 ||
                         clicked05 > 0 || clicked06 > 0 || clicked07 > 0 ||
                         clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
@@ -281,11 +303,18 @@ class MemoryActivity : AppCompatActivity() {
                     if(iv21.visibility == INVISIBLE) {
                         iv021.visibility = VISIBLE
                     }
-                    layoutRR.setOnClickListener {
+                    if(handup){
                         clicked04++
                         if (clicked04 == 1 && iv21.visibility == VISIBLE) {
                             iv21.callOnClick()
-                        }}
+                            handup = false
+                        }
+                    }
+//                    layoutRR.setOnClickListener {
+//                        clicked04++
+//                        if (clicked04 == 1 && iv21.visibility == VISIBLE) {
+//                            iv21.callOnClick()
+//                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked05 > 0 || clicked06 > 0 || clicked07 > 0 ||
                         clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
@@ -300,11 +329,18 @@ class MemoryActivity : AppCompatActivity() {
                     if(iv22.visibility == INVISIBLE) {
                         iv022.visibility = VISIBLE
                     }
-                    layoutRR.setOnClickListener {
+                    if(handup){
                         clicked05++
                         if (clicked05 == 1 && iv22.visibility == VISIBLE) {
                             iv22.callOnClick()
-                        }}
+                            handup = false
+                        }
+                    }
+//                    layoutRR.setOnClickListener {
+//                        clicked05++
+//                        if (clicked05 == 1 && iv22.visibility == VISIBLE) {
+//                            iv22.callOnClick()
+//                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked04 > 0 || clicked06 > 0 || clicked07 > 0 ||
                         clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
@@ -319,11 +355,18 @@ class MemoryActivity : AppCompatActivity() {
                     if(iv23.visibility == INVISIBLE) {
                         iv023.visibility = VISIBLE
                     }
-                    layoutRR.setOnClickListener {
+                    if(handup){
                         clicked06++
                         if (clicked06 == 1 && iv23.visibility == VISIBLE) {
                             iv23.callOnClick()
-                        }}
+                            handup = false
+                        }
+                    }
+//                    layoutRR.setOnClickListener {
+//                        clicked06++
+//                        if (clicked06 == 1 && iv23.visibility == VISIBLE) {
+//                            iv23.callOnClick()
+//                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked04 > 0 || clicked05 > 0 || clicked07 > 0 ||
                         clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
@@ -338,11 +381,18 @@ class MemoryActivity : AppCompatActivity() {
                     if(iv31.visibility == INVISIBLE) {
                         iv031.visibility = VISIBLE
                     }
-                    layoutRR.setOnClickListener {
+                    if(handup){
                         clicked07++
                         if (clicked07 == 1 && iv31.visibility == VISIBLE) {
                             iv31.callOnClick()
-                        }}
+                            handup = false
+                        }
+                    }
+//                    layoutRR.setOnClickListener {
+//                        clicked07++
+//                        if (clicked07 == 1 && iv31.visibility == VISIBLE) {
+//                            iv31.callOnClick()
+//                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
                         clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
@@ -357,11 +407,18 @@ class MemoryActivity : AppCompatActivity() {
                     if(iv32.visibility == INVISIBLE) {
                         iv032.visibility = VISIBLE
                     }
-                    layoutRR.setOnClickListener {
+                    if(handup){
                         clicked08++
                         if (clicked08 == 1 && iv32.visibility == VISIBLE) {
                             iv32.callOnClick()
-                        }}
+                            handup = false
+                        }
+                    }
+//                    layoutRR.setOnClickListener {
+//                        clicked08++
+//                        if (clicked08 == 1 && iv32.visibility == VISIBLE) {
+//                            iv32.callOnClick()
+//                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
                         clicked07 > 0 || clicked09 > 0 || clicked10 > 0 ||
@@ -376,11 +433,18 @@ class MemoryActivity : AppCompatActivity() {
                     if(iv33.visibility == INVISIBLE) {
                         iv033.visibility = VISIBLE
                     }
-                    layoutRR.setOnClickListener {
+                    if(handup){
                         clicked09++
                         if (clicked09 == 1 && iv33.visibility == VISIBLE) {
                             iv33.callOnClick()
-                        }}
+                            handup = false
+                        }
+                    }
+//                    layoutRR.setOnClickListener {
+//                        clicked09++
+//                        if (clicked09 == 1 && iv33.visibility == VISIBLE) {
+//                            iv33.callOnClick()
+//                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
                         clicked07 > 0 || clicked08 > 0 || clicked10 > 0 ||
@@ -395,11 +459,18 @@ class MemoryActivity : AppCompatActivity() {
                     if(iv41.visibility == INVISIBLE) {
                         iv041.visibility = VISIBLE
                     }
-                    layoutRR.setOnClickListener {
+                    if(handup){
                         clicked10++
                         if (clicked10 == 1 && iv41.visibility == VISIBLE) {
                             iv41.callOnClick()
-                        }}
+                            handup = false
+                        }
+                    }
+//                    layoutRR.setOnClickListener {
+//                        clicked10++
+//                        if (clicked10 == 1 && iv41.visibility == VISIBLE) {
+//                            iv41.callOnClick()
+//                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
                         clicked07 > 0 || clicked08 > 0 || clicked09 > 0 ||
@@ -414,11 +485,18 @@ class MemoryActivity : AppCompatActivity() {
                     if(iv42.visibility == INVISIBLE) {
                         iv042.visibility = VISIBLE
                     }
-                    layoutRR.setOnClickListener {
+                    if(handup){
                         clicked11++
                         if (clicked11 == 1 && iv42.visibility == VISIBLE) {
                             iv42.callOnClick()
-                        }}
+                            handup = false
+                        }
+                    }
+//                    layoutRR.setOnClickListener {
+//                        clicked11++
+//                        if (clicked11 == 1 && iv42.visibility == VISIBLE) {
+//                            iv42.callOnClick()
+//                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
                         clicked07 > 0 || clicked08 > 0 || clicked09 > 0 ||
@@ -433,11 +511,18 @@ class MemoryActivity : AppCompatActivity() {
                     if(iv43.visibility == INVISIBLE) {
                         iv043.visibility = VISIBLE
                     }
-                    layoutRR.setOnClickListener {
+                    if(handup){
                         clicked12++
                         if (clicked12 == 1 && iv43.visibility == VISIBLE) {
                             iv43.callOnClick()
-                        }}
+                            handup = false
+                        }
+                    }
+//                    layoutRR.setOnClickListener {
+//                        clicked12++
+//                        if (clicked12 == 1 && iv43.visibility == VISIBLE) {
+//                            iv43.callOnClick()
+//                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
                         clicked07 > 0 || clicked08 > 0 || clicked09 > 0 ||
