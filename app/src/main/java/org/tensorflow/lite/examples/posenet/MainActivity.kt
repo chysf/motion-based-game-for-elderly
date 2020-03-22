@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import org.tensorflow.lite.examples.posenet.PosenetActivity.Companion.gameID
 
 class MainActivity: AppCompatActivity() {
 
@@ -18,22 +19,22 @@ class MainActivity: AppCompatActivity() {
             when(view.id){
                 R.id.motionGameBtn -> {
                     val intent = Intent(this, CameraActivity::class.java)
-                    // start your next activity
+                    gameID = 1
                     startActivity(intent)
                 }
                 R.id.eatingGameBtn -> {
                     val intent = Intent(this, EatingActivity::class.java)
-                    // start your next activity
+                    gameID = 2
                     startActivity(intent)
                 }
                 R.id.memoryGameBtn -> {
                     val intent = Intent(this, MemoryActivity::class.java)
-                    // start your next activity
+                    gameID = 3
                     startActivity(intent)
                 }
                 R.id.testBtn -> {
-                    val intent = Intent(this, TestActivity::class.java)
-                    // start your next activity
+                    val intent = Intent(this, HelloWorld::class.java)
+                    gameID = 4
                     startActivity(intent)
                 }
             }
@@ -46,7 +47,6 @@ class MainActivity: AppCompatActivity() {
         memoryGameBtn.setOnClickListener(clickListener)
         val testBtn: Button = findViewById(R.id.testBtn)
         testBtn.setOnClickListener(clickListener)
-
 
     }
 
@@ -72,10 +72,5 @@ class MainActivity: AppCompatActivity() {
       //  alertDialog.show()
 
     //}
-
-
-
-
-
 
 }

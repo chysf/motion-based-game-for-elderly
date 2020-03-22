@@ -64,7 +64,6 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_posenet.*
 import java.util.concurrent.Semaphore
 import java.util.concurrent.TimeUnit
 import kotlin.math.abs
@@ -76,20 +75,6 @@ import kotlin.random.Random
 class PosenetActivity :
   Fragment(),
   ActivityCompat.OnRequestPermissionsResultCallback {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   /** List of body joints that should be connected.    */
   private val bodyJoints = listOf(
@@ -106,9 +91,6 @@ class PosenetActivity :
     Pair(BodyPart.RIGHT_HIP, BodyPart.RIGHT_KNEE),
     Pair(BodyPart.RIGHT_KNEE, BodyPart.RIGHT_ANKLE)
   )
-
-
-
 
   /** Threshold for confidence score. */
   private val minConfidence = 0.5
@@ -201,9 +183,7 @@ class PosenetActivity :
 
   private var rnd = 0
   private var match = false
-//  private var playButtonPressed = false
-  //private var lefthand = false //true: up; false: down
-  private var armspos  = intArrayOf(0,0,0,0)
+
 
   /** [CameraDevice.StateCallback] is called when [CameraDevice] changes its state.   */
   private val stateCallback = object : CameraDevice.StateCallback() {
@@ -265,7 +245,6 @@ class PosenetActivity :
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     surfaceView = view.findViewById(R.id.surfaceView)
     surfaceHolder = surfaceView!!.holder
-
     bgm = MediaPlayer.create(activity, R.raw.piano)
     bgm.isLooping = true
     bgm.setVolume(0.3f, 0.3f)
@@ -285,17 +264,19 @@ class PosenetActivity :
     upRightCompass = view.findViewById(R.id.uprightcompass)
     downLeftCompass = view.findViewById(R.id.downleftcompass)
     downRightCompass = view.findViewById(R.id.downrightcompass)
-
-    val clickListener = View.OnClickListener { view ->
-      when (view.id) {
-        R.id.playButton -> {
-          //playButtonPressed = true
-          playRandomCommand()
+    if(gameID == 1){
+        val clickListener = View.OnClickListener { view ->
+          when (view.id) {
+            R.id.playButton -> {
+              playRandomCommand()
+            }
+          }
         }
-      }
+        val bt: ImageButton = view.findViewById(R.id.playButton)
+        bt.setOnClickListener(clickListener)
+        bt.visibility = VISIBLE
+        motion.visibility = VISIBLE
     }
-    val bt: ImageButton = view.findViewById(R.id.playButton)
-    bt.setOnClickListener(clickListener)
   }
 
   private fun playRandomCommand() {
@@ -674,68 +655,88 @@ class PosenetActivity :
         (person.keyPoints[line.first.ordinal].score > minConfidence) and
         (person.keyPoints[line.second.ordinal].score > minConfidence)
       ) {
-//        canvas.drawLine(
-//          person.keyPoints[line.first.ordinal].position.x.toFloat() * widthRatio + left,
-//          person.keyPoints[line.first.ordinal].position.y.toFloat() * heightRatio + top,
-//          person.keyPoints[line.second.ordinal].position.x.toFloat() * widthRatio + left,
-//          person.keyPoints[line.second.ordinal].position.y.toFloat() * heightRatio + top,
-//          paint
-//        )
+        canvas.drawLine(
+          person.keyPoints[line.first.ordinal].position.x.toFloat() * widthRatio + left,
+          person.keyPoints[line.first.ordinal].position.y.toFloat() * heightRatio + top,
+          person.keyPoints[line.second.ordinal].position.x.toFloat() * widthRatio + left,
+          person.keyPoints[line.second.ordinal].position.y.toFloat() * heightRatio + top,
+          paint
+        )
         if(line == Pair(BodyPart.RIGHT_SHOULDER, BodyPart.RIGHT_ELBOW)) {
-          canvas.drawLine(
-            person.keyPoints[line.first.ordinal].position.x.toFloat() * widthRatio + left,
-            person.keyPoints[line.first.ordinal].position.y.toFloat() * heightRatio + top,
-            person.keyPoints[line.second.ordinal].position.x.toFloat() * widthRatio + left,
-            person.keyPoints[line.second.ordinal].position.y.toFloat() * heightRatio + top,
-            paint
-          )
+//          canvas.drawLine(
+//            person.keyPoints[line.first.ordinal].position.x.toFloat() * widthRatio + left,
+//            person.keyPoints[line.first.ordinal].position.y.toFloat() * heightRatio + top,
+//            person.keyPoints[line.second.ordinal].position.x.toFloat() * widthRatio + left,
+//            person.keyPoints[line.second.ordinal].position.y.toFloat() * heightRatio + top,
+//            paint
+//          )
+
           val y1 = person.keyPoints[line.first.ordinal].position.y.toFloat()
           val y2 = person.keyPoints[line.second.ordinal].position.y.toFloat()
 
-          if(y2 < y1){
-            canvas.drawText("up", (15.0f * widthRatio), (20.0f * heightRatio + bottom), paint)
-            if((!leftUp.isPlaying && silence20.isPlaying) && rnd == 0 && !match) {
-              silence20.pause()
-              match = true
-              val refresh = Handler(Looper.getMainLooper())
-              refresh.post( Runnable{playRandomCommand()})
+            if (y2 < y1) {
+//                canvas.drawText("lup", (40.0f * widthRatio), (20.0f * heightRatio + top), paint)
+              if(gameID == 1) {
+                if ((!leftUp.isPlaying && silence20.isPlaying) && rnd == 0 && !match) {
+                    silence20.pause()
+                    match = true
+                    val refresh = Handler(Looper.getMainLooper())
+                    refresh.post(Runnable { playRandomCommand() })
+                }
+              }else{
+                armspos[0] = true
+                handup = true
+              }
+            } else {
+//            canvas.drawText("ldown", (40.0f * widthRatio), (20.0f * heightRatio + top), paint)
+              if(gameID == 1) {
+                if ((!leftDown.isPlaying && silence20.isPlaying) && rnd == 1 && !match) {
+                  silence20.pause()
+                  match = true
+                  val refresh = Handler(Looper.getMainLooper())
+                  refresh.post(Runnable { playRandomCommand() })
+                }
+              }else{
+                    armspos[0] = false
+              }
             }
-          }else{
-            canvas.drawText("down", (15.0f * widthRatio), (20.0f * heightRatio + bottom), paint)
-            if((!leftDown.isPlaying && silence20.isPlaying) && rnd == 1 && !match) {
-              silence20.pause()
-              match = true
-              val refresh = Handler(Looper.getMainLooper())
-              refresh.post( Runnable{playRandomCommand()})
-            }
-          }
-        }
-        if(line == Pair(BodyPart.LEFT_ELBOW, BodyPart.LEFT_SHOULDER)) {
-          canvas.drawLine(
-            person.keyPoints[line.first.ordinal].position.x.toFloat() * widthRatio + left,
-            person.keyPoints[line.first.ordinal].position.y.toFloat() * heightRatio + top,
-            person.keyPoints[line.second.ordinal].position.x.toFloat() * widthRatio + left,
-            person.keyPoints[line.second.ordinal].position.y.toFloat() * heightRatio + top,
-            paint
-          )
-          val y1 = person.keyPoints[line.first.ordinal].position.y.toFloat()
-          val y2 = person.keyPoints[line.second.ordinal].position.y.toFloat()
-          if(y2 > y1){
-            canvas.drawText("up", (100.0f * widthRatio), (20.0f * heightRatio + bottom), paint)
-            if((!rightUp.isPlaying && silence20.isPlaying) && rnd == 2 && !match) {
-              silence20.pause()
-              match = true
-              val refresh = Handler(Looper.getMainLooper())
-              refresh.post( Runnable{playRandomCommand()})
-            }
-          }else{
-            canvas.drawText("down", (100.0f * widthRatio), (20.0f * heightRatio + bottom), paint)
-            if((!rightDown.isPlaying && silence20.isPlaying) && rnd == 3 && !match) {
-              silence20.pause()
-              match = true
-              val refresh = Handler(Looper.getMainLooper())
-              refresh.post( Runnable{playRandomCommand()})
-            }
+
+          if(line == Pair(BodyPart.LEFT_ELBOW, BodyPart.LEFT_SHOULDER)) {
+//            canvas.drawLine(
+//              person.keyPoints[line.first.ordinal].position.x.toFloat() * widthRatio + left,
+//              person.keyPoints[line.first.ordinal].position.y.toFloat() * heightRatio + top,
+//              person.keyPoints[line.second.ordinal].position.x.toFloat() * widthRatio + left,
+//              person.keyPoints[line.second.ordinal].position.y.toFloat() * heightRatio + top,
+//              paint
+//            )
+              val y1 = person.keyPoints[line.first.ordinal].position.y.toFloat()
+              val y2 = person.keyPoints[line.second.ordinal].position.y.toFloat()
+                if (y2 > y1) {
+//                canvas.drawText("rup", (right - 40.0f * widthRatio), (20.0f * heightRatio + top), paint)
+                    if(gameID == 1) {
+                        if ((!rightUp.isPlaying && silence20.isPlaying) && rnd == 2 && !match) {
+                            silence20.pause()
+                            match = true
+                            val refresh = Handler(Looper.getMainLooper())
+                            refresh.post(Runnable { playRandomCommand() })
+                        }
+                    }else{
+                        armspos[1] = true
+                        handup = true
+                    }
+              } else {
+//                    canvas.drawText("rdown", (right - 40.0f * widthRatio), (20.0f * heightRatio + top), paint)
+                    if (gameID == 1) {
+                        if ((!rightDown.isPlaying && silence20.isPlaying) && rnd == 3 && !match) {
+                            silence20.pause()
+                            match = true
+                            val refresh = Handler(Looper.getMainLooper())
+                            refresh.post(Runnable { playRandomCommand() })
+                        }
+                    }else{
+                        armspos[1] = false
+                    }
+                }
           }
         }
       }
@@ -763,26 +764,6 @@ class PosenetActivity :
     // Draw!
     surfaceHolder!!.unlockCanvasAndPost(canvas)
   }
-
-  //check when command is played
-//  fun getArmsPos(person: Person): Array<Int>?{
-//    var lt = 0
-//    var lm = 0
-//    var rt = 0
-//    var rm = 0
-//
-//    for(line in bodyJoints){
-//      if(line == Pair(BodyPart.LEFT_ELBOW, BodyPart.LEFT_SHOULDER)) {
-//          lm = person.keyPoints[line.first.ordinal].position.y
-//          lt = person.keyPoints[line.second.ordinal].position.y
-//      }else if(line == Pair(BodyPart.RIGHT_SHOULDER, BodyPart.RIGHT_ELBOW)) {
-//        rt = person.keyPoints[line.first.ordinal].position.y
-//        rm = person.keyPoints[line.second.ordinal].position.y
-//      }
-//    }
-//    val fa = arrayOf(lt,lm,rt,rm)
-//    return fa
-//  }
 
   /** Process image using Posenet library.   */
   private fun processImage(bitmap: Bitmap) {
@@ -898,6 +879,9 @@ class PosenetActivity :
      */
     private val ORIENTATIONS = SparseIntArray()
     private val FRAGMENT_DIALOG = "dialog"
+    var gameID = 0
+    var armspos  = booleanArrayOf(false, false) //left down and right down
+    var handup = false
 
     init {
       ORIENTATIONS.append(Surface.ROTATION_0, 90)
