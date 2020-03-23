@@ -11,6 +11,11 @@ import org.tensorflow.lite.examples.posenet.PosenetActivity.Companion.gameID
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var motionGameBtn: Button
+    private lateinit var eatingGameBtn: Button
+    private lateinit var memoryGameBtn: Button
+    private lateinit var testBtn: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,15 +44,44 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        val motionGameBtn: Button = findViewById(R.id.motionGameBtn)
+        motionGameBtn = findViewById(R.id.motionGameBtn)
         motionGameBtn.setOnClickListener(clickListener)
-        val eatingGameBtn: Button = findViewById(R.id.eatingGameBtn)
+        eatingGameBtn = findViewById(R.id.eatingGameBtn)
         eatingGameBtn.setOnClickListener(clickListener)
-        val memoryGameBtn: Button = findViewById(R.id.memoryGameBtn)
+        memoryGameBtn = findViewById(R.id.memoryGameBtn)
         memoryGameBtn.setOnClickListener(clickListener)
-        val testBtn: Button = findViewById(R.id.testBtn)
+        testBtn = findViewById(R.id.testBtn)
         testBtn.setOnClickListener(clickListener)
 
+    }
+    private fun enableButton(){
+        motionGameBtn.isEnabled = true
+        eatingGameBtn.isEnabled = true
+        memoryGameBtn.isEnabled = true
+        testBtn.isEnabled = true
+    }
+    private fun disableButton(){
+        motionGameBtn.isEnabled = false
+        eatingGameBtn.isEnabled = false
+        memoryGameBtn.isEnabled = false
+        testBtn.isEnabled = false
+    }
+
+    override fun onStart() {
+        super.onStart()
+        enableButton()
+    }
+    override fun onResume() {
+        super.onResume()
+        enableButton()
+    }
+    override fun onPause() {
+        super.onPause()
+        disableButton()
+    }
+    override fun onStop() {
+        super.onStop()
+        disableButton()
     }
 
     //override fun onBackPressed() {
