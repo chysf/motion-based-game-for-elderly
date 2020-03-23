@@ -9,33 +9,28 @@
     android:orientation="vertical"
     tools:context=".MemoryActivity">
 
-
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="260dp"
         android:layout_height="304dp"
-
         android:background="#70000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="invisible">
 
     </FrameLayout>
 
-
     <RelativeLayout
-            android:id="@+id/layoutRR"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#00FFFFFF"
-            android:clickable="true"
-            android:focusable="true"
-            android:elevation="7dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        android:id="@+id/layoutRR"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/btn1"
@@ -45,11 +40,13 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:backgroundTint="#8068FF57"
             android:elevation="7dp"
             android:text="@string/exit_game"
             android:textColor="#FF0000"
             android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone" />
 
     </RelativeLayout>
 
@@ -64,10 +61,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/tv321"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:elevation="7dp"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textSize="120sp"
+            android:textStyle="bold" />
+
         <include
             layout="@layout/image"
             android:layout_width="wrap_content"
-            android:layout_height="550dp"
+            android:layout_height="450dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
@@ -78,7 +86,7 @@
         <include
             layout="@layout/image020"
             android:layout_width="wrap_content"
-            android:layout_height="550dp"
+            android:layout_height="450dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
@@ -90,13 +98,16 @@
             android:id="@+id/tvp1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/p1"
-            android:textColor="#FF72A0"
-            android:textSize="24sp"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#9FFFF9C7"
+            android:text="@string/p1"
+            android:textAllCaps="true"
+            android:textColor="#FF005D"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
