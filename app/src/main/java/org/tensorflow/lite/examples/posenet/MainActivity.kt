@@ -9,14 +9,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import org.tensorflow.lite.examples.posenet.PosenetActivity.Companion.gameID
 
-class MainActivity: AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val clickListener = View.OnClickListener { view ->
-            when(view.id){
+            when (view.id) {
                 R.id.motionGameBtn -> {
                     val intent = Intent(this, CameraActivity::class.java)
                     gameID = 1
@@ -51,25 +51,25 @@ class MainActivity: AppCompatActivity() {
     }
 
     //override fun onBackPressed() {
-        //super.onBackPressed()
+    //super.onBackPressed()
 
-        //val builder = AlertDialog.Builder(this)
+    //val builder = AlertDialog.Builder(this)
 
-        //builder.setMessage("Are you sure to Exit?")
-        //builder.setCancelable(true)
+    //builder.setMessage("Are you sure to Exit?")
+    //builder.setCancelable(true)
 
-       // builder.setNegativeButton("No", DialogInterface.OnClickListener{ dialogInterface, i ->
+    // builder.setNegativeButton("No", DialogInterface.OnClickListener{ dialogInterface, i ->
 
-           // dialogInterface.cancel()
-      //  })
-       // builder.setPositiveButton("Exit", DialogInterface.OnClickListener{ dialogInterface, i ->
+    // dialogInterface.cancel()
+    //  })
+    // builder.setPositiveButton("Exit", DialogInterface.OnClickListener{ dialogInterface, i ->
 
-        //    finish()
-      //      System.exit(0)
-      //  })
+    //    finish()
+    //      System.exit(0)
+    //  })
 
-      //  val alertDialog = builder.create()
-      //  alertDialog.show()
+    //  val alertDialog = builder.create()
+    //  alertDialog.show()
 
     //}
 

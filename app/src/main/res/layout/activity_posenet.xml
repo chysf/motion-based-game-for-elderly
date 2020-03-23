@@ -65,7 +65,7 @@
         android:id="@+id/upleftcompass"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="#E91E63"
+        android:background="#FFEB3B"
         android:visibility="invisible"
         app:srcCompat="@android:drawable/ic_menu_compass" />
 
@@ -74,7 +74,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignParentRight="true"
-        android:background="#E91E63"
+        android:background="#FFEB3B"
         android:visibility="invisible"
         app:srcCompat="@android:drawable/ic_menu_compass" />
 
@@ -83,9 +83,9 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
-        android:background="#E91E63"
-        app:srcCompat="@android:drawable/ic_menu_compass"
-        android:visibility="invisible" />
+        android:background="#FFEB3B"
+        android:visibility="invisible"
+        app:srcCompat="@android:drawable/ic_menu_compass" />
 
     <ImageView
         android:id="@+id/downrightcompass"
@@ -93,18 +93,49 @@
         android:layout_height="100dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:background="#E91E63"
+        android:background="#FFEB3B"
         android:visibility="invisible"
         app:srcCompat="@android:drawable/ic_menu_compass" />
 
     <TextView
-        android:id="@+id/motion"
+        android:id="@+id/command"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="100dp"
-        android:text="N/A"
+        android:text="Command"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:visibility="invisible" />
+
+    <ProgressBar
+        android:id="@+id/timeBar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="150dp"
+        android:progress="100"
+        android:progressTint="#E91E63"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/remainingTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="150dp"
+        android:text="Time Remaining"
+        android:textColor="#FFFFFF"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/scoreLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Score: 0"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:visibility="invisible" />
