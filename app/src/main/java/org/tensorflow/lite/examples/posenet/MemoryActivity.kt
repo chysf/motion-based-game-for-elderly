@@ -10,6 +10,8 @@ import android.widget.*
 import android.content.Intent
 import androidx.annotation.RequiresApi
 import android.app.AlertDialog
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
 import android.media.MediaPlayer
 import android.view.View.*
 import androidx.core.content.ContextCompat
@@ -21,8 +23,8 @@ class MemoryActivity : AppCompatActivity() {
     private lateinit var musicTT: MediaPlayer
 
     private lateinit var tvp1: TextView
-    private lateinit var btn1: Button
-    private lateinit var layoutRR: RelativeLayout
+    private lateinit var tv321: TextView
+    //private lateinit var layoutRR: RelativeLayout
 
     private lateinit var iv11: ImageView
     private lateinit var iv12: ImageView
@@ -89,6 +91,10 @@ class MemoryActivity : AppCompatActivity() {
 
     private var mismatchPoints = 0
 
+    private var ha03 = Handler()
+    private var ha04 = Handler()
+    private var ha05 = Handler()
+
 
     override fun onStart() {
         super.onStart()
@@ -96,48 +102,27 @@ class MemoryActivity : AppCompatActivity() {
     }
 
     override fun onPause() {
-        musicTT.pause()
         super.onPause()
+        musicTT.pause()
+        ha03.removeCallbacksAndMessages(null)
+        ha04.removeCallbacksAndMessages(null)
+        ha05.removeCallbacksAndMessages(null)
     }
 
 
+    @android.annotation.SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.M)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_memory)
-
 
         savedInstanceState ?: supportFragmentManager.beginTransaction()
             .replace(R.id.container, PosenetActivity())
             .commit()
 
-
-
-
-
-
-
-
-        //Close the app
-        btn1 = findViewById(R.id.btn1)
-        btn1.setOnClickListener {
-
-            val alertDialogBuilder = AlertDialog.Builder(this@MemoryActivity)
-            alertDialogBuilder
-                .setMessage("Are you sure you want to leave?")
-                .setCancelable(true)
-                .setPositiveButton("No") { _, _ ->
-                    val alertDialog = alertDialogBuilder.create()
-                    alertDialog.cancel()
-                }
-                .setNegativeButton("Yes") { _, _ -> finish()}
-            val alertDialog = alertDialogBuilder.create()
-            alertDialog.show()
-        }
-
         tvp1 = findViewById(R.id.tvp1)
-        layoutRR = findViewById(R.id.layoutRR)
+        tv321 = findViewById(R.id.tv321)
+        //layoutRR = findViewById(R.id.layoutRR)
 
         //Question image
         iv11 = findViewById(R.id.iv11) //ImageView #11
@@ -205,13 +190,115 @@ class MemoryActivity : AppCompatActivity() {
         //Background music
         musicTT = MediaPlayer.create(this, R.raw.mg_bgmusic)
         musicTT.isLooping = true
-        musicTT.setVolume(0.3f, 0.3f)
+        musicTT.setVolume(0.7f, 0.7f)
         musicTT.start()
 
-
-            //Set 12 time intervals and loop
+        //Make back images flashing
         val ha = Handler()
         ha.postDelayed(object : Runnable {
+
+            override fun run() {
+                Handler().postDelayed({
+
+                    val matrix = ColorMatrix()
+                    matrix.setSaturation(2f)
+
+                    val filter = ColorMatrixColorFilter(matrix)
+                    iv11.colorFilter = filter
+                    iv12.colorFilter = filter
+                    iv13.colorFilter = filter
+                    iv21.colorFilter = filter
+                    iv22.colorFilter = filter
+                    iv23.colorFilter = filter
+                    iv31.colorFilter = filter
+                    iv32.colorFilter = filter
+                    iv33.colorFilter = filter
+                    iv41.colorFilter = filter
+                    iv42.colorFilter = filter
+                    iv43.colorFilter = filter
+                }, 1500)
+
+                Handler().postDelayed({
+
+                    iv11.colorFilter = null
+                    iv12.colorFilter = null
+                    iv13.colorFilter = null
+                    iv21.colorFilter = null
+                    iv22.colorFilter = null
+                    iv23.colorFilter = null
+                    iv31.colorFilter = null
+                    iv32.colorFilter = null
+                    iv33.colorFilter = null
+                    iv41.colorFilter = null
+                    iv42.colorFilter = null
+                    iv43.colorFilter = null
+                }, 3000)
+                ha.postDelayed(this, 3000)
+            }
+        }, 3000)
+
+        //First cycle before looping
+        Handler().postDelayed({
+
+            val matrix = ColorMatrix()
+            matrix.setSaturation(2f)
+
+            val filter = ColorMatrixColorFilter(matrix)
+            iv11.colorFilter = filter
+            iv12.colorFilter = filter
+            iv13.colorFilter = filter
+            iv21.colorFilter = filter
+            iv22.colorFilter = filter
+            iv23.colorFilter = filter
+            iv31.colorFilter = filter
+            iv32.colorFilter = filter
+            iv33.colorFilter = filter
+            iv41.colorFilter = filter
+            iv42.colorFilter = filter
+            iv43.colorFilter = filter
+        }, 1500)
+
+        Handler().postDelayed({
+
+            iv11.colorFilter = null
+            iv12.colorFilter = null
+            iv13.colorFilter = null
+            iv21.colorFilter = null
+            iv22.colorFilter = null
+            iv23.colorFilter = null
+            iv31.colorFilter = null
+            iv32.colorFilter = null
+            iv33.colorFilter = null
+            iv41.colorFilter = null
+            iv42.colorFilter = null
+            iv43.colorFilter = null
+        }, 3000)
+
+        //Count down 3 2 1
+        Handler().postDelayed({
+            tv321.text = "3"
+        }, 1000)
+
+        Handler().postDelayed({
+            tv321.text = "2"
+        }, 2000)
+
+        Handler().postDelayed({
+            tv321.text = "1"
+        }, 3000)
+
+        Handler().postDelayed({
+            tv321.text = "GO"
+        }, 4000)
+
+        ha05.postDelayed({
+            Toast.makeText(applicationContext, "Raise up your hand to harvest" ,Toast.LENGTH_LONG).show()
+            tv321.text = null
+        }, 3500, 5000)
+
+        //Set 12 time intervals and loop
+        val ha02 = Handler()
+        ha02.postDelayed(object : Runnable {
 
             @RequiresApi(Build.VERSION_CODES.M)
             override fun run() {
@@ -220,553 +307,416 @@ class MemoryActivity : AppCompatActivity() {
                     iv43.foreground = null
                     iv11.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
                     iv043.visibility = INVISIBLE
-                    if(iv11.visibility == INVISIBLE) {
+                    if (iv11.visibility == INVISIBLE) {
                         iv011.visibility = VISIBLE
                     }
-                    if(handup){
+                    //Use Posenet to handle 12 image buttons
+                    if (handup && iv43.visibility == VISIBLE) {
                         clicked01++
-                        if (clicked01 == 1 && iv11.visibility == VISIBLE) {
-                            iv11.callOnClick()
+                        if (clicked01 == 1) {
+                            iv43.callOnClick() //Click previous image to fix Posenet delays
                             handup = false
-                        }
-                    }
-                    //Use one button to handle 12 image buttons
-//                    layoutRR.setOnClickListener {
-//                        clicked01++
-//                        if (clicked01 == 1 && iv11.visibility == VISIBLE) {
-//                            iv11.callOnClick()
-//                        }}
-                    //Check if first click and second click are not the same image
+                        }}
+                    //Before clear the click number, make sure the second click is not the same ImageView of the first click
                     if (clicked02 > 0 || clicked03 > 0 || clicked04 > 0 ||
                         clicked05 > 0 || clicked06 > 0 || clicked07 > 0 ||
                         clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
                         clicked11 > 0 || clicked12 > 0 ) {
                         clicked01 = 0
                     }
-                },1000)
+                },5000)
                 Handler().postDelayed({
                     iv11.foreground = null
                     iv12.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
                     iv011.visibility = INVISIBLE
-                    if(iv12.visibility == INVISIBLE) {
+                    if (iv12.visibility == INVISIBLE) {
                         iv012.visibility = VISIBLE
                     }
-                    if(handup){
+                    if (handup && iv11.visibility == VISIBLE) {
                         clicked02++
-                        if (clicked02 == 1 && iv12.visibility == VISIBLE) {
-                            iv12.callOnClick()
+                        if (clicked02 == 1) {
+                            iv11.callOnClick()
                             handup = false
-                        }
-                    }
-//                    layoutRR.setOnClickListener {
-//                        clicked02++
-//                        if (clicked02 == 1 && iv12.visibility == VISIBLE) {
-//                            iv12.callOnClick()
-//                        }}
-                    if (clicked01 > 0 || clicked03 > 0 || clicked04 > 0 ||
+                        }}
+                    if (clicked02 > 0 || clicked03 > 0 || clicked04 > 0 ||
                         clicked05 > 0 || clicked06 > 0 || clicked07 > 0 ||
                         clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
                         clicked11 > 0 || clicked12 > 0 ) {
                         clicked02 = 0
                     }
-                }, 2000)
+                }, 10000)
                 Handler().postDelayed({
                     iv12.foreground = null
                     iv13.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
                     iv012.visibility = INVISIBLE
-                    if(iv13.visibility == INVISIBLE) {
+                    if (iv13.visibility == INVISIBLE) {
                         iv013.visibility = VISIBLE
                     }
-                    if(handup){
+                    if (handup && iv12.visibility == VISIBLE) {
                         clicked03++
-                        if (clicked03 == 1 && iv13.visibility == VISIBLE) {
-                            iv13.callOnClick()
+                        if (clicked03 == 1) {
+                            iv12.callOnClick()
                             handup = false
-                        }
-                    }
-//                    layoutRR.setOnClickListener {
-//                        clicked03++
-//                        if (clicked03 == 1 && iv13.visibility == VISIBLE) {
-//                            iv13.callOnClick()
-//                        }}
+                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked04 > 0 ||
                         clicked05 > 0 || clicked06 > 0 || clicked07 > 0 ||
                         clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
                         clicked11 > 0 || clicked12 > 0 ) {
                         clicked03 = 0
                     }
-                }, 3000)
+                }, 15000)
                 Handler().postDelayed({
                     iv13.foreground = null
                     iv21.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
                     iv013.visibility = INVISIBLE
-                    if(iv21.visibility == INVISIBLE) {
+                    if (iv21.visibility == INVISIBLE) {
                         iv021.visibility = VISIBLE
                     }
-                    if(handup){
+                    if (handup && iv13.visibility == VISIBLE) {
                         clicked04++
-                        if (clicked04 == 1 && iv21.visibility == VISIBLE) {
-                            iv21.callOnClick()
+                        if (clicked04 == 1) {
+                            iv13.callOnClick()
                             handup = false
-                        }
-                    }
-//                    layoutRR.setOnClickListener {
-//                        clicked04++
-//                        if (clicked04 == 1 && iv21.visibility == VISIBLE) {
-//                            iv21.callOnClick()
-//                        }}
+                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked05 > 0 || clicked06 > 0 || clicked07 > 0 ||
                         clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
                         clicked11 > 0 || clicked12 > 0 ) {
                         clicked04 = 0
                     }
-                }, 4000)
+                }, 20000)
                 Handler().postDelayed({
                     iv21.foreground = null
                     iv22.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
                     iv021.visibility = INVISIBLE
-                    if(iv22.visibility == INVISIBLE) {
+                    if (iv22.visibility == INVISIBLE) {
                         iv022.visibility = VISIBLE
                     }
-                    if(handup){
+                    if (handup && iv21.visibility == VISIBLE) {
                         clicked05++
-                        if (clicked05 == 1 && iv22.visibility == VISIBLE) {
-                            iv22.callOnClick()
+                        if (clicked05 == 1) {
+                            iv21.callOnClick()
                             handup = false
-                        }
-                    }
-//                    layoutRR.setOnClickListener {
-//                        clicked05++
-//                        if (clicked05 == 1 && iv22.visibility == VISIBLE) {
-//                            iv22.callOnClick()
-//                        }}
+                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked04 > 0 || clicked06 > 0 || clicked07 > 0 ||
                         clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
                         clicked11 > 0 || clicked12 > 0 ) {
                         clicked05 = 0
                     }
-                }, 5000)
+                }, 25000)
                 Handler().postDelayed({
                     iv22.foreground = null
                     iv23.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
                     iv022.visibility = INVISIBLE
-                    if(iv23.visibility == INVISIBLE) {
+                    if (iv23.visibility == INVISIBLE) {
                         iv023.visibility = VISIBLE
                     }
-                    if(handup){
+                    if (handup && iv22.visibility == VISIBLE) {
                         clicked06++
-                        if (clicked06 == 1 && iv23.visibility == VISIBLE) {
-                            iv23.callOnClick()
+                        if (clicked06 == 1) {
+                            iv22.callOnClick()
                             handup = false
-                        }
-                    }
-//                    layoutRR.setOnClickListener {
-//                        clicked06++
-//                        if (clicked06 == 1 && iv23.visibility == VISIBLE) {
-//                            iv23.callOnClick()
-//                        }}
+                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked04 > 0 || clicked05 > 0 || clicked07 > 0 ||
                         clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
                         clicked11 > 0 || clicked12 > 0 ) {
                         clicked06 = 0
                     }
-                }, 6000)
+                }, 30000)
                 Handler().postDelayed({
                     iv23.foreground = null
                     iv31.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
                     iv023.visibility = INVISIBLE
-                    if(iv31.visibility == INVISIBLE) {
+                    if (iv31.visibility == INVISIBLE) {
                         iv031.visibility = VISIBLE
                     }
-                    if(handup){
+                    if (handup && iv23.visibility == VISIBLE) {
                         clicked07++
-                        if (clicked07 == 1 && iv31.visibility == VISIBLE) {
-                            iv31.callOnClick()
+                        if (clicked07 == 1) {
+                            iv23.callOnClick()
                             handup = false
-                        }
-                    }
-//                    layoutRR.setOnClickListener {
-//                        clicked07++
-//                        if (clicked07 == 1 && iv31.visibility == VISIBLE) {
-//                            iv31.callOnClick()
-//                        }}
+                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
                         clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
                         clicked11 > 0 || clicked12 > 0 ) {
                         clicked07 = 0
                     }
-                }, 7000)
+                }, 35000)
                 Handler().postDelayed({
                     iv31.foreground = null
                     iv32.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
                     iv031.visibility = INVISIBLE
-                    if(iv32.visibility == INVISIBLE) {
+                    if (iv32.visibility == INVISIBLE) {
                         iv032.visibility = VISIBLE
                     }
-                    if(handup){
+                    if (handup && iv31.visibility == VISIBLE) {
                         clicked08++
-                        if (clicked08 == 1 && iv32.visibility == VISIBLE) {
-                            iv32.callOnClick()
+                        if (clicked08 == 1) {
+                            iv31.callOnClick()
                             handup = false
-                        }
-                    }
-//                    layoutRR.setOnClickListener {
-//                        clicked08++
-//                        if (clicked08 == 1 && iv32.visibility == VISIBLE) {
-//                            iv32.callOnClick()
-//                        }}
+                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
                         clicked07 > 0 || clicked09 > 0 || clicked10 > 0 ||
                         clicked11 > 0 || clicked12 > 0 ) {
                         clicked08 = 0
                     }
-                }, 8000)
+                }, 40000)
                 Handler().postDelayed({
                     iv32.foreground = null
                     iv33.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
                     iv032.visibility = INVISIBLE
-                    if(iv33.visibility == INVISIBLE) {
+                    if (iv33.visibility == INVISIBLE) {
                         iv033.visibility = VISIBLE
                     }
-                    if(handup){
+                    if (handup && iv32.visibility == VISIBLE) {
                         clicked09++
-                        if (clicked09 == 1 && iv33.visibility == VISIBLE) {
-                            iv33.callOnClick()
+                        if (clicked09 == 1) {
+                            iv32.callOnClick()
                             handup = false
-                        }
-                    }
-//                    layoutRR.setOnClickListener {
-//                        clicked09++
-//                        if (clicked09 == 1 && iv33.visibility == VISIBLE) {
-//                            iv33.callOnClick()
-//                        }}
+                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
                         clicked07 > 0 || clicked08 > 0 || clicked10 > 0 ||
                         clicked11 > 0 || clicked12 > 0 ) {
                         clicked09 = 0
                     }
-                }, 9000)
+                }, 45000)
                 Handler().postDelayed({
                     iv33.foreground = null
                     iv41.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
                     iv033.visibility = INVISIBLE
-                    if(iv41.visibility == INVISIBLE) {
+                    if (iv41.visibility == INVISIBLE) {
                         iv041.visibility = VISIBLE
                     }
-                    if(handup){
+                    if (handup && iv33.visibility == VISIBLE) {
                         clicked10++
-                        if (clicked10 == 1 && iv41.visibility == VISIBLE) {
-                            iv41.callOnClick()
+                        if (clicked10 == 1) {
+                            iv33.callOnClick()
                             handup = false
-                        }
-                    }
-//                    layoutRR.setOnClickListener {
-//                        clicked10++
-//                        if (clicked10 == 1 && iv41.visibility == VISIBLE) {
-//                            iv41.callOnClick()
-//                        }}
+                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
                         clicked07 > 0 || clicked08 > 0 || clicked09 > 0 ||
                         clicked11 > 0 || clicked12 > 0 ) {
                         clicked10 = 0
                     }
-                }, 10000)
+                }, 50000)
                 Handler().postDelayed({
                     iv41.foreground = null
                     iv42.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
                     iv041.visibility = INVISIBLE
-                    if(iv42.visibility == INVISIBLE) {
+                    if (iv42.visibility == INVISIBLE) {
                         iv042.visibility = VISIBLE
                     }
-                    if(handup){
+                    if (handup && iv41.visibility == VISIBLE) {
                         clicked11++
-                        if (clicked11 == 1 && iv42.visibility == VISIBLE) {
-                            iv42.callOnClick()
+                        if (clicked11 == 1) {
+                            iv41.callOnClick()
                             handup = false
-                        }
-                    }
-//                    layoutRR.setOnClickListener {
-//                        clicked11++
-//                        if (clicked11 == 1 && iv42.visibility == VISIBLE) {
-//                            iv42.callOnClick()
-//                        }}
+                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
                         clicked07 > 0 || clicked08 > 0 || clicked09 > 0 ||
                         clicked10 > 0 || clicked12 > 0 ) {
                         clicked11 = 0
                     }
-                }, 11000)
+                }, 55000)
                 Handler().postDelayed({
                     iv42.foreground = null
                     iv43.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
                     iv042.visibility = INVISIBLE
-                    if(iv43.visibility == INVISIBLE) {
+                    if (iv43.visibility == INVISIBLE) {
                         iv043.visibility = VISIBLE
                     }
-                    if(handup){
+                    if (handup && iv42.visibility == VISIBLE) {
                         clicked12++
-                        if (clicked12 == 1 && iv43.visibility == VISIBLE) {
-                            iv43.callOnClick()
+                        if (clicked12 == 1) {
+                            iv42.callOnClick()
                             handup = false
-                        }
-                    }
-//                    layoutRR.setOnClickListener {
-//                        clicked12++
-//                        if (clicked12 == 1 && iv43.visibility == VISIBLE) {
-//                            iv43.callOnClick()
-//                        }}
+                        }}
                     if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
                         clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
                         clicked07 > 0 || clicked08 > 0 || clicked09 > 0 ||
                         clicked10 > 0 || clicked11 > 0 ) {
                         clicked12 = 0
                     }
-                }, 12000)
-                ha.postDelayed(this, 12000)
+                }, 60000)
+                ha02.postDelayed(this, 60000)
             }
-        }, 12000)
+        }, 60000)
 
-        //First cycle of looping
+        //First cycle before looping
         Handler().postDelayed({
             //Set foreground image and move to next
             iv43.foreground = null
             iv11.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
             iv043.visibility = INVISIBLE
-            if(iv11.visibility == INVISIBLE) {
+            if (iv11.visibility == INVISIBLE) {
                 iv011.visibility = VISIBLE
             }
-            //Use one button to handle 12 image buttons
-            layoutRR.setOnClickListener {
-                clicked01++
-                if (clicked01 == 1 && iv11.visibility == VISIBLE) {
-                    iv11.callOnClick()
-                }}
-            //Check if first click and second click are not the same image
-            if (clicked02 > 0 || clicked03 > 0 || clicked04 > 0 ||
-                clicked05 > 0 || clicked06 > 0 || clicked07 > 0 ||
-                clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
-                clicked11 > 0 || clicked12 > 0 ) {
-                clicked01 = 0
+            //Use Posenet to handle 12 image buttons
+            if (handup) {
+                clicked02++ // Blank this to fix posenet delays
             }
-        },1000)
+        },5000)
         Handler().postDelayed({
             iv11.foreground = null
             iv12.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
             iv011.visibility = INVISIBLE
-            if(iv12.visibility == INVISIBLE) {
+            if (iv12.visibility == INVISIBLE) {
                 iv012.visibility = VISIBLE
             }
-            layoutRR.setOnClickListener {
+            if (handup && iv11.visibility == VISIBLE) {
                 clicked02++
-                if (clicked02 == 1 && iv12.visibility == VISIBLE) {
-                    iv12.callOnClick()
+                if (clicked02 == 1) {
+                    iv11.callOnClick()
+                    handup = false
                 }}
-            if (clicked02 > 0 || clicked03 > 0 || clicked04 > 0 ||
-                clicked05 > 0 || clicked06 > 0 || clicked07 > 0 ||
-                clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
-                clicked11 > 0 || clicked12 > 0 ) {
-                clicked02 = 0
-            }
-        }, 2000)
+        }, 10000)
         Handler().postDelayed({
             iv12.foreground = null
             iv13.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
             iv012.visibility = INVISIBLE
-            if(iv13.visibility == INVISIBLE) {
+            if (iv13.visibility == INVISIBLE) {
                 iv013.visibility = VISIBLE
             }
-            layoutRR.setOnClickListener {
+            if (handup && iv12.visibility == VISIBLE) {
                 clicked03++
-                if (clicked03 == 1 && iv13.visibility == VISIBLE) {
-                    iv13.callOnClick()
+                if (clicked03 == 1) {
+                    iv12.callOnClick()
+                    handup = false
                 }}
-            if (clicked01 > 0 || clicked02 > 0 || clicked04 > 0 ||
-                clicked05 > 0 || clicked06 > 0 || clicked07 > 0 ||
-                clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
-                clicked11 > 0 || clicked12 > 0 ) {
-                clicked03 = 0
-            }
-        }, 3000)
+        }, 15000)
         Handler().postDelayed({
             iv13.foreground = null
             iv21.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
             iv013.visibility = INVISIBLE
-            if(iv21.visibility == INVISIBLE) {
+            if (iv21.visibility == INVISIBLE) {
                 iv021.visibility = VISIBLE
             }
-            layoutRR.setOnClickListener {
+            if (handup && iv13.visibility == VISIBLE) {
                 clicked04++
-                if (clicked04 == 1 && iv21.visibility == VISIBLE) {
-                    iv21.callOnClick()
+                if (clicked04 == 1) {
+                    iv13.callOnClick()
+                    handup = false
                 }}
-            if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
-                clicked05 > 0 || clicked06 > 0 || clicked07 > 0 ||
-                clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
-                clicked11 > 0 || clicked12 > 0 ) {
-                clicked04 = 0
-            }
-        }, 4000)
+        }, 20000)
         Handler().postDelayed({
             iv21.foreground = null
             iv22.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
             iv021.visibility = INVISIBLE
-            if(iv22.visibility == INVISIBLE) {
+            if (iv22.visibility == INVISIBLE) {
                 iv022.visibility = VISIBLE
             }
-            layoutRR.setOnClickListener {
+            if (handup && iv21.visibility == VISIBLE) {
                 clicked05++
-                if (clicked05 == 1 && iv22.visibility == VISIBLE) {
-                    iv22.callOnClick()
+                if (clicked05 == 1) {
+                    iv21.callOnClick()
+                    handup = false
                 }}
-            if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
-                clicked04 > 0 || clicked06 > 0 || clicked07 > 0 ||
-                clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
-                clicked11 > 0 || clicked12 > 0 ) {
-                clicked05 = 0
-            }
-        }, 5000)
+        }, 25000)
         Handler().postDelayed({
             iv22.foreground = null
             iv23.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
             iv022.visibility = INVISIBLE
-            if(iv23.visibility == INVISIBLE) {
+            if (iv23.visibility == INVISIBLE) {
                 iv023.visibility = VISIBLE
             }
-            layoutRR.setOnClickListener {
+            if (handup && iv22.visibility == VISIBLE) {
                 clicked06++
-                if (clicked06 == 1 && iv23.visibility == VISIBLE) {
-                    iv23.callOnClick()
+                if (clicked06 == 1) {
+                    iv22.callOnClick()
+                    handup = false
                 }}
-            if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
-                clicked04 > 0 || clicked05 > 0 || clicked07 > 0 ||
-                clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
-                clicked11 > 0 || clicked12 > 0 ) {
-                clicked06 = 0
-            }
-        }, 6000)
+        }, 30000)
         Handler().postDelayed({
             iv23.foreground = null
             iv31.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
             iv023.visibility = INVISIBLE
-            if(iv31.visibility == INVISIBLE) {
+            if (iv31.visibility == INVISIBLE) {
                 iv031.visibility = VISIBLE
             }
-            layoutRR.setOnClickListener {
+            if (handup && iv23.visibility == VISIBLE) {
                 clicked07++
-                if (clicked07 == 1 && iv31.visibility == VISIBLE) {
-                    iv31.callOnClick()
+                if (clicked07 == 1) {
+                    iv23.callOnClick()
+                    handup = false
                 }}
-            if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
-                clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
-                clicked08 > 0 || clicked09 > 0 || clicked10 > 0 ||
-                clicked11 > 0 || clicked12 > 0 ) {
-                clicked07 = 0
-            }
-        }, 7000)
+        }, 35000)
         Handler().postDelayed({
             iv31.foreground = null
             iv32.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
             iv031.visibility = INVISIBLE
-            if(iv32.visibility == INVISIBLE) {
+            if (iv32.visibility == INVISIBLE) {
                 iv032.visibility = VISIBLE
             }
-            layoutRR.setOnClickListener {
+            if (handup && iv31.visibility == VISIBLE) {
                 clicked08++
-                if (clicked08 == 1 && iv32.visibility == VISIBLE) {
-                    iv32.callOnClick()
+                if (clicked08 == 1) {
+                    iv31.callOnClick()
+                    handup = false
                 }}
-            if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
-                clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
-                clicked07 > 0 || clicked09 > 0 || clicked10 > 0 ||
-                clicked11 > 0 || clicked12 > 0 ) {
-                clicked08 = 0
-            }
-        }, 8000)
+        }, 40000)
         Handler().postDelayed({
             iv32.foreground = null
             iv33.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
             iv032.visibility = INVISIBLE
-            if(iv33.visibility == INVISIBLE) {
+            if (iv33.visibility == INVISIBLE) {
                 iv033.visibility = VISIBLE
             }
-            layoutRR.setOnClickListener {
+            if (handup && iv32.visibility == VISIBLE) {
                 clicked09++
-                if (clicked09 == 1 && iv33.visibility == VISIBLE) {
-                    iv33.callOnClick()
+                if (clicked09 == 1) {
+                    iv32.callOnClick()
+                    handup = false
                 }}
-            if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
-                clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
-                clicked07 > 0 || clicked08 > 0 || clicked10 > 0 ||
-                clicked11 > 0 || clicked12 > 0 ) {
-                clicked09 = 0
-            }
-        }, 9000)
+        }, 45000)
         Handler().postDelayed({
             iv33.foreground = null
             iv41.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
             iv033.visibility = INVISIBLE
-            if(iv41.visibility == INVISIBLE) {
+            if (iv41.visibility == INVISIBLE) {
                 iv041.visibility = VISIBLE
             }
-            layoutRR.setOnClickListener {
+            if (handup && iv33.visibility == VISIBLE) {
                 clicked10++
-                if (clicked10 == 1 && iv41.visibility == VISIBLE) {
-                    iv41.callOnClick()
+                if (clicked10 == 1) {
+                    iv33.callOnClick()
+                    handup = false
                 }}
-            if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
-                clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
-                clicked07 > 0 || clicked08 > 0 || clicked09 > 0 ||
-                clicked11 > 0 || clicked12 > 0 ) {
-                clicked10 = 0
-            }
-        }, 10000)
+        }, 50000)
         Handler().postDelayed({
             iv41.foreground = null
             iv42.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
             iv041.visibility = INVISIBLE
-            if(iv42.visibility == INVISIBLE) {
+            if (iv42.visibility == INVISIBLE) {
                 iv042.visibility = VISIBLE
             }
-            layoutRR.setOnClickListener {
+            if (handup && iv41.visibility == VISIBLE) {
                 clicked11++
-                if (clicked11 == 1 && iv42.visibility == VISIBLE) {
-                    iv42.callOnClick()
+                if (clicked11 == 1) {
+                    iv41.callOnClick()
+                    handup = false
                 }}
-            if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
-                clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
-                clicked07 > 0 || clicked08 > 0 || clicked09 > 0 ||
-                clicked10 > 0 || clicked12 > 0 ) {
-                clicked11 = 0
-            }
-        }, 11000)
+        }, 55000)
         Handler().postDelayed({
             iv42.foreground = null
             iv43.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
             iv042.visibility = INVISIBLE
-            if(iv43.visibility == INVISIBLE) {
+            if (iv43.visibility == INVISIBLE) {
                 iv043.visibility = VISIBLE
             }
-            layoutRR.setOnClickListener {
+            if (handup && iv42.visibility == VISIBLE) {
                 clicked12++
-                if (clicked12 == 1 && iv43.visibility == VISIBLE) {
-                    iv43.callOnClick()
+                if (clicked12 == 1) {
+                    iv42.callOnClick()
+                    handup = false
                 }}
-            if (clicked01 > 0 || clicked02 > 0 || clicked03 > 0 ||
-                clicked04 > 0 || clicked05 > 0 || clicked06 > 0 ||
-                clicked07 > 0 || clicked08 > 0 || clicked09 > 0 ||
-                clicked10 > 0 || clicked11 > 0 ) {
-                clicked12 = 0
-            }
-        }, 12000)
-
+        }, 60000)
 
 
         iv11.isEnabled = false
@@ -846,8 +796,8 @@ class MemoryActivity : AppCompatActivity() {
 
 
     private fun doStuff(iv: ImageView, card: Int) {
-        //Set the correct image to the ImageView
 
+        //Set the correct image to the ImageView
         when {
             cardsArray[card] == 101 -> iv.setImageResource(image101)
             cardsArray[card] == 102 -> iv.setImageResource(image102)
@@ -863,6 +813,41 @@ class MemoryActivity : AppCompatActivity() {
             cardsArray[card] == 206 -> iv.setImageResource(image206)
         }
 
+        if (cardNumber == 1 || cardNumber == 2) {
+
+            //Shake front images when click
+            Handler().postDelayed({
+                iv.animate().rotation(30F).setDuration(250).start()
+            }, 0)
+            Handler().postDelayed({
+                iv.animate().rotation(-30F).setDuration(250).start()
+            }, 250)
+            Handler().postDelayed({
+                iv.animate().rotation(30F).setDuration(250).start()
+            }, 500)
+            Handler().postDelayed({
+                iv.animate().rotation(0F).setDuration(250).start()
+            }, 750)
+
+            //Keep front images brighter
+            ha03.postDelayed(object : Runnable {
+
+                @RequiresApi(Build.VERSION_CODES.M)
+                override fun run() {
+
+                    iv.foreground = null
+
+                        val matrix01 = ColorMatrix()
+                        matrix01.setSaturation(2f)
+
+                        val filter01 = ColorMatrixColorFilter(matrix01)
+                        iv.colorFilter = filter01
+
+                    ha03.postDelayed(this, 0)
+                }
+            }, 0)
+        }
+
         //Check which image is selected and save it temporarily
         if (cardNumber == 1) {
             firstCard = cardsArray[card]
@@ -874,6 +859,27 @@ class MemoryActivity : AppCompatActivity() {
 
             iv.isEnabled = false
 
+            //Shake the front image again if no response after first click
+            ha04.postDelayed(object : Runnable {
+
+                override fun run() {
+                    Handler().postDelayed({
+                        Toast.makeText(applicationContext, "What're you waiting for?", Toast.LENGTH_LONG).show()
+                        iv.animate().rotation(30F).setDuration(250).start()
+                    }, 0)
+                    Handler().postDelayed({
+                        iv.animate().rotation(-30F).setDuration(250).start()
+                    }, 250)
+                    Handler().postDelayed({
+                        iv.animate().rotation(30F).setDuration(250).start()
+                    }, 500)
+                    Handler().postDelayed({
+                        iv.animate().rotation(0F).setDuration(250).start()
+                    }, 750)
+                    ha04.postDelayed(this, 55000)
+                }
+            }, 55000)
+
         } else if (cardNumber == 2) {
             secondCard = cardsArray[card]
             if (secondCard > 200) {
@@ -882,15 +888,16 @@ class MemoryActivity : AppCompatActivity() {
             cardNumber = 1
             clickedSecond = card
 
-            layoutRR.isEnabled = false
-
+            //layoutRR.isEnabled = false
 
             val handler = Handler()
             handler.postDelayed({
+                ha03.removeCallbacksAndMessages(null)
+                ha04.removeCallbacksAndMessages(null)
+
                 //Check if the images that are selected are equal
                 calculate()
-            }, 1000)
-
+            }, 2000)
         }
     }
 
@@ -928,10 +935,9 @@ class MemoryActivity : AppCompatActivity() {
                 11 -> iv43.visibility = INVISIBLE
             }
 
-
         } else {
             mismatchPoints++
-            tvp1.text = "Mismatch: $mismatchPoints"
+            tvp1.text = "MISMATCH: $mismatchPoints"
 
             iv11.setImageResource(R.drawable.ic_question)
             iv12.setImageResource(R.drawable.ic_question)
@@ -946,10 +952,9 @@ class MemoryActivity : AppCompatActivity() {
             iv42.setImageResource(R.drawable.ic_question)
             iv43.setImageResource(R.drawable.ic_question)
 
-
         }
 
-        layoutRR.isEnabled = true
+        //layoutRR.isEnabled = true
 
         //Check if the Game is Over
         checkEnd()
@@ -973,10 +978,10 @@ class MemoryActivity : AppCompatActivity() {
         {
             val alertDialogBuilder = AlertDialog.Builder(this@MemoryActivity)
             alertDialogBuilder
-                .setMessage("GAME OVER!\nMismatch: $mismatchPoints")
+                .setMessage("GAME OVER!\nMISMATCH: $mismatchPoints")
                 .setCancelable(false)
                 .setPositiveButton("RESTART") { _, _ ->
-                    val intent = Intent(applicationContext, MainActivity::class.java)
+                    val intent = Intent(applicationContext, MemoryActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
@@ -1001,8 +1006,6 @@ class MemoryActivity : AppCompatActivity() {
         image205 = R.drawable.ic_img205
         image206 = R.drawable.ic_img206
 
-
     }
 
 }
-
