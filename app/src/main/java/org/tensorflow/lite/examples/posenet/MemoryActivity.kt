@@ -13,6 +13,7 @@ import android.app.AlertDialog
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.media.MediaPlayer
+import android.util.TypedValue
 import android.view.View.*
 import androidx.core.content.ContextCompat
 import org.tensorflow.lite.examples.posenet.PosenetActivity.Companion.handup
@@ -24,7 +25,8 @@ class MemoryActivity : AppCompatActivity() {
 
     private lateinit var tvp1: TextView
     private lateinit var tv321: TextView
-    //private lateinit var layoutRR: RelativeLayout
+    private lateinit var btn1: Button
+    private lateinit var container: FrameLayout
 
     private lateinit var iv11: ImageView
     private lateinit var iv12: ImageView
@@ -56,6 +58,7 @@ class MemoryActivity : AppCompatActivity() {
     private var cardsArray = listOf(101, 102, 103, 104, 105, 106, 201, 202, 203, 204, 205, 206)
 
     //Time of clicking
+    private var clickedBT: Int = 0
     private var clicked01: Int = 0
     private var clicked02: Int = 0
     private var clicked03: Int = 0
@@ -93,7 +96,6 @@ class MemoryActivity : AppCompatActivity() {
 
     private var ha03 = Handler()
     private var ha04 = Handler()
-    private var ha05 = Handler()
 
 
     override fun onStart() {
@@ -104,9 +106,10 @@ class MemoryActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         musicTT.pause()
+        tv321.visibility = INVISIBLE
+        container.visibility = INVISIBLE
         ha03.removeCallbacksAndMessages(null)
         ha04.removeCallbacksAndMessages(null)
-        ha05.removeCallbacksAndMessages(null)
     }
 
 
@@ -122,7 +125,8 @@ class MemoryActivity : AppCompatActivity() {
 
         tvp1 = findViewById(R.id.tvp1)
         tv321 = findViewById(R.id.tv321)
-        //layoutRR = findViewById(R.id.layoutRR)
+        btn1 = findViewById(R.id.btn1)
+        container = findViewById(R.id.container)
 
         //Question image
         iv11 = findViewById(R.id.iv11) //ImageView #11
@@ -192,6 +196,18 @@ class MemoryActivity : AppCompatActivity() {
         musicTT.isLooping = true
         musicTT.setVolume(0.7f, 0.7f)
         musicTT.start()
+
+        //Show or hide CAM preview
+        btn1.setOnClickListener {
+            clickedBT++
+            if (clickedBT%2 == 0) {
+                container.visibility = INVISIBLE
+                Toast.makeText(applicationContext, "Click to OPEN", Toast.LENGTH_SHORT).show()
+        } else {
+                container.visibility = VISIBLE
+                Toast.makeText(applicationContext, "Click to HIDE", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         //Make back images flashing
         val ha = Handler()
@@ -291,10 +307,15 @@ class MemoryActivity : AppCompatActivity() {
             tv321.text = "GO"
         }, 4000)
 
-        ha05.postDelayed({
-            Toast.makeText(applicationContext, "Raise up your hand to harvest" ,Toast.LENGTH_LONG).show()
+        Handler().postDelayed({
+            tv321.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30F)
+            tv321.text = "Raise up your hand to harvest"
+            tv321.setBackgroundColor(0xCB1E88E5.toInt())
+        }, 3000, 5000)
+
+        Handler().postDelayed({
             tv321.text = null
-        }, 3500, 5000)
+        }, 8000)
 
         //Set 12 time intervals and loop
         val ha02 = Handler()
@@ -830,6 +851,7 @@ class MemoryActivity : AppCompatActivity() {
             }, 750)
 
             //Keep front images brighter
+            ha03 = Handler()
             ha03.postDelayed(object : Runnable {
 
                 @RequiresApi(Build.VERSION_CODES.M)
@@ -860,11 +882,15 @@ class MemoryActivity : AppCompatActivity() {
             iv.isEnabled = false
 
             //Shake the front image again if no response after first click
+            ha04 = Handler()
             ha04.postDelayed(object : Runnable {
 
+                @android.annotation.SuppressLint("SetTextI18n")
                 override fun run() {
                     Handler().postDelayed({
-                        Toast.makeText(applicationContext, "What're you waiting for?", Toast.LENGTH_LONG).show()
+                        tv321.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30F)
+                        tv321.text = "What are you waiting for?"
+                        tv321.setBackgroundColor(0xCBFF166B.toInt())
                         iv.animate().rotation(30F).setDuration(250).start()
                     }, 0)
                     Handler().postDelayed({
@@ -876,9 +902,12 @@ class MemoryActivity : AppCompatActivity() {
                     Handler().postDelayed({
                         iv.animate().rotation(0F).setDuration(250).start()
                     }, 750)
-                    ha04.postDelayed(this, 55000)
+                    Handler().postDelayed({
+                        tv321.text = null
+                    }, 3000)
+                    ha04.postDelayed(this, 60000)
                 }
-            }, 55000)
+            }, 60000)
 
         } else if (cardNumber == 2) {
             secondCard = cardsArray[card]
@@ -894,6 +923,7 @@ class MemoryActivity : AppCompatActivity() {
             handler.postDelayed({
                 ha03.removeCallbacksAndMessages(null)
                 ha04.removeCallbacksAndMessages(null)
+                tv321.text = null
 
                 //Check if the images that are selected are equal
                 calculate()
