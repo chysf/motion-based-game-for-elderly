@@ -147,9 +147,9 @@ class EatingActivity: AppCompatActivity() {
         shit.y = shitY.toFloat()
 
         if(handup){
-            boxY -= 20
+            boxY -= 2
         }else{
-            boxY +=20
+            boxY +=2
         }
 
         if(boxY < 0) boxY = 0
