@@ -9,11 +9,13 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 import kotlin.random.Random
+import org.tensorflow.lite.examples.posenet.PosenetActivity.Companion.handup
 
 class EatingActivity: AppCompatActivity() {
 
@@ -42,15 +44,21 @@ class EatingActivity: AppCompatActivity() {
     private var handler = Handler()
     private var timer = Timer()
 
-    private var action_flg = false
+    //private var action_flg = false
     private var start_flg = false
+
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_eating)
 
+        savedInstanceState ?: supportFragmentManager.beginTransaction()
+            .replace(R.id.container, PosenetActivity())
+            .commit()
+
         scoreLabel = findViewById(R.id.scoreLabel)
         startLabel = findViewById(R.id.startLabel)
+
         mouth = findViewById(R.id.mouth)
         lemon = findViewById(R.id.lemon)
         grape = findViewById(R.id.grape)
@@ -75,6 +83,7 @@ class EatingActivity: AppCompatActivity() {
         shit.y = -80.0f
 
         scoreLabel.text = "Score: 0"
+
     }
 
 
@@ -109,7 +118,6 @@ class EatingActivity: AppCompatActivity() {
 
 
     fun changePos(){
-
         hitCheck()
         lemon.visibility = View.VISIBLE
         grape.visibility = View.VISIBLE
@@ -138,7 +146,7 @@ class EatingActivity: AppCompatActivity() {
         shit.x = shitX.toFloat()
         shit.y = shitY.toFloat()
 
-        if(action_flg){
+        if(handup){
             boxY -= 20
         }else{
             boxY +=20
@@ -151,6 +159,7 @@ class EatingActivity: AppCompatActivity() {
 
         val tmp = "Score: $score"
         scoreLabel.text = tmp
+
     }
 
     private fun hitCheck(){
@@ -182,12 +191,12 @@ class EatingActivity: AppCompatActivity() {
         }
     }
 
-    override fun onTouchEvent(me: MotionEvent): Boolean {
+    override fun onTouchEvent(me:MotionEvent): Boolean {
 
-        if (!start_flg) {
+        if (!start_flg && me.action == MotionEvent.ACTION_DOWN) {
             start_flg = true
 
-            var frame = findViewById<FrameLayout>(R.id.frame)
+            var frame = findViewById<RelativeLayout>(R.id.frame)
             frameheight = frame.height
 
             boxY = mouth.y.toInt()
@@ -202,11 +211,12 @@ class EatingActivity: AppCompatActivity() {
                 }
             }, 0, 20)
 
-        } else {
-            if(me.action == MotionEvent.ACTION_DOWN) action_flg = true
-            else if(me.action == MotionEvent.ACTION_UP) action_flg = false
         }
 
         return true
     }
+
+
 }
+//if(me.action == MotionEvent.ACTION_DOWN) action_flg = true
+//else if(me.action == MotionEvent.ACTION_UP) action_flg = false
