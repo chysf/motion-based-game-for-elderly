@@ -214,60 +214,37 @@ class MemoryActivity : AppCompatActivity() {
             if (clicked01 == 2){
                 layout101.elevation = 5F
                 Toast.makeText(applicationContext, "Click to HIDE", Toast.LENGTH_SHORT).show()
-                iv11.alpha = 0.7F
-                iv12.alpha = 0.7F
-                iv13.alpha = 0.7F
+                iv21.alpha = 0.7F
                 iv22.alpha = 0.7F
                 iv23.alpha = 0.7F
                 iv31.alpha = 0.7F
                 iv32.alpha = 0.7F
                 iv33.alpha = 0.7F
-                iv41.alpha = 0.7F
-                iv42.alpha = 0.7F
-                iv43.alpha = 0.7F
 
-                iv011.alpha = 0.7F
-                iv012.alpha = 0.7F
-                iv013.alpha = 0.7F
                 iv021.alpha = 0.7F
                 iv022.alpha = 0.7F
                 iv023.alpha = 0.7F
                 iv031.alpha = 0.7F
                 iv032.alpha = 0.7F
                 iv033.alpha = 0.7F
-                iv041.alpha = 0.7F
-                iv042.alpha = 0.7F
-                iv043.alpha = 0.7F
             }
             if (clicked01 == 3) {
                 layout101.elevation = 3F
                 container.visibility = INVISIBLE
                 Toast.makeText(applicationContext, "Click to OPEN", Toast.LENGTH_SHORT).show()
-                iv11.alpha = 1F
-                iv12.alpha = 1F
-                iv13.alpha = 1F
                 iv21.alpha = 1F
                 iv22.alpha = 1F
                 iv23.alpha = 1F
                 iv31.alpha = 1F
                 iv32.alpha = 1F
                 iv33.alpha = 1F
-                iv41.alpha = 1F
-                iv42.alpha = 1F
-                iv43.alpha = 1F
 
-                iv011.alpha = 1F
-                iv012.alpha = 1F
-                iv013.alpha = 1F
                 iv021.alpha = 1F
                 iv022.alpha = 1F
                 iv023.alpha = 1F
                 iv031.alpha = 1F
                 iv032.alpha = 1F
                 iv033.alpha = 1F
-                iv041.alpha = 1F
-                iv042.alpha = 1F
-                iv043.alpha = 1F
 
                 clicked01 = 0
             }
