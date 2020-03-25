@@ -11,9 +11,8 @@
 
     <FrameLayout
         android:id="@+id/container"
-        android:layout_width="240dp"
-        android:layout_height="300dp"
-        android:elevation="4dp"
+        android:layout_width="220dp"
+        android:layout_height="270dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,17 +22,16 @@
     </FrameLayout>
 
     <RelativeLayout
-        android:id="@+id/layoutRR"
+        android:id="@+id/layout102"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:elevation="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tv321"
+            android:id="@+id/tvp2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -103,7 +101,7 @@
             android:background="#9FFFF9C7"
             android:text="@string/p1"
             android:textAllCaps="true"
-            android:textColor="#D81B60"
+            android:textColor="#E65388"
             android:textSize="24sp"
             android:textStyle="bold" />
 
