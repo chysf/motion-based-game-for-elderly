@@ -209,7 +209,7 @@ class MemoryActivity : AppCompatActivity() {
             if (clicked01 == 1) {
                 container.visibility = VISIBLE
                 container.elevation = 4F
-                Toast.makeText(applicationContext, "Click to SHOW", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Click to UNDERLAY", Toast.LENGTH_SHORT).show()
             }
             if (clicked01 == 2){
                 layout101.elevation = 5F
