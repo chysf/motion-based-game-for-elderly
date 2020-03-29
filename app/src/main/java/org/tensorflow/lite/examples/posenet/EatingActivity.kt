@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 import kotlin.random.Random
 import org.tensorflow.lite.examples.posenet.PosenetActivity.Companion.handup
+import org.tensorflow.lite.examples.posenet.PosenetActivity.Companion.armspos
 
 class EatingActivity: AppCompatActivity() {
     private lateinit var memmusic: MediaPlayer
@@ -140,7 +141,7 @@ class EatingActivity: AppCompatActivity() {
         shit.visibility = View.VISIBLE
         lemonX -= 12
         if(lemonX < 0){
-            lemonX = screenWidth + 20
+            lemonX = screenWidth + 10
             lemonY = Random.nextInt(0, frameheight - lemon.height)
         }
         lemon.x = lemonX.toFloat()
@@ -148,7 +149,7 @@ class EatingActivity: AppCompatActivity() {
 
         grapeX -= 16
         if(grapeX < 0){
-            grapeX = screenWidth + 20
+            grapeX = screenWidth + 10
             grapeY = Random.nextInt(0, frameheight - grape.height)
         }
         grape.x = grapeX.toFloat()
@@ -156,16 +157,16 @@ class EatingActivity: AppCompatActivity() {
 
         shitX -= 20
         if(shitX < 0){
-            shitX = screenWidth + 20
+            shitX = screenWidth + 10
             shitY = Random.nextInt(0, frameheight - shit.height)
         }
         shit.x = shitX.toFloat()
         shit.y = shitY.toFloat()
 
-        if(handup){
-            boxY -= 2
+        if(armspos[0] || armspos[1]){
+            boxY -= 5
         }else{
-            boxY +=2
+            boxY +=5
         }
 
         if(boxY < 0) boxY = 0
