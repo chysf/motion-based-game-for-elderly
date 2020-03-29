@@ -169,9 +169,6 @@ class PosenetActivity :
   private lateinit var leftDown: MediaPlayer
   private lateinit var rightUp: MediaPlayer
   private lateinit var rightDown: MediaPlayer
-  private lateinit var silence5: MediaPlayer
-  private lateinit var silence10: MediaPlayer
-  private lateinit var silence20: MediaPlayer
 
   private lateinit var command: TextView
   private lateinit var upLeftCompass: ImageView
@@ -187,9 +184,10 @@ class PosenetActivity :
   private var match = false
   private val delayTime = longArrayOf(20000,10000,5000)
   private var level = 0 //higher level -> shorter time for tasks
-  private var score = 0
+  private var score = 0 //
   private var progress = 100 //timebar
   private var countDownTime: Double = 20.0 //time remain in second
+  private var counting = false
 
   private val LV1 = 5 //finished 5 times will enter lv 1 (shorter time for tasks)
   private val LV2 = 10
@@ -260,6 +258,8 @@ class PosenetActivity :
         val clickListener = View.OnClickListener { view ->
           when (view.id) {
             R.id.playButton -> {
+              score = 0
+              scoreLabel.text = "Score: 0"
               playRandomCommand()
             }
           }
@@ -285,9 +285,6 @@ class PosenetActivity :
     leftDown = MediaPlayer.create(activity, R.raw.leftdown)
     rightUp = MediaPlayer.create(activity, R.raw.rightup)
     rightDown = MediaPlayer.create(activity, R.raw.rightdown)
-    silence5 = MediaPlayer.create(activity, R.raw.silence5)
-    silence10 = MediaPlayer.create(activity, R.raw.silence10)
-    silence20 = MediaPlayer.create(activity, R.raw.silence20)
     command = view.findViewById(R.id.command)
     upLeftCompass = view.findViewById(R.id.upleftcompass)
     upRightCompass = view.findViewById(R.id.uprightcompass)
@@ -308,9 +305,6 @@ class PosenetActivity :
     if (leftDown.isPlaying) leftDown.pause()
     if (rightUp.isPlaying) rightUp.pause()
     if (rightDown.isPlaying) rightDown.pause()
-    if (silence5.isPlaying) silence5.pause()
-    if (silence10.isPlaying) silence10.pause()
-    if (silence20.isPlaying) silence20.pause()
     cmd.start()
     val temp = rnd
     rnd = (temp + Random.nextInt(1, 4)) % 4 //prevent same number as last time
@@ -340,27 +334,35 @@ class PosenetActivity :
     countDownTime = delayTime[level]/1000.0
     when(level){
       0 -> {
-        silence20.start()
         Handler().postDelayed({timer0.start()},3000)
+//        timer0.start()
       }
       1 -> {
-        silence10.start()
         Handler().postDelayed({timer1.start()},3000)
+//        timer1.start()
       }
       2 -> {
-        silence5.start()
         Handler().postDelayed({timer2.start()}, 3000)
+//        timer2.start()
       }
     }
+    counting = true
   }
 
   private fun timerFinish(){
+    counting = false
     upLeftCompass.visibility = GONE
     upRightCompass.visibility = GONE
     downLeftCompass.visibility = GONE
     downRightCompass.visibility = GONE
-    command.text = "GAME OVER"
-    remainingTime.text = "0"
+    command.text = "GAME OVER!"
+    level = 0 //
+    progress = 100
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+      timeBar.setProgress(progress, true)
+    }
+    remainingTime.text = "Time Remaining"
+
   }
   private val timer0 = object: CountDownTimer(delayTime[0], 200) {
     @RequiresApi(Build.VERSION_CODES.N)
@@ -403,11 +405,15 @@ class PosenetActivity :
   }
 
   private fun taskFinished(){
-    when(level){
-      0 -> timer0.cancel()
-      1 -> timer1.cancel()
-      2 -> timer2.cancel()
-    }
+//    when(level){
+//      0 -> timer0.cancel()
+//      1 -> timer1.cancel()
+//      2 -> timer2.cancel()
+//    }
+    counting = false
+    timer0.cancel()
+    timer1.cancel()
+    timer2.cancel()
     score++
     val text = "Score: $score"
     scoreLabel.text = text
@@ -811,8 +817,7 @@ class PosenetActivity :
               canvas.drawText("up", (right - 40.0f * widthRatio), (20.0f * heightRatio + top), paint)
               if (
                 !rightUp.isPlaying &&
-                (silence5.isPlaying || silence10.isPlaying || silence20.isPlaying) && rnd == 2) {
-//                silence20.pause()
+                counting && rnd == 2) {
                 Handler(Looper.getMainLooper()).post { taskFinished() }
                 match = true
               }
@@ -820,8 +825,7 @@ class PosenetActivity :
               canvas.drawText("down", (right - 70.0f * widthRatio), (20.0f * heightRatio + top), paint)
               if (
                 !rightDown.isPlaying &&
-                (silence5.isPlaying || silence10.isPlaying || silence20.isPlaying) && rnd == 3) {
-//                silence20.pause()
+                counting && rnd == 3) {
                 Handler(Looper.getMainLooper()).post { taskFinished() }
                 match = true
               }
@@ -834,8 +838,7 @@ class PosenetActivity :
               canvas.drawText("up", (20.0f * widthRatio), (20.0f * heightRatio + top), paint)
               if (
                 !leftUp.isPlaying &&
-                (silence5.isPlaying || silence10.isPlaying || silence20.isPlaying) && rnd == 0) {
-//                silence20.pause()
+                counting && rnd == 0) {
                 Handler(Looper.getMainLooper()).post { taskFinished() }
                 match = true
               }
@@ -843,8 +846,7 @@ class PosenetActivity :
               canvas.drawText("down", (20.0f * widthRatio), (20.0f * heightRatio + top), paint)
               if (
                 !leftDown.isPlaying &&
-                (silence5.isPlaying || silence10.isPlaying || silence20.isPlaying) && rnd == 1) {
-//                silence20.pause()
+                counting && rnd == 1) {
                 Handler(Looper.getMainLooper()).post { taskFinished() }
                 match = true
               }
