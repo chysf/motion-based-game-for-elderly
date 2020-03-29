@@ -3,6 +3,7 @@ package org.tensorflow.lite.examples.posenet
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Point
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.view.MotionEvent
@@ -18,7 +19,7 @@ import kotlin.random.Random
 import org.tensorflow.lite.examples.posenet.PosenetActivity.Companion.handup
 
 class EatingActivity: AppCompatActivity() {
-
+    private lateinit var memmusic: MediaPlayer
     private lateinit var scoreLabel: TextView
     private lateinit var startLabel: TextView
     private lateinit var mouth: ImageView
@@ -56,6 +57,13 @@ class EatingActivity: AppCompatActivity() {
             .replace(R.id.container, PosenetActivity())
             .commit()
 
+
+        memmusic= MediaPlayer.create(this, R.raw.membg)
+        memmusic.isLooping = true
+        memmusic.setVolume(0.7f, 0.7f)
+        memmusic.start()
+
+
         scoreLabel = findViewById(R.id.scoreLabel)
         startLabel = findViewById(R.id.startLabel)
 
@@ -86,7 +94,15 @@ class EatingActivity: AppCompatActivity() {
 
     }
 
+    override fun onPause() {
+        super.onPause()
+        memmusic.pause()
+    }
 
+    override fun onResume() {
+        super.onResume()
+        memmusic.start()
+    }
     override fun onBackPressed() {
         //super.onBackPressed()
 //        timer.cancel()
