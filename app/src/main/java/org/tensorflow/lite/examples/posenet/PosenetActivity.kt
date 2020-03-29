@@ -66,6 +66,7 @@ import kotlin.math.abs
 import org.tensorflow.lite.examples.posenet.lib.BodyPart
 import org.tensorflow.lite.examples.posenet.lib.Person
 import org.tensorflow.lite.examples.posenet.lib.Posenet
+import kotlin.concurrent.timerTask
 import kotlin.math.roundToInt
 import kotlin.random.Random
 
@@ -307,8 +308,8 @@ class PosenetActivity :
     if (leftDown.isPlaying) leftDown.pause()
     if (rightUp.isPlaying) rightUp.pause()
     if (rightDown.isPlaying) rightDown.pause()
-    if (silence5.isPlaying) silence20.pause()
-    if (silence10.isPlaying) silence20.pause()
+    if (silence5.isPlaying) silence5.pause()
+    if (silence10.isPlaying) silence10.pause()
     if (silence20.isPlaying) silence20.pause()
     cmd.start()
     val temp = rnd
@@ -335,49 +336,78 @@ class PosenetActivity :
         rightDown.start()
       }
     }
-    when(level){
-      0 -> silence20.start()
-      1 -> silence10.start()
-      2 -> silence5.start()
-    }
     progress = 100
     countDownTime = delayTime[level]/1000.0
-    Handler().postDelayed({timer.start()},3000)
+    when(level){
+      0 -> {
+        silence20.start()
+        Handler().postDelayed({timer0.start()},3000)
+      }
+      1 -> {
+        silence10.start()
+        Handler().postDelayed({timer1.start()},3000)
+      }
+      2 -> {
+        silence5.start()
+        Handler().postDelayed({timer2.start()}, 3000)
+      }
+    }
   }
 
-  private val timer = object: CountDownTimer(delayTime[level], 200) {
+  private fun timerFinish(){
+    upLeftCompass.visibility = GONE
+    upRightCompass.visibility = GONE
+    downLeftCompass.visibility = GONE
+    downRightCompass.visibility = GONE
+    command.text = "GAME OVER"
+    remainingTime.text = "0"
+  }
+  private val timer0 = object: CountDownTimer(delayTime[0], 200) {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onTick(millisUntilFinished: Long) {
-      when(level){
-        0 -> {
-          timeBar.setProgress(progress - 1, true)
-          progress -= 1
-        }
-        1 -> {
-          timeBar.setProgress(progress - 2, true)
-          progress -= 2
-        }
-        2 -> {
-          timeBar.setProgress(progress - 4, true)
-          progress -= 4
-        }
-      }
+      timeBar.setProgress(progress - 1, true)
+      progress -= 1
       countDownTime -= 0.2
       remainingTime.text = countDownTime.roundToInt().toString()
     }
 
     override fun onFinish() {
-      upLeftCompass.visibility = GONE
-      upRightCompass.visibility = GONE
-      downLeftCompass.visibility = GONE
-      downRightCompass.visibility = GONE
-      command.text = ""
-      remainingTime.text = "0"
+      timerFinish()
+    }
+  }
+  private val timer1 = object: CountDownTimer(delayTime[1], 200) {
+    @RequiresApi(Build.VERSION_CODES.N)
+    override fun onTick(millisUntilFinished: Long) {
+      timeBar.setProgress(progress - 2, true)
+      progress -= 2
+      countDownTime -= 0.2
+      remainingTime.text = countDownTime.roundToInt().toString()
+    }
+
+    override fun onFinish() {
+      timerFinish()
+    }
+  }
+  private val timer2 = object: CountDownTimer(delayTime[2], 200) {
+    @RequiresApi(Build.VERSION_CODES.N)
+    override fun onTick(millisUntilFinished: Long) {
+      timeBar.setProgress(progress - 4, true)
+      progress -= 4
+      countDownTime -= 0.2
+      remainingTime.text = countDownTime.roundToInt().toString()
+    }
+
+    override fun onFinish() {
+      timerFinish()
     }
   }
 
   private fun taskFinished(){
-    timer.cancel()
+    when(level){
+      0 -> timer0.cancel()
+      1 -> timer1.cancel()
+      2 -> timer2.cancel()
+    }
     score++
     val text = "Score: $score"
     scoreLabel.text = text
@@ -462,8 +492,8 @@ class PosenetActivity :
         // We don't use a front facing camera in this sample.
         val cameraDirection = characteristics.get(CameraCharacteristics.LENS_FACING)
         if (cameraDirection != null &&
-          cameraDirection == CameraCharacteristics.LENS_FACING_BACK
-//          cameraDirection == CameraCharacteristics.LENS_FACING_BACK
+//        cameraDirection == CameraCharacteristics.LENS_FACING_BACK
+        cameraDirection == CameraCharacteristics.LENS_FACING_FRONT //DEBUG
         ) {
           continue
         }
@@ -615,12 +645,14 @@ class PosenetActivity :
 
       // Create rotated version for portrait display
       val rotateMatrix = Matrix()
-      rotateMatrix.postRotate(-90.0f)
-//      rotateMatrix.postRotate(90.0f)
+//      rotateMatrix.postRotate(-90.0f)
+//      rotateMatrix.postScale(-1f, 1f)
 //      val cx = imageBitmap.width / 2f
 //      val cy = imageBitmap.height / 2f
-      rotateMatrix.postScale(-1f, 1f)
-      //rotateMatrix.postScale(-1f, 1f, cx, cy);
+//      rotateMatrix.postScale(-1f, 1f, cx, cy)
+      /*DEBUG*/
+      rotateMatrix.postRotate(90.0f)
+
       val rotatedBitmap = Bitmap.createBitmap(
         imageBitmap, 0, 0, previewWidth, previewHeight,
         rotateMatrix, true
@@ -721,74 +753,107 @@ class PosenetActivity :
         val adjustedX: Float = position.x.toFloat() * widthRatio + left
         val adjustedY: Float = position.y.toFloat() * heightRatio + top
         canvas.drawCircle(adjustedX, adjustedY, circleRadius, paint)
+      } else {  //default releasing arms
+        if(keyPoint.bodyPart == BodyPart.RIGHT_WRIST||keyPoint.bodyPart == BodyPart.RIGHT_ELBOW){
+          armspos[0] = false
+        }
+        if(keyPoint.bodyPart == BodyPart.LEFT_WRIST||keyPoint.bodyPart == BodyPart.RIGHT_WRIST){
+          armspos[1] = false
+        }
+        if(!armspos[0] && !armspos[1]){
+          handup = false
+        }
       }
     }
     for (line in bodyJoints) {
       if ((person.keyPoints[line.first.ordinal].score > minConfidence)
-        and (person.keyPoints[line.second.ordinal].score > minConfidence)){
+        and (person.keyPoints[line.second.ordinal].score > minConfidence)) {
         canvas.drawLine(
           person.keyPoints[line.first.ordinal].position.x.toFloat() * widthRatio + left,
           person.keyPoints[line.first.ordinal].position.y.toFloat() * heightRatio + top,
           person.keyPoints[line.second.ordinal].position.x.toFloat() * widthRatio + left,
           person.keyPoints[line.second.ordinal].position.y.toFloat() * heightRatio + top,
-          paint)
-        if(line == Pair(BodyPart.LEFT_ELBOW, BodyPart.LEFT_SHOULDER)) {
-          val y1 = person.keyPoints[line.first.ordinal].position.y.toFloat()
-          val y2 = person.keyPoints[line.second.ordinal].position.y.toFloat()
-          if (y2 > y1) {
-            canvas.drawText("up", (right - 40.0f * widthRatio), (20.0f * heightRatio + top), paint)
-            if(gameID == 1) {
-              if (!rightUp.isPlaying && (silence5.isPlaying||silence10.isPlaying||silence20.isPlaying) && rnd == 2) {
-                silence20.pause()
-                Handler(Looper.getMainLooper()).post{taskFinished()}
-              }
-            }else{
-              armspos[1] = true
+          paint
+        )
+        /*Left and right are reversed*/
+        if(gameID != 1){
+          if (line == Pair(BodyPart.LEFT_WRIST, BodyPart.LEFT_ELBOW)) {
+            val leftWristY = person.keyPoints[line.first.ordinal].position.y.toFloat()
+            val leftElbowY = person.keyPoints[line.second.ordinal].position.y.toFloat()
+            if (leftElbowY > leftWristY) {
+              canvas.drawText("up", (right - 40.0f * widthRatio), (20.0f * heightRatio + top), paint)
               handup = true
-            }
-          } else {
-            canvas.drawText("down", (right - 70.0f * widthRatio), (20.0f * heightRatio + top), paint)
-            if (gameID == 1) {
-              if (!rightDown.isPlaying && (silence5.isPlaying||silence10.isPlaying||silence20.isPlaying) && rnd == 3) {
-                silence20.pause()
-                Handler(Looper.getMainLooper()).post{taskFinished()}
-              }
-            }else{
+              armspos[1] = true
+            } else {
+              canvas.drawText("down", (right - 70.0f * widthRatio), (20.0f * heightRatio + top), paint)
               armspos[1] = false
-              handup = false
+            }
+          }
+          else if (line == Pair(BodyPart.RIGHT_ELBOW, BodyPart.RIGHT_WRIST)) {
+            val rightElbowY = person.keyPoints[line.first.ordinal].position.y.toFloat()
+            val rightWristY = person.keyPoints[line.second.ordinal].position.y.toFloat()
+            if (rightWristY < rightElbowY) {
+              canvas.drawText("up", (20.0f * widthRatio), (20.0f * heightRatio + top), paint)
+              handup = true
+              armspos[0] = true
+            } else {
+              canvas.drawText("down", (20.0f * widthRatio), (20.0f * heightRatio + top), paint)
+              armspos[0] = false
             }
           }
         }
-        if(line == Pair(BodyPart.RIGHT_SHOULDER, BodyPart.RIGHT_ELBOW)) {
 
-          val y1 = person.keyPoints[line.first.ordinal].position.y.toFloat()
-          val y2 = person.keyPoints[line.second.ordinal].position.y.toFloat()
-          if (y2 < y1) {
-            canvas.drawText("up", (20.0f * widthRatio), (20.0f * heightRatio + top), paint)
-            if(gameID == 1) {
-              if (!leftUp.isPlaying && (silence5.isPlaying||silence10.isPlaying||silence20.isPlaying) && rnd == 0) {
-                silence20.pause()
-                Handler(Looper.getMainLooper()).post{taskFinished()}
-                }
-              }else{
-                armspos[0] = true
-                handup = true
+        if (gameID == 1) {
+          if (line == Pair(BodyPart.LEFT_ELBOW, BodyPart.LEFT_SHOULDER)) {
+            val leftElbowY = person.keyPoints[line.first.ordinal].position.y.toFloat()
+            val leftShoulderY = person.keyPoints[line.second.ordinal].position.y.toFloat()
+            if (leftShoulderY > leftElbowY) {
+              canvas.drawText("up", (right - 40.0f * widthRatio), (20.0f * heightRatio + top), paint)
+              if (
+                !rightUp.isPlaying &&
+                (silence5.isPlaying || silence10.isPlaying || silence20.isPlaying) && rnd == 2) {
+//                silence20.pause()
+                Handler(Looper.getMainLooper()).post { taskFinished() }
+                match = true
               }
             } else {
-            canvas.drawText("down", (20.0f * widthRatio), (20.0f * heightRatio + top), paint)
-              if(gameID == 1) {
-                if (!leftDown.isPlaying && (silence5.isPlaying||silence10.isPlaying||silence20.isPlaying) && rnd == 1) {
-                  silence20.pause()
-                  Handler(Looper.getMainLooper()).post{taskFinished()}
-                }
-              }else{
-                armspos[0] = false
-                handup = false
-
+              canvas.drawText("down", (right - 70.0f * widthRatio), (20.0f * heightRatio + top), paint)
+              if (
+                !rightDown.isPlaying &&
+                (silence5.isPlaying || silence10.isPlaying || silence20.isPlaying) && rnd == 3) {
+//                silence20.pause()
+                Handler(Looper.getMainLooper()).post { taskFinished() }
+                match = true
               }
             }
-
-
+          }
+          else if (line == Pair(BodyPart.RIGHT_SHOULDER, BodyPart.RIGHT_ELBOW)) {
+            val rightShoulderY = person.keyPoints[line.first.ordinal].position.y.toFloat()
+            val rightElbowY = person.keyPoints[line.second.ordinal].position.y.toFloat()
+            if (rightElbowY < rightShoulderY) {
+              canvas.drawText("up", (20.0f * widthRatio), (20.0f * heightRatio + top), paint)
+              if (
+                !leftUp.isPlaying &&
+                (silence5.isPlaying || silence10.isPlaying || silence20.isPlaying) && rnd == 0) {
+//                silence20.pause()
+                Handler(Looper.getMainLooper()).post { taskFinished() }
+                match = true
+              }
+            } else {
+              canvas.drawText("down", (20.0f * widthRatio), (20.0f * heightRatio + top), paint)
+              if (
+                !leftDown.isPlaying &&
+                (silence5.isPlaying || silence10.isPlaying || silence20.isPlaying) && rnd == 1) {
+//                silence20.pause()
+                Handler(Looper.getMainLooper()).post { taskFinished() }
+                match = true
+              }
+            }
+          }
+//          if(match){
+//            match = false
+//            Handler(Looper.getMainLooper()).post { taskFinished() }
+//          }
         }
       }
     }
