@@ -139,25 +139,25 @@ class EatingActivity: AppCompatActivity() {
         lemon.visibility = View.VISIBLE
         grape.visibility = View.VISIBLE
         shit.visibility = View.VISIBLE
-        lemonX -= 12
+        lemonX -= 6
         if(lemonX < 0){
-            lemonX = screenWidth + 10
+            lemonX = screenWidth + 20
             lemonY = Random.nextInt(0, frameheight - lemon.height)
         }
         lemon.x = lemonX.toFloat()
         lemon.y = lemonY.toFloat()
 
-        grapeX -= 16
+        grapeX -= 8
         if(grapeX < 0){
-            grapeX = screenWidth + 10
+            grapeX = screenWidth + 20
             grapeY = Random.nextInt(0, frameheight - grape.height)
         }
         grape.x = grapeX.toFloat()
         grape.y = grapeY.toFloat()
 
-        shitX -= 20
+        shitX -= 10
         if(shitX < 0){
-            shitX = screenWidth + 10
+            shitX = screenWidth + 20
             shitY = Random.nextInt(0, frameheight - shit.height)
         }
         shit.x = shitX.toFloat()
