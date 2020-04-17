@@ -60,7 +60,6 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import org.tensorflow.lite.examples.posenet.MainActivity.Companion.pref
 import java.util.concurrent.Semaphore
 import java.util.concurrent.TimeUnit
 import kotlin.math.abs
@@ -286,10 +285,10 @@ class PosenetActivity :
     rightUp = MediaPlayer.create(activity, R.raw.rightup)
     rightDown = MediaPlayer.create(activity, R.raw.rightdown)
     command = view.findViewById(R.id.command)
-    upLeftCompass = view.findViewById(R.id.upleftcompass)
-    upRightCompass = view.findViewById(R.id.uprightcompass)
-    downLeftCompass = view.findViewById(R.id.downleftcompass)
-    downRightCompass = view.findViewById(R.id.downrightcompass)
+    upLeftCompass = view.findViewById(R.id.upleftstar)
+    upRightCompass = view.findViewById(R.id.uprightstar)
+    downLeftCompass = view.findViewById(R.id.downleftstar)
+    downRightCompass = view.findViewById(R.id.downrightstar)
     remainingTime = view.findViewById(R.id.remainingTime)
     timeBar = view.findViewById(R.id.timeBar)
     scoreLabel = view.findViewById(R.id.scoreLabel)

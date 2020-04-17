@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
             .putInt("MaxScore3", 0)
             .putInt("LemonSum", 0)
             .putInt("GrapeSum", 0)
-            .putBoolean("Flag", false)
             .apply()
 
         val clickListener = View.OnClickListener { view ->

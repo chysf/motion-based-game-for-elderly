@@ -1,22 +1,29 @@
 package org.tensorflow.lite.examples.posenet
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import org.tensorflow.lite.examples.posenet.MainActivity.Companion.pref
 
 class Achievements: AppCompatActivity() {
     private lateinit var maxScore1: TextView
-    private lateinit var medal1: ImageView
-    private lateinit var medal2: ImageView
-    private lateinit var medal3: ImageView
+    private lateinit var star1_b: ImageView
+    private lateinit var star2_b: ImageView
+    private lateinit var star3_b: ImageView
     private lateinit var star1: ImageView
     private lateinit var star2: ImageView
     private lateinit var star3: ImageView
+
+    private lateinit var maxScore2: TextView
+    private lateinit var fruit1_b: ImageView
+    private lateinit var fruit2_b: ImageView
+    private lateinit var fruit3_b: ImageView
+    private lateinit var fruit1: ImageView
+    private lateinit var fruit2: ImageView
+    private lateinit var fruit3: ImageView
+
 
     //score to unlock achievement
     private val STAR1 = 5
@@ -30,25 +37,28 @@ class Achievements: AppCompatActivity() {
         val score1 = getSharedPreferences("test", MODE_PRIVATE).getInt("MaxScore1", 0)
         maxScore1.text = "Maximum Score: $score1"
         if (score1 >= STAR1) {
-            medal1.visibility = INVISIBLE
+            star1_b.visibility = INVISIBLE
             star1.visibility = VISIBLE
         }
         if (score1 >= STAR2) {
-            medal2.visibility = INVISIBLE
+            star2_b.visibility = INVISIBLE
             star2.visibility = VISIBLE
         }
         if (score1 >= STAR3) {
-            medal3.visibility = INVISIBLE
+            star3_b.visibility = INVISIBLE
             star3.visibility = VISIBLE
         }
     }
     private fun init(){
+        //game1
         maxScore1 = findViewById(R.id.max_score1)
-        medal1 = findViewById(R.id.medal1)
-        medal2 = findViewById(R.id.medal2)
-        medal3 = findViewById(R.id.medal3)
-        star1 = findViewById(R.id.star1)
-        star2 = findViewById(R.id.star2)
-        star3 = findViewById(R.id.star3)
+        star1_b = findViewById(R.id.star1_outline)
+        star2_b = findViewById(R.id.star2_outline)
+        star3_b = findViewById(R.id.star3_outline)
+        star1 = findViewById(R.id.star1_color)
+        star2 = findViewById(R.id.star2_color)
+        star3 = findViewById(R.id.star3_color)
+        //game2
+
     }
 }

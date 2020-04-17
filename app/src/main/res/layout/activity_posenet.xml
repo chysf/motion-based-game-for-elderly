@@ -62,40 +62,36 @@
         app:srcCompat="@android:drawable/ic_media_play" />
 
     <ImageView
-        android:id="@+id/upleftcompass"
+        android:id="@+id/upleftstar"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="#FFEB3B"
         android:visibility="invisible"
-        app:srcCompat="@android:drawable/ic_menu_compass" />
+        app:srcCompat="@drawable/smile_star" />
 
     <ImageView
-        android:id="@+id/uprightcompass"
+        android:id="@+id/uprightstar"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignParentRight="true"
-        android:background="#FFEB3B"
         android:visibility="invisible"
-        app:srcCompat="@android:drawable/ic_menu_compass" />
+        app:srcCompat="@drawable/smile_star" />
 
     <ImageView
-        android:id="@+id/downleftcompass"
+        android:id="@+id/downleftstar"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
-        android:background="#FFEB3B"
         android:visibility="invisible"
-        app:srcCompat="@android:drawable/ic_menu_compass" />
+        app:srcCompat="@drawable/smile_star" />
 
     <ImageView
-        android:id="@+id/downrightcompass"
+        android:id="@+id/downrightstar"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:background="#FFEB3B"
         android:visibility="invisible"
-        app:srcCompat="@android:drawable/ic_menu_compass" />
+        app:srcCompat="@drawable/smile_star" />
 
     <TextView
         android:id="@+id/command"

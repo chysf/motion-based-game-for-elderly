@@ -57,7 +57,7 @@
             android:layout_gravity="center"
             android:background="#ff9900"
             android:gravity="center"
-            android:text="Test" />
+            android:text="Achievements" />
 
 
     </LinearLayout>

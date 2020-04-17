@@ -26,4 +26,10 @@
   </string>
   <string name="p1">Mismatch: 0</string>
   <string name="camPre">CAM PREVIEW</string>
+  <string name="game1">Capture the Stars</string>
+  <string name="game2">Full of Fruits</string>
+  <string name="game3">Harvest</string>
+  <string name="maxScore">Maximum Score: 0</string>
+  <string name="accLemon">Accumulated lemons: 0</string>
+  <string name="accGrape">Accumulated grapes: 0</string>
 </resources>

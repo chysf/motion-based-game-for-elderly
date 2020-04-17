@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#03A9F4">
 
     <ImageView
         android:id="@+id/goal"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/title"
         app:layout_constraintStart_toEndOf="@+id/title"
@@ -21,10 +21,11 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:text="Achievements"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="30sp"
+        android:textColor="#000000"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/goal"
@@ -33,7 +34,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="150dp"
+        android:background="#FFFFFF"
         app:layout_constraintTop_toBottomOf="@id/goal">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,11 +44,11 @@
 
 
             <TextView
-                android:id="@+id/game1title"
+                android:id="@+id/game1_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="Capture the Star"
+                android:text="@string/game1"
                 android:textSize="25sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -57,101 +59,324 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Maximum Score: 0"
+                android:text="@string/maxScore"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/game1title" />
+                app:layout_constraintTop_toBottomOf="@id/game1_title" />
 
             <ImageView
-                android:id="@+id/medal1"
+                android:id="@+id/star1_outline"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/medal2"
+                app:layout_constraintRight_toLeftOf="@id/star2_outline"
                 app:layout_constraintTop_toBottomOf="@id/max_score1"
-                app:srcCompat="@drawable/medal"
+                app:srcCompat="@drawable/star_outline"
                 tools:layout_constraintLeft_toLeftOf="parent" />
 
             <ImageView
-                android:id="@+id/medal2"
+                android:id="@+id/star2_outline"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/medal3"
-                app:layout_constraintStart_toEndOf="@+id/medal1"
+                app:layout_constraintEnd_toStartOf="@+id/star3_outline"
+                app:layout_constraintStart_toEndOf="@+id/star1_outline"
                 app:layout_constraintTop_toBottomOf="@id/max_score1"
-                app:srcCompat="@drawable/medal" />
+                app:srcCompat="@drawable/star_outline" />
 
             <ImageView
-                android:id="@+id/medal3"
+                android:id="@+id/star3_outline"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="10dp"
-                app:layout_constraintLeft_toRightOf="@id/medal2"
+                app:layout_constraintLeft_toRightOf="@id/star2_outline"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/max_score1"
-                app:srcCompat="@drawable/medal" />
+                app:srcCompat="@drawable/star_outline" />
 
             <ImageView
-                android:id="@+id/star1"
+                android:id="@+id/star1_color"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="10dp"
                 android:visibility="invisible"
                 app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/star2"
+                app:layout_constraintRight_toLeftOf="@id/star2_color"
                 app:layout_constraintTop_toBottomOf="@id/max_score1"
-                app:srcCompat="@drawable/medal_color" />
+                app:srcCompat="@drawable/star_color" />
 
             <ImageView
-                android:id="@+id/star2"
+                android:id="@+id/star2_color"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="10dp"
                 android:visibility="invisible"
-                app:layout_constraintLeft_toRightOf="@id/star1"
-                app:layout_constraintRight_toLeftOf="@id/star3"
+                app:layout_constraintLeft_toRightOf="@id/star1_color"
+                app:layout_constraintRight_toLeftOf="@id/star3_color"
                 app:layout_constraintTop_toBottomOf="@id/max_score1"
-                app:srcCompat="@drawable/medal_color" />
+                app:srcCompat="@drawable/star_color" />
 
             <ImageView
-                android:id="@+id/star3"
+                android:id="@+id/star3_color"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="10dp"
                 android:visibility="invisible"
-                app:layout_constraintLeft_toRightOf="@id/medal2"
+                app:layout_constraintLeft_toRightOf="@id/star2_outline"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/max_score1"
-                app:srcCompat="@drawable/meteor" />
+                app:srcCompat="@drawable/star_color" />
+
+            <!--            game 2-->
 
             <TextView
-                android:id="@+id/game1text1"
+                android:id="@+id/game2_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                app:layout_constraintLeft_toLeftOf="@id/medal1"
-                app:layout_constraintTop_toBottomOf="@id/medal1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/game2"
+                android:textSize="25sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/star1_outline" />
+
+            <TextView
+                android:id="@+id/max_score2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/maxScore"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/game2_title" />
+
+            <ImageView
+                android:id="@+id/fruit1_outline"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/fruit2_outline"
+                app:layout_constraintTop_toBottomOf="@id/max_score2"
+                app:srcCompat="@drawable/fruits_outline"
                 tools:layout_constraintLeft_toLeftOf="parent" />
 
-            <TextView
-                android:id="@+id/game1text2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                app:layout_constraintLeft_toLeftOf="@id/medal2"
-                app:layout_constraintTop_toBottomOf="@id/medal1" />
+            <ImageView
+                android:id="@+id/fruit2_outline"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toStartOf="@id/fruit3_outline"
+                app:layout_constraintStart_toEndOf="@id/fruit1_outline"
+                app:layout_constraintTop_toBottomOf="@id/max_score2"
+                app:srcCompat="@drawable/fruits_outline" />
+
+            <ImageView
+                android:id="@+id/fruit3_outline"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintLeft_toRightOf="@id/fruit2_outline"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/max_score2"
+                app:srcCompat="@drawable/fruits_outline" />
+
+            <ImageView
+                android:id="@+id/fruit1_color"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/fruit2_color"
+                app:layout_constraintTop_toBottomOf="@id/max_score2"
+                app:srcCompat="@drawable/fruits_color" />
+
+            <ImageView
+                android:id="@+id/fruit2_color"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible"
+                app:layout_constraintLeft_toRightOf="@id/fruit1_color"
+                app:layout_constraintRight_toLeftOf="@id/fruit3_color"
+                app:layout_constraintTop_toBottomOf="@id/max_score2"
+                app:srcCompat="@drawable/fruits_color" />
+
+            <ImageView
+                android:id="@+id/fruit3_color"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible"
+                app:layout_constraintLeft_toRightOf="@id/fruit2_color"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/max_score2"
+                app:srcCompat="@drawable/fruits_color" />
+
+            <!--            game 2 lemon-->
 
             <TextView
-                android:id="@+id/game1text3"
+                android:id="@+id/lemon_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                app:layout_constraintLeft_toLeftOf="@id/medal3"
-                app:layout_constraintTop_toBottomOf="@id/medal1" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/accLemon"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fruit1_outline" />
+
+            <ImageView
+                android:id="@+id/lemon1_outline"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/lemon2_outline"
+                app:layout_constraintTop_toBottomOf="@id/lemon_score"
+                app:srcCompat="@drawable/lemon_outline"
+                tools:layout_constraintLeft_toLeftOf="parent" />
+
+            <ImageView
+                android:id="@+id/lemon2_outline"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toStartOf="@id/lemon3_outline"
+                app:layout_constraintStart_toEndOf="@id/lemon1_outline"
+                app:layout_constraintTop_toBottomOf="@id/lemon_score"
+                app:srcCompat="@drawable/lemon_outline" />
+
+            <ImageView
+                android:id="@+id/lemon3_outline"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintLeft_toRightOf="@id/lemon2_outline"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lemon_score"
+                app:srcCompat="@drawable/lemon_outline" />
+
+            <ImageView
+                android:id="@+id/lemon1_color"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/lemon2_color"
+                app:layout_constraintTop_toBottomOf="@id/lemon_score"
+                app:srcCompat="@drawable/lemon_color" />
+
+            <ImageView
+                android:id="@+id/lemon2_color"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible"
+                app:layout_constraintLeft_toRightOf="@id/lemon1_color"
+                app:layout_constraintRight_toLeftOf="@id/lemon3_color"
+                app:layout_constraintTop_toBottomOf="@id/lemon_score"
+                app:srcCompat="@drawable/lemon_color" />
+
+            <ImageView
+                android:id="@+id/lemon3_color"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible"
+                app:layout_constraintLeft_toRightOf="@id/lemon2_color"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lemon_score"
+                app:srcCompat="@drawable/lemon_color" />
+
+            <!--            game 2 grape-->
+
+            <TextView
+                android:id="@+id/grape_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/accGrape"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lemon1_outline" />
+
+            <ImageView
+                android:id="@+id/grape1_outline"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/grape2_outline"
+                app:layout_constraintTop_toBottomOf="@id/grape_score"
+                app:srcCompat="@drawable/grape_outline"
+                tools:layout_constraintLeft_toLeftOf="parent" />
+
+            <ImageView
+                android:id="@+id/grape2_outline"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toStartOf="@id/grape3_outline"
+                app:layout_constraintStart_toEndOf="@id/grape1_outline"
+                app:layout_constraintTop_toBottomOf="@id/grape_score"
+                app:srcCompat="@drawable/grape_outline" />
+
+            <ImageView
+                android:id="@+id/grape3_outline"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintLeft_toRightOf="@id/grape2_outline"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/grape_score"
+                app:srcCompat="@drawable/grape_outline" />
+
+            <ImageView
+                android:id="@+id/grape1_color"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/grape2_color"
+                app:layout_constraintTop_toBottomOf="@id/grape_score"
+                app:srcCompat="@drawable/grape_color" />
+
+            <ImageView
+                android:id="@+id/grape2_color"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible"
+                app:layout_constraintLeft_toRightOf="@id/grape1_color"
+                app:layout_constraintRight_toLeftOf="@id/grape3_color"
+                app:layout_constraintTop_toBottomOf="@id/grape_score"
+                app:srcCompat="@drawable/grape_color" />
+
+            <ImageView
+                android:id="@+id/grape3_color"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible"
+                app:layout_constraintLeft_toRightOf="@id/grape2_color"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/grape_score"
+                app:srcCompat="@drawable/grape_color" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
