@@ -59,14 +59,14 @@ import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
-import kotlinx.android.synthetic.main.activity_posenet.*
+import androidx.appcompat.app.AppCompatActivity
+import org.tensorflow.lite.examples.posenet.MainActivity.Companion.pref
 import java.util.concurrent.Semaphore
 import java.util.concurrent.TimeUnit
 import kotlin.math.abs
 import org.tensorflow.lite.examples.posenet.lib.BodyPart
 import org.tensorflow.lite.examples.posenet.lib.Person
 import org.tensorflow.lite.examples.posenet.lib.Posenet
-import kotlin.concurrent.timerTask
 import kotlin.math.roundToInt
 import kotlin.random.Random
 
@@ -335,15 +335,12 @@ class PosenetActivity :
     when(level){
       0 -> {
         Handler().postDelayed({timer0.start()},3000)
-//        timer0.start()
       }
       1 -> {
         Handler().postDelayed({timer1.start()},3000)
-//        timer1.start()
       }
       2 -> {
         Handler().postDelayed({timer2.start()}, 3000)
-//        timer2.start()
       }
     }
     counting = true
@@ -356,7 +353,14 @@ class PosenetActivity :
     downLeftCompass.visibility = GONE
     downRightCompass.visibility = GONE
     command.text = "GAME OVER!"
-    level = 0 //
+    val pref = this@PosenetActivity.activity?.getSharedPreferences("test", AppCompatActivity.MODE_PRIVATE)
+    val maxScore = pref?.getInt("MaxScore1", 0)
+    if(score > maxScore!!){
+      pref?.edit()
+        ?.putInt("MaxScore1", score)
+        ?.apply()
+    }
+    level = 0
     progress = 100
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
       timeBar.setProgress(progress, true)
@@ -405,15 +409,12 @@ class PosenetActivity :
   }
 
   private fun taskFinished(){
-//    when(level){
-//      0 -> timer0.cancel()
-//      1 -> timer1.cancel()
-//      2 -> timer2.cancel()
-//    }
+    when(level){
+      0 -> timer0.cancel()
+      1 -> timer1.cancel()
+      2 -> timer2.cancel()
+    }
     counting = false
-    timer0.cancel()
-    timer1.cancel()
-    timer2.cancel()
     score++
     val text = "Score: $score"
     scoreLabel.text = text
@@ -498,8 +499,8 @@ class PosenetActivity :
         // We don't use a front facing camera in this sample.
         val cameraDirection = characteristics.get(CameraCharacteristics.LENS_FACING)
         if (cameraDirection != null &&
-//        cameraDirection == CameraCharacteristics.LENS_FACING_BACK
-        cameraDirection == CameraCharacteristics.LENS_FACING_FRONT //DEBUG
+        cameraDirection == CameraCharacteristics.LENS_FACING_BACK
+//        cameraDirection == CameraCharacteristics.LENS_FACING_FRONT //DEBUG
         ) {
           continue
         }
@@ -651,13 +652,13 @@ class PosenetActivity :
 
       // Create rotated version for portrait display
       val rotateMatrix = Matrix()
-//      rotateMatrix.postRotate(-90.0f)
-//      rotateMatrix.postScale(-1f, 1f)
+      rotateMatrix.postRotate(-90.0f)
+      rotateMatrix.postScale(-1f, 1f)
 //      val cx = imageBitmap.width / 2f
 //      val cy = imageBitmap.height / 2f
 //      rotateMatrix.postScale(-1f, 1f, cx, cy)
       /*DEBUG*/
-      rotateMatrix.postRotate(90.0f)
+//      rotateMatrix.postRotate(90.0f)
 
       val rotatedBitmap = Bitmap.createBitmap(
         imageBitmap, 0, 0, previewWidth, previewHeight,

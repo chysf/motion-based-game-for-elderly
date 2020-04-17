@@ -59,7 +59,7 @@
      </activity>
 
       <activity
-          android:name=".HelloWorld"
+          android:name=".Achievements"
           android:exported="true">
       </activity>
 
