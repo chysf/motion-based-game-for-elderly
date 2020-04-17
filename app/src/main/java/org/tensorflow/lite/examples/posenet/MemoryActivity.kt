@@ -203,35 +203,32 @@ class MemoryActivity : AppCompatActivity() {
         musicTT.setVolume(0.7f, 0.7f)
         musicTT.start()
 
-        //Show, hide or transparency CAM preview
+        //Underlay the CAM preview
+        container.visibility = VISIBLE
+        container.elevation = 4F
+        layout101.elevation = 5F
+
+        iv21.alpha = 0.7F
+        iv22.alpha = 0.7F
+        iv23.alpha = 0.7F
+        iv31.alpha = 0.7F
+        iv32.alpha = 0.7F
+        iv33.alpha = 0.7F
+
+        iv021.alpha = 0.7F
+        iv022.alpha = 0.7F
+        iv023.alpha = 0.7F
+        iv031.alpha = 0.7F
+        iv032.alpha = 0.7F
+        iv033.alpha = 0.7F
+
+        //Open or hide the CAM preview
         btn1.setOnClickListener {
             clicked01++
-            if (clicked01 == 1) {
-                container.visibility = VISIBLE
-                container.elevation = 4F
-                Toast.makeText(applicationContext, "Click to UNDERLAY", Toast.LENGTH_SHORT).show()
-            }
-            if (clicked01 == 2){
-                layout101.elevation = 5F
-                Toast.makeText(applicationContext, "Click to HIDE", Toast.LENGTH_SHORT).show()
-                iv21.alpha = 0.7F
-                iv22.alpha = 0.7F
-                iv23.alpha = 0.7F
-                iv31.alpha = 0.7F
-                iv32.alpha = 0.7F
-                iv33.alpha = 0.7F
-
-                iv021.alpha = 0.7F
-                iv022.alpha = 0.7F
-                iv023.alpha = 0.7F
-                iv031.alpha = 0.7F
-                iv032.alpha = 0.7F
-                iv033.alpha = 0.7F
-            }
-            if (clicked01 == 3) {
-                layout101.elevation = 3F
+            if (clicked01%2 != 0) {
                 container.visibility = INVISIBLE
                 Toast.makeText(applicationContext, "Click to OPEN", Toast.LENGTH_SHORT).show()
+
                 iv21.alpha = 1F
                 iv22.alpha = 1F
                 iv23.alpha = 1F
@@ -245,8 +242,24 @@ class MemoryActivity : AppCompatActivity() {
                 iv031.alpha = 1F
                 iv032.alpha = 1F
                 iv033.alpha = 1F
+            }
+            if (clicked01%2 == 0){
+                container.visibility = VISIBLE
+                Toast.makeText(applicationContext, "Click to HIDE", Toast.LENGTH_SHORT).show()
 
-                clicked01 = 0
+                iv21.alpha = 0.7F
+                iv22.alpha = 0.7F
+                iv23.alpha = 0.7F
+                iv31.alpha = 0.7F
+                iv32.alpha = 0.7F
+                iv33.alpha = 0.7F
+
+                iv021.alpha = 0.7F
+                iv022.alpha = 0.7F
+                iv023.alpha = 0.7F
+                iv031.alpha = 0.7F
+                iv032.alpha = 0.7F
+                iv033.alpha = 0.7F
             }
         }
 
@@ -684,8 +697,8 @@ class MemoryActivity : AppCompatActivity() {
             //Use Posenet to handle 12 image buttons
             if (handup) {
                 clicked02++
-                iv11.callOnClick()
-                handup = false // Blank this to fix posenet delays
+                iv11.callOnClick() // Double this to fix posenet delays
+                handup = false
                 x01 = 5
             }
         },5000)
@@ -696,7 +709,7 @@ class MemoryActivity : AppCompatActivity() {
             if (iv12.visibility == INVISIBLE) {
                 iv012.visibility = VISIBLE
             }
-            if (handup) {
+            if (handup && x01 != 5) {
                 clicked02++
                 iv11.callOnClick()
                 handup = false
