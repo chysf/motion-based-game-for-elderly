@@ -1,7 +1,9 @@
 package org.tensorflow.lite.examples.posenet
 
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Point
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -49,6 +51,7 @@ class EatingActivity: AppCompatActivity() {
     //private var action_flg = false
     private var start_flg = false
 
+    private lateinit var pref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -58,6 +61,7 @@ class EatingActivity: AppCompatActivity() {
             .replace(R.id.container, PosenetActivity())
             .commit()
 
+        pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
 
         memmusic= MediaPlayer.create(this, R.raw.membg)
         memmusic.isLooping = true
@@ -187,6 +191,8 @@ class EatingActivity: AppCompatActivity() {
         if(lemonCenterX in 0..boxsize && lemonCenterY in boxY..(boxY + boxsize)) {
             score += 10
             lemonX = -10
+            val lemon = pref.getInt("lemonSum", 0) + 1
+            pref.edit().putInt("lemonSum", lemon).apply()
         }
 
         var grapeCenterX = grapeX + grape.width / 2
@@ -195,6 +201,8 @@ class EatingActivity: AppCompatActivity() {
         if (grapeCenterX in 0..boxsize && grapeCenterY in boxY..(boxY + boxsize)) {
             score += 30
             grapeX = -10
+            val grape = pref.getInt("grapeSum", 0) + 1
+            pref.edit().putInt("grapeSum", grape).apply()
         }
 
         var shitCenterX = shitX + shit.width / 2

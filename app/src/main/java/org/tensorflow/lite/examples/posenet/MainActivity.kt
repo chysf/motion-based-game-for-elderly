@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var testBtn: Button
 
     companion object{
-        var user = "admin"
         lateinit var pref: SharedPreferences
     }
 
@@ -26,12 +25,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        pref = getSharedPreferences("test", Context.MODE_PRIVATE)
+        pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
         pref.edit()
-            .putString("USER", user)
             .putInt("MaxScore1", 0)
             .putInt("MaxScore2", 0)
-            .putInt("MaxScore3", 0)
+            .putInt("MaxScore3", 30)
             .putInt("LemonSum", 0)
             .putInt("GrapeSum", 0)
             .apply()

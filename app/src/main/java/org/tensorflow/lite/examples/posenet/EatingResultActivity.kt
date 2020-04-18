@@ -2,10 +2,12 @@ package org.tensorflow.lite.examples.posenet
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import org.tensorflow.lite.examples.posenet.MainActivity.Companion.pref
 
 class EatingResultActivity: AppCompatActivity() {
 
@@ -20,17 +22,17 @@ class EatingResultActivity: AppCompatActivity() {
         val tmp = "$score"
         scoreLabel.text = tmp
 
-        val settings = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
-        val highScore = settings.getInt("High_Score", 0)
+//        pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
+        val highScore = pref.getInt("MaxScore2", 0)
 
         if (score > highScore) {
-            val tmp = "High Score : $score"
+            val tmp = "Highest Score : $score"
             highScoreLabel.text = tmp
-            val editor = settings.edit()
-            editor.putInt("High_Score", score)
-            editor.apply()
+            pref.edit()
+                .putInt("MaxScore2", score)
+                .apply()
         } else {
-            val tmp = "High Score : $highScore"
+            val tmp = "Highest Score : $highScore"
             highScoreLabel.text = tmp
         }
     }
