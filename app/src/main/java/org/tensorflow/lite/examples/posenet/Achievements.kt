@@ -1,11 +1,18 @@
 package org.tensorflow.lite.examples.posenet
 
+import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
+import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+//import org.tensorflow.lite.examples.posenet.MainActivity.Companion.pref
 
 class Achievements: AppCompatActivity() {
     private lateinit var maxScore1: TextView
@@ -48,6 +55,8 @@ class Achievements: AppCompatActivity() {
     private lateinit var harvest2: ImageView
     private lateinit var harvest3: ImageView
 
+    private lateinit var rstBtn: Button
+
     //score to unlock achievement
     private val STAR1 = 5
     private val STAR2 = 15
@@ -73,11 +82,58 @@ class Achievements: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_achievement)
         init()
-        val score1 = getSharedPreferences("test", MODE_PRIVATE).getInt("MaxScore1", 0)
+        refresh()
+        val clickListener = View.OnClickListener { view ->
+            when (view.id) {
+                R.id.rst_btn -> {
+                    val builder = AlertDialog.Builder(this)
+                    builder.setMessage("Are you sure to reset all data?")
+                    builder.setCancelable(true)
+                    builder.setNegativeButton("No") { dialogInterface, _ ->
+                        dialogInterface.cancel()
+                    }
+                    builder.setPositiveButton("Yes") { _, _ ->
+                        getSharedPreferences("Game_Data", Context.MODE_PRIVATE).edit()
+                            .putInt("MaxScore1", 0)
+                            .putInt("MaxScore2", 0)
+                            .putInt("MinScore3", 50)
+                            .putInt("LemonSum", 0)
+                            .putInt("GrapeSum", 0)
+                            .apply()
+                        refresh()
+                        Toast.makeText(this, "reset", Toast.LENGTH_SHORT).show()
+                    }
+                    builder.create().show()
+                }
+            }
+        }
+        rstBtn.setOnClickListener(clickListener)
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        refresh()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        refresh()
+    }
+
+    private fun refresh(){
+        val score1 = getSharedPreferences("Game_Data", Context.MODE_PRIVATE).getInt("MaxScore1", 0)
         maxScore1.text = "Maximum Score: $score1"
         if (score1 >= STAR1) {
             star1_b.visibility = INVISIBLE
             star1.visibility = VISIBLE
+        }
+        else{
+            star1.visibility = INVISIBLE
+            star2.visibility = INVISIBLE
+            star3.visibility = INVISIBLE
+            star1_b.visibility = VISIBLE
+            star2_b.visibility = VISIBLE
+            star3_b.visibility = VISIBLE
         }
         if (score1 >= STAR2) {
             star2_b.visibility = INVISIBLE
@@ -87,7 +143,7 @@ class Achievements: AppCompatActivity() {
             star3_b.visibility = INVISIBLE
             star3.visibility = VISIBLE
         }
-        val score2 = getSharedPreferences("test", MODE_PRIVATE).getInt("MaxScore2", 0)
+        val score2 = getSharedPreferences("Game_Data", Context.MODE_PRIVATE).getInt("MaxScore2", 0)
         maxScore2.text = "Maximum Score: $score2"
         if (score2 >= FRUIT1) {
             fruit1_b.visibility = INVISIBLE
@@ -102,8 +158,8 @@ class Achievements: AppCompatActivity() {
             fruit3.visibility = VISIBLE
         }
 
-        val lemonSum = getSharedPreferences("test", MODE_PRIVATE).getInt("LemonSum", 0)
-        lemonScore.text = "Maximum Score: $lemonSum"
+        val lemonSum = getSharedPreferences("Game_Data", Context.MODE_PRIVATE).getInt("LemonSum", 0)
+        lemonScore.text = "Accumulated Lemons: $lemonSum"
         if (lemonSum >= LEMON1) {
             lemon1_b.visibility = INVISIBLE
             lemon1.visibility = VISIBLE
@@ -117,8 +173,8 @@ class Achievements: AppCompatActivity() {
             lemon3.visibility = VISIBLE
         }
 
-        val grapeSum = getSharedPreferences("test", MODE_PRIVATE).getInt("GrapeSum", 0)
-        grapeScore.text = "Maximum Score: $grapeSum"
+        val grapeSum = getSharedPreferences("Game_Data", Context.MODE_PRIVATE).getInt("GrapeSum", 0)
+        grapeScore.text = "Accumulated Grapes: $grapeSum"
         if (grapeSum >= GRAPE1) {
             grape1_b.visibility = INVISIBLE
             grape1.visibility = VISIBLE
@@ -132,11 +188,19 @@ class Achievements: AppCompatActivity() {
             grape3.visibility = VISIBLE
         }
 
-        val score3 = getSharedPreferences("test", MODE_PRIVATE).getInt("MaxScore3", 30)
-        maxScore3.text = "Maximum Score: $score3"
+        val score3 = getSharedPreferences("Game_Data", Context.MODE_PRIVATE).getInt("MinScore3", 50)
+        if(score3 == 50) maxScore3.text = "N/A"
+        else maxScore3.text = "Minimum Mismatches: $score3"
         if (score3 <= HARVEST1) {
             harvest1_b.visibility = INVISIBLE
             harvest1.visibility = VISIBLE
+        }else{
+            harvest1.visibility = INVISIBLE
+            harvest2.visibility = INVISIBLE
+            harvest3.visibility = INVISIBLE
+            harvest1_b.visibility = VISIBLE
+            harvest2_b.visibility = VISIBLE
+            harvest3_b.visibility = VISIBLE
         }
         if (score3 <= HARVEST2) {
             harvest2_b.visibility = INVISIBLE
@@ -146,7 +210,6 @@ class Achievements: AppCompatActivity() {
             harvest3_b.visibility = INVISIBLE
             harvest3.visibility = VISIBLE
         }
-
     }
     private fun init(){
         //game1
@@ -191,5 +254,6 @@ class Achievements: AppCompatActivity() {
         harvest2 = findViewById(R.id.harvest2_color)
         harvest3 = findViewById(R.id.harvest3_color)
 
+        rstBtn = findViewById(R.id.rst_btn)
     }
 }

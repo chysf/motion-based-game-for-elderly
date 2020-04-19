@@ -51,7 +51,6 @@ class EatingActivity: AppCompatActivity() {
     //private var action_flg = false
     private var start_flg = false
 
-    private lateinit var pref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -60,8 +59,6 @@ class EatingActivity: AppCompatActivity() {
         savedInstanceState ?: supportFragmentManager.beginTransaction()
             .replace(R.id.container, PosenetActivity())
             .commit()
-
-        pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
 
         memmusic= MediaPlayer.create(this, R.raw.membg)
         memmusic.isLooping = true
@@ -191,6 +188,7 @@ class EatingActivity: AppCompatActivity() {
         if(lemonCenterX in 0..boxsize && lemonCenterY in boxY..(boxY + boxsize)) {
             score += 10
             lemonX = -10
+            val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
             val lemon = pref.getInt("lemonSum", 0) + 1
             pref.edit().putInt("lemonSum", lemon).apply()
         }
@@ -201,6 +199,7 @@ class EatingActivity: AppCompatActivity() {
         if (grapeCenterX in 0..boxsize && grapeCenterY in boxY..(boxY + boxsize)) {
             score += 30
             grapeX = -10
+            val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
             val grape = pref.getInt("grapeSum", 0) + 1
             pref.edit().putInt("grapeSum", grape).apply()
         }

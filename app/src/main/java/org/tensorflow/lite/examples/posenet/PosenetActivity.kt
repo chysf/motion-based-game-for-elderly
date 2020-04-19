@@ -352,7 +352,7 @@ class PosenetActivity :
     downLeftCompass.visibility = GONE
     downRightCompass.visibility = GONE
     command.text = "GAME OVER!"
-    val pref = this@PosenetActivity.activity?.getSharedPreferences("test", AppCompatActivity.MODE_PRIVATE)
+    val pref = this@PosenetActivity.activity?.getSharedPreferences("Game_Data", AppCompatActivity.MODE_PRIVATE)
     val maxScore = pref?.getInt("MaxScore1", 0)
     if(score > maxScore!!){
       pref?.edit()

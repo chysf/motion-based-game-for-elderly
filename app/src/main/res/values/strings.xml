@@ -30,6 +30,6 @@
   <string name="game2">Full of Fruits</string>
   <string name="game3">Harvest</string>
   <string name="maxScore">Maximum Score: 0</string>
-  <string name="accLemon">Accumulated lemons: 0</string>
-  <string name="accGrape">Accumulated grapes: 0</string>
+  <string name="accLemon">Accumulated Lemons: 0</string>
+  <string name="accGrape">Accumulated Grapes: 0</string>
 </resources>

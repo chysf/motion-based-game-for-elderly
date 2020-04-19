@@ -10,6 +10,7 @@ import android.widget.*
 import android.content.Intent
 import androidx.annotation.RequiresApi
 import android.app.AlertDialog
+import android.content.Context
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.media.MediaPlayer
@@ -363,11 +364,13 @@ class MemoryActivity : AppCompatActivity() {
             tvp2.text = "GO"
         }, 4000)
 
-        Handler().postDelayed({
-            tvp2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30F)
-            tvp2.text = "Raise up your hand to harvest"
-            tvp2.setBackgroundColor(0xCB1E88E5.toInt())
-        }, 3000, 5000)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            Handler().postDelayed({
+                tvp2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30F)
+                tvp2.text = "Raise up your hand to harvest"
+                tvp2.setBackgroundColor(0xCB1E88E5.toInt())
+            }, 3000, 5000)
+        }
 
         Handler().postDelayed({
             tvp2.text = null
@@ -1209,6 +1212,11 @@ class MemoryActivity : AppCompatActivity() {
         )
 
         {
+            val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
+            val min = pref.getInt("MinScore3", 50)
+            if(mismatchPoints < min){
+                pref.edit().putInt("MinScore3", mismatchPoints).apply()
+            }
             val alertDialogBuilder = AlertDialog.Builder(this@MemoryActivity)
             alertDialogBuilder
                 .setMessage("GAME OVER!\nMISMATCH: $mismatchPoints")

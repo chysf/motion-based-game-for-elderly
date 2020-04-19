@@ -6,8 +6,9 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import org.tensorflow.lite.examples.posenet.MainActivity.Companion.pref
+//import org.tensorflow.lite.examples.posenet.MainActivity.Companion.pref
 
 class EatingResultActivity: AppCompatActivity() {
 
@@ -18,18 +19,19 @@ class EatingResultActivity: AppCompatActivity() {
         val scoreLabel: TextView = findViewById(R.id.scoreLabel)
         val highScoreLabel: TextView = findViewById(R.id.HighScoreLabel)
 
-        val score = intent.getIntExtra("Score", 0)
-        val tmp = "$score"
+        val thisScore = intent.getIntExtra("Score", 0)
+        val tmp = "$thisScore"
         scoreLabel.text = tmp
 
-//        pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
-        val highScore = pref.getInt("MaxScore2", 0)
-
-        if (score > highScore) {
-            val tmp = "Highest Score : $score"
+        val preferences = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
+        val highScore = preferences.getInt("MaxScore2", 0)
+        val temp = "$highScore"
+        Toast.makeText(this, temp, Toast.LENGTH_SHORT).show()
+        if (thisScore > highScore) {
+            val tmp = "Highest Score : $thisScore"
             highScoreLabel.text = tmp
-            pref.edit()
-                .putInt("MaxScore2", score)
+            preferences.edit()
+                .putInt("MaxScore2", thisScore)
                 .apply()
         } else {
             val tmp = "Highest Score : $highScore"

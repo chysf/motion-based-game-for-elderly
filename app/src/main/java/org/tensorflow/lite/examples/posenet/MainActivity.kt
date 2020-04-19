@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         pref.edit()
             .putInt("MaxScore1", 0)
             .putInt("MaxScore2", 0)
-            .putInt("MaxScore3", 30)
+            .putInt("MinScore3", 50)
             .putInt("LemonSum", 0)
             .putInt("GrapeSum", 0)
             .apply()
