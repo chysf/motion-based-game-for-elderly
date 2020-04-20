@@ -1,14 +1,12 @@
 package org.tensorflow.lite.examples.posenet
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-//import org.tensorflow.lite.examples.posenet.MainActivity.Companion.pref
+import org.tensorflow.lite.examples.posenet.EatingActivity.Companion.maxScoreC
+import org.tensorflow.lite.examples.posenet.EatingActivity.Companion.score2
 
 class EatingResultActivity: AppCompatActivity() {
 
@@ -19,27 +17,22 @@ class EatingResultActivity: AppCompatActivity() {
         val scoreLabel: TextView = findViewById(R.id.scoreLabel)
         val highScoreLabel: TextView = findViewById(R.id.HighScoreLabel)
 
-        val thisScore = intent.getIntExtra("Score", 0)
-        val tmp = "$thisScore"
-        scoreLabel.text = tmp
-
-        val preferences = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
-        val highScore = preferences.getInt("MaxScore2", 0)
-        val temp = "$highScore"
-        Toast.makeText(this, temp, Toast.LENGTH_SHORT).show()
-        if (thisScore > highScore) {
-            val tmp = "Highest Score : $thisScore"
-            highScoreLabel.text = tmp
-            preferences.edit()
-                .putInt("MaxScore2", thisScore)
-                .apply()
-        } else {
-            val tmp = "Highest Score : $highScore"
-            highScoreLabel.text = tmp
+        if(score2 > maxScoreC) {
+            maxScoreC = score2
         }
+
+        val tmp = "$score2"
+        scoreLabel.text = tmp
+        score2 = 0
+
+        val tmp1 = "Highest Score : $maxScoreC"
+        highScoreLabel.text = tmp1
     }
 
     fun tryAgain(view: View){
-        startActivity(Intent(applicationContext, EatingActivity::class.java))
+        startActivity(Intent(this, EatingActivity::class.java))
+    }
+    override fun onBackPressed() {
+        startActivity(Intent(this, MainActivity::class.java))
     }
 }

@@ -188,7 +188,7 @@ class PosenetActivity :
   private var countDownTime: Double = 20.0 //time remain in second
   private var counting = false
 
-  private val LV1 = 5 //finished 5 times will enter lv 1 (shorter time for tasks)
+  private val LV1 = 1 //finished 5 times will enter lv 1 (shorter time for tasks)
   private val LV2 = 10
 
   /** [CameraDevice.StateCallback] is called when [CameraDevice] changes its state.   */

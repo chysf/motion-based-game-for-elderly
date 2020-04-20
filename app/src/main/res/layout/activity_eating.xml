@@ -58,11 +58,11 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         android:src="@drawable/shit"/>
 
         <ImageView
-                android:id="@+id/mouth"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/mouth" />
+            android:id="@+id/mouth"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/mouth" />
 
         <ImageView
         android:id="@+id/grape"

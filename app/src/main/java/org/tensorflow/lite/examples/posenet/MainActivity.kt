@@ -1,12 +1,13 @@
 package org.tensorflow.lite.examples.posenet
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import org.tensorflow.lite.examples.posenet.EatingActivity.Companion.grapeC
+import org.tensorflow.lite.examples.posenet.EatingActivity.Companion.lemonC
+import org.tensorflow.lite.examples.posenet.EatingActivity.Companion.maxScoreC
 import org.tensorflow.lite.examples.posenet.PosenetActivity.Companion.gameID
 
 
@@ -17,22 +18,20 @@ class MainActivity : AppCompatActivity() {
     private lateinit var memoryGameBtn: Button
     private lateinit var testBtn: Button
 
-    companion object{
-        lateinit var pref: SharedPreferences
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
-        pref.edit()
-            .putInt("MaxScore1", 0)
-            .putInt("MaxScore2", 0)
-            .putInt("MinScore3", 50)
-            .putInt("LemonSum", 0)
-            .putInt("GrapeSum", 0)
-            .apply()
+        val pref = getSharedPreferences("Game_Data", MODE_PRIVATE)
+        if(!pref.contains("MaxScore2")) {
+            pref.edit()
+                .putInt("MaxScore1", 0)
+                .putInt("MaxScore2", 0)
+                .putInt("MinScore3", 50)
+                .putInt("LemonSum", 0)
+                .putInt("GrapeSum", 0)
+                .apply()
+        }
 
         val clickListener = View.OnClickListener { view ->
             when (view.id) {
@@ -80,14 +79,32 @@ class MainActivity : AppCompatActivity() {
         memoryGameBtn.isEnabled = false
         testBtn.isEnabled = false
     }
+    private fun save(){
+        val preff = getSharedPreferences("Game_Data", MODE_PRIVATE)
+        var tmpL = preff.getInt("LemonSum", 0)
+        tmpL += lemonC
+        lemonC = 0
+        var tmpG = preff.getInt("GrapeSum", 0)
+        tmpG += grapeC
+        grapeC = 0
+        var tmpS = if(maxScoreC == 0) preff.getInt("MaxScore2", 0) //start
+        else maxScoreC //resume
 
+        preff.edit()
+            .putInt("LemonSum", tmpL)
+            .putInt("GrapeSum", tmpG)
+            .putInt("MaxScore2", tmpS)
+            .apply()
+    }
     override fun onStart() {
         super.onStart()
         enableButton()
+        save()
     }
     override fun onResume() {
         super.onResume()
         enableButton()
+        save()
     }
     override fun onPause() {
         super.onPause()
@@ -98,27 +115,11 @@ class MainActivity : AppCompatActivity() {
         disableButton()
     }
 
-    //override fun onBackPressed() {
-    //super.onBackPressed()
-
-    //val builder = AlertDialog.Builder(this)
-
-    //builder.setMessage("Are you sure to Exit?")
-    //builder.setCancelable(true)
-
-    // builder.setNegativeButton("No", DialogInterface.OnClickListener{ dialogInterface, i ->
-
-    // dialogInterface.cancel()
-    //  })
-    // builder.setPositiveButton("Exit", DialogInterface.OnClickListener{ dialogInterface, i ->
-
-    //    finish()
-    //      System.exit(0)
-    //  })
-
-    //  val alertDialog = builder.create()
-    //  alertDialog.show()
-
-    //}
+    override fun onBackPressed() {
+        val intent = Intent(Intent.ACTION_MAIN)
+        intent.addCategory(Intent.CATEGORY_HOME)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+    }
 
 }

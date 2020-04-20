@@ -1,7 +1,6 @@
 package org.tensorflow.lite.examples.posenet
 
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import android.view.View.INVISIBLE
@@ -12,7 +11,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-//import org.tensorflow.lite.examples.posenet.MainActivity.Companion.pref
+import org.tensorflow.lite.examples.posenet.EatingActivity.Companion.grapeC
+import org.tensorflow.lite.examples.posenet.EatingActivity.Companion.lemonC
+import org.tensorflow.lite.examples.posenet.EatingActivity.Companion.maxScoreC
 
 class Achievements: AppCompatActivity() {
     private lateinit var maxScore1: TextView
@@ -121,6 +122,19 @@ class Achievements: AppCompatActivity() {
     }
 
     private fun refresh(){
+//        val preff = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
+//        var tmpL = preff.getInt("LemonSum", 0)
+//        tmpL += lemonC
+//        lemonC = 0
+//        var tmpG = preff.getInt("GrapeSum", 0)
+//        tmpG += grapeC
+//        grapeC = 0
+//
+//        preff.edit()
+//            .putInt("LemonSum", tmpL)
+//            .putInt("GrapeSum", tmpG)
+//            .putInt("MaxScore2", maxScoreC)
+//            .apply()
         val score1 = getSharedPreferences("Game_Data", Context.MODE_PRIVATE).getInt("MaxScore1", 0)
         maxScore1.text = "Maximum Score: $score1"
         if (score1 >= STAR1) {
@@ -143,11 +157,19 @@ class Achievements: AppCompatActivity() {
             star3_b.visibility = INVISIBLE
             star3.visibility = VISIBLE
         }
+
         val score2 = getSharedPreferences("Game_Data", Context.MODE_PRIVATE).getInt("MaxScore2", 0)
         maxScore2.text = "Maximum Score: $score2"
         if (score2 >= FRUIT1) {
             fruit1_b.visibility = INVISIBLE
             fruit1.visibility = VISIBLE
+        }else{
+            fruit1.visibility = INVISIBLE
+            fruit2.visibility = INVISIBLE
+            fruit3.visibility = INVISIBLE
+            fruit1_b.visibility = VISIBLE
+            fruit2_b.visibility = VISIBLE
+            fruit3_b.visibility = VISIBLE
         }
         if (score2 >= FRUIT2) {
             fruit2_b.visibility = INVISIBLE
@@ -163,6 +185,13 @@ class Achievements: AppCompatActivity() {
         if (lemonSum >= LEMON1) {
             lemon1_b.visibility = INVISIBLE
             lemon1.visibility = VISIBLE
+        }else{
+            lemon1.visibility = INVISIBLE
+            lemon2.visibility = INVISIBLE
+            lemon3.visibility = INVISIBLE
+            lemon1_b.visibility = VISIBLE
+            lemon2_b.visibility = VISIBLE
+            lemon3_b.visibility = VISIBLE
         }
         if (lemonSum >= LEMON2) {
             lemon2_b.visibility = INVISIBLE
@@ -178,6 +207,13 @@ class Achievements: AppCompatActivity() {
         if (grapeSum >= GRAPE1) {
             grape1_b.visibility = INVISIBLE
             grape1.visibility = VISIBLE
+        }else{
+            grape1.visibility = INVISIBLE
+            grape2.visibility = INVISIBLE
+            grape3.visibility = INVISIBLE
+            grape1_b.visibility = VISIBLE
+            grape2_b.visibility = VISIBLE
+            grape3_b.visibility = VISIBLE
         }
         if (grapeSum >= GRAPE2) {
             grape2_b.visibility = INVISIBLE

@@ -1,25 +1,21 @@
 package org.tensorflow.lite.examples.posenet
 
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Point
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.view.MotionEvent
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import org.tensorflow.lite.examples.posenet.PosenetActivity.Companion.armspos
 import java.util.*
 import kotlin.random.Random
-import org.tensorflow.lite.examples.posenet.PosenetActivity.Companion.handup
-import org.tensorflow.lite.examples.posenet.PosenetActivity.Companion.armspos
 
 class EatingActivity: AppCompatActivity() {
     private lateinit var memmusic: MediaPlayer
@@ -43,15 +39,20 @@ class EatingActivity: AppCompatActivity() {
     private var shitX = 0
     private var shitY = 0
 
-    private var score = 0
-
     private var handler = Handler()
     private var timer = Timer()
 
     //private var action_flg = false
     private var start_flg = false
 
+    private var baseShit = 0
 
+    companion object{
+        var score2 = 0
+        var maxScoreC = 0
+        var lemonC = 0
+        var grapeC = 0
+    }
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_eating)
@@ -65,7 +66,6 @@ class EatingActivity: AppCompatActivity() {
         memmusic.setVolume(0.7f, 0.7f)
         memmusic.start()
 
-
         scoreLabel = findViewById(R.id.scoreLabel)
         startLabel = findViewById(R.id.startLabel)
 
@@ -76,7 +76,6 @@ class EatingActivity: AppCompatActivity() {
         lemon.visibility = View.INVISIBLE
         grape.visibility = View.INVISIBLE
         shit.visibility = View.INVISIBLE
-
 
         var disp = windowManager.defaultDisplay
         var size = Point(0,0)
@@ -159,7 +158,9 @@ class EatingActivity: AppCompatActivity() {
         shitX -= 10
         if(shitX < 0){
             shitX = screenWidth + 20
-            shitY = Random.nextInt(0, frameheight - shit.height)
+            baseShit = (baseShit + 1) % 4
+            shitY = if(baseShit == 0) frameheight - shit.height - 1//ensure endgame
+            else Random.nextInt(0, frameheight - shit.height)
         }
         shit.x = shitX.toFloat()
         shit.y = shitY.toFloat()
@@ -175,33 +176,31 @@ class EatingActivity: AppCompatActivity() {
 
         mouth.y = boxY.toFloat()
 
-        val tmp = "Score: $score"
+        val tmp = "Score: $score2"
         scoreLabel.text = tmp
 
     }
 
     private fun hitCheck(){
 
-        var lemonCenterX = lemonX + lemon.width/2
-        var lemonCenterY = lemonY + lemon.height/2
+//        var lemonCenterX = lemonX + lemon.width/2
+//        var lemonCenterY = lemonY + lemon.height/2
+        val lemonBottom = lemonY + lemon.height //easier to eat
 
-        if(lemonCenterX in 0..boxsize && lemonCenterY in boxY..(boxY + boxsize)) {
-            score += 10
+        if(lemonX in 0..boxsize && (lemonY in boxY..(boxY + boxsize) || lemonBottom in boxY..(boxY + boxsize))) {
+            score2 += 10
             lemonX = -10
-            val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
-            val lemon = pref.getInt("lemonSum", 0) + 1
-            pref.edit().putInt("lemonSum", lemon).apply()
+            lemonC++
         }
 
-        var grapeCenterX = grapeX + grape.width / 2
-        var grapeCenterY = grapeY + grape.height / 2
+//        var grapeCenterX = grapeX + grape.width / 2
+//        var grapeCenterY = grapeY + grape.height / 2
+        val grapeBottom = grapeY + grape.height //easier to eat
 
-        if (grapeCenterX in 0..boxsize && grapeCenterY in boxY..(boxY + boxsize)) {
-            score += 30
+        if (grapeX in 0..boxsize && (grapeY in boxY..(boxY + boxsize) || grapeBottom in boxY..(boxY + boxsize))) {
+            score2 += 30
             grapeX = -10
-            val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
-            val grape = pref.getInt("grapeSum", 0) + 1
-            pref.edit().putInt("grapeSum", grape).apply()
+            grapeC++
         }
 
         var shitCenterX = shitX + shit.width / 2
@@ -210,7 +209,6 @@ class EatingActivity: AppCompatActivity() {
         if (shitCenterX in 0..boxsize && shitCenterY in boxY..(boxY + boxsize)) {
             timer.cancel()
             val intent = Intent(this, EatingResultActivity::class.java)
-            intent.putExtra("Score", score)
             startActivity(intent)
         }
     }
