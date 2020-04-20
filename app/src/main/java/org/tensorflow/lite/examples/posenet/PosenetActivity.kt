@@ -653,9 +653,6 @@ class PosenetActivity :
       val rotateMatrix = Matrix()
       rotateMatrix.postRotate(-90.0f)
       rotateMatrix.postScale(-1f, 1f)
-//      val cx = imageBitmap.width / 2f
-//      val cy = imageBitmap.height / 2f
-//      rotateMatrix.postScale(-1f, 1f, cx, cy)
       /*DEBUG*/
 //      rotateMatrix.postRotate(90.0f)
 
@@ -758,7 +755,7 @@ class PosenetActivity :
         val position = keyPoint.position
         val adjustedX: Float = position.x.toFloat() * widthRatio + left
         val adjustedY: Float = position.y.toFloat() * heightRatio + top
-        canvas.drawCircle(adjustedX, adjustedY, circleRadius, paint)
+//        canvas.drawCircle(adjustedX, adjustedY, circleRadius, paint)
       } else {  //default releasing arms
         if(keyPoint.bodyPart == BodyPart.RIGHT_WRIST||keyPoint.bodyPart == BodyPart.RIGHT_ELBOW){
           armspos[0] = false
@@ -774,13 +771,16 @@ class PosenetActivity :
     for (line in bodyJoints) {
       if ((person.keyPoints[line.first.ordinal].score > minConfidence)
         and (person.keyPoints[line.second.ordinal].score > minConfidence)) {
-        canvas.drawLine(
-          person.keyPoints[line.first.ordinal].position.x.toFloat() * widthRatio + left,
-          person.keyPoints[line.first.ordinal].position.y.toFloat() * heightRatio + top,
-          person.keyPoints[line.second.ordinal].position.x.toFloat() * widthRatio + left,
-          person.keyPoints[line.second.ordinal].position.y.toFloat() * heightRatio + top,
-          paint
-        )
+          if(!(line == Pair(BodyPart.LEFT_HIP, BodyPart.LEFT_KNEE) ||
+            line == Pair(BodyPart.LEFT_KNEE, BodyPart.LEFT_ANKLE) ||
+            line == Pair(BodyPart.RIGHT_HIP, BodyPart.RIGHT_KNEE) ||
+            line == Pair(BodyPart.RIGHT_KNEE, BodyPart.RIGHT_ANKLE)))
+              canvas.drawLine(
+                person.keyPoints[line.first.ordinal].position.x.toFloat() * widthRatio + left,
+                person.keyPoints[line.first.ordinal].position.y.toFloat() * heightRatio + top,
+                person.keyPoints[line.second.ordinal].position.x.toFloat() * widthRatio + left,
+                person.keyPoints[line.second.ordinal].position.y.toFloat() * heightRatio + top,
+                paint)
         /*Left and right are reversed*/
         if(gameID != 1){
           if (line == Pair(BodyPart.LEFT_WRIST, BodyPart.LEFT_ELBOW)) {
