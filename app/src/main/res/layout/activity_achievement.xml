@@ -473,6 +473,83 @@
                 app:layout_constraintTop_toBottomOf="@id/max_score3"
                 app:srcCompat="@drawable/farmer_color" />
 
+            <TextView
+                android:id="@+id/veg_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/accVegetable"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/harvest1_outline" />
+
+            <ImageView
+                android:id="@+id/veg1_outline"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/veg2_outline"
+                app:layout_constraintTop_toBottomOf="@id/veg_score"
+                app:srcCompat="@drawable/veg_outline"
+                tools:layout_constraintLeft_toLeftOf="parent" />
+
+            <ImageView
+                android:id="@+id/veg2_outline"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toStartOf="@id/veg3_outline"
+                app:layout_constraintStart_toEndOf="@id/veg1_outline"
+                app:layout_constraintTop_toBottomOf="@id/veg_score"
+                app:srcCompat="@drawable/veg_outline" />
+
+            <ImageView
+                android:id="@+id/veg3_outline"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintLeft_toRightOf="@id/veg2_outline"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/veg_score"
+                app:srcCompat="@drawable/veg_outline" />
+
+            <ImageView
+                android:id="@+id/veg1_color"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/veg2_color"
+                app:layout_constraintTop_toBottomOf="@id/veg_score"
+                app:srcCompat="@drawable/veg_color" />
+
+            <ImageView
+                android:id="@+id/veg2_color"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible"
+                app:layout_constraintLeft_toRightOf="@id/veg1_color"
+                app:layout_constraintRight_toLeftOf="@id/veg3_color"
+                app:layout_constraintTop_toBottomOf="@id/veg_score"
+                app:srcCompat="@drawable/veg_color" />
+
+            <ImageView
+                android:id="@+id/veg3_color"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible"
+                app:layout_constraintLeft_toRightOf="@id/veg2_color"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/veg_score"
+                app:srcCompat="@drawable/veg_color" />
+
             <Button
                 android:id="@+id/rst_btn"
                 android:layout_width="wrap_content"
@@ -480,7 +557,8 @@
                 android:layout_marginTop="20dp"
                 android:text="Reset"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/harvest1_outline" />
+                app:layout_constraintTop_toBottomOf="@id/veg1_outline" />
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

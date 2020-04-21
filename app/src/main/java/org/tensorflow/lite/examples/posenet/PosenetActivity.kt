@@ -310,22 +310,22 @@ class PosenetActivity :
     when (rnd) {
       0 -> {
         upLeftCompass.visibility = VISIBLE
-        command.text = "raise up left hand"
+        command.text = "raise up your left hand"
         leftUp.start()
       }
       1 -> {
         downLeftCompass.visibility = VISIBLE
-        command.text = "put down left hand"
+        command.text = "put down your left hand"
         leftDown.start()
       }
       2 -> {
         upRightCompass.visibility = VISIBLE
-        command.text = "raise up right hand"
+        command.text = "raise up your right hand"
         rightUp.start()
       }
       else -> {
         downRightCompass.visibility = VISIBLE
-        command.text = "put down right hand"
+        command.text = "put down your right hand"
         rightDown.start()
       }
     }
@@ -498,8 +498,8 @@ class PosenetActivity :
         // We don't use a front facing camera in this sample.
         val cameraDirection = characteristics.get(CameraCharacteristics.LENS_FACING)
         if (cameraDirection != null &&
-        cameraDirection == CameraCharacteristics.LENS_FACING_BACK
-//        cameraDirection == CameraCharacteristics.LENS_FACING_FRONT //DEBUG
+//        cameraDirection == CameraCharacteristics.LENS_FACING_BACK
+        cameraDirection == CameraCharacteristics.LENS_FACING_FRONT //DEBUG
         ) {
           continue
         }
@@ -651,10 +651,10 @@ class PosenetActivity :
 
       // Create rotated version for portrait display
       val rotateMatrix = Matrix()
-      rotateMatrix.postRotate(-90.0f)
-      rotateMatrix.postScale(-1f, 1f)
+//      rotateMatrix.postRotate(-90.0f)
+//      rotateMatrix.postScale(-1f, 1f)
       /*DEBUG*/
-//      rotateMatrix.postRotate(90.0f)
+      rotateMatrix.postRotate(90.0f)
 
       val rotatedBitmap = Bitmap.createBitmap(
         imageBitmap, 0, 0, previewWidth, previewHeight,

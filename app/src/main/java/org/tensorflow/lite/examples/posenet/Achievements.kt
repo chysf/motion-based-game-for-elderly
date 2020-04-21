@@ -56,6 +56,14 @@ class Achievements: AppCompatActivity() {
     private lateinit var harvest2: ImageView
     private lateinit var harvest3: ImageView
 
+    private lateinit var vegScore: TextView
+    private lateinit var veg1_b: ImageView
+    private lateinit var veg2_b: ImageView
+    private lateinit var veg3_b: ImageView
+    private lateinit var veg1: ImageView
+    private lateinit var veg2: ImageView
+    private lateinit var veg3: ImageView
+
     private lateinit var rstBtn: Button
 
     //score to unlock achievement
@@ -74,10 +82,14 @@ class Achievements: AppCompatActivity() {
     private val GRAPE1 = 5
     private val GRAPE2 = 15
     private val GRAPE3 = 20
-//    mismatch
-    private val HARVEST1 = 20
-    private val HARVEST2 = 10
-    private val HARVEST3 = 5
+
+    private val HARVEST1 = 1
+    private val HARVEST2 = 2
+    private val HARVEST3 = 3
+
+    private val VEG1 = 10
+    private val VEG2 = 20
+    private val VEG3 = 30
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,7 +109,7 @@ class Achievements: AppCompatActivity() {
                         getSharedPreferences("Game_Data", Context.MODE_PRIVATE).edit()
                             .putInt("MaxScore1", 0)
                             .putInt("MaxScore2", 0)
-                            .putInt("MinScore3", 50)
+                            .putInt("MaxScore3", 0)
                             .putInt("LemonSum", 0)
                             .putInt("GrapeSum", 0)
                             .apply()
@@ -122,19 +134,6 @@ class Achievements: AppCompatActivity() {
     }
 
     private fun refresh(){
-//        val preff = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
-//        var tmpL = preff.getInt("LemonSum", 0)
-//        tmpL += lemonC
-//        lemonC = 0
-//        var tmpG = preff.getInt("GrapeSum", 0)
-//        tmpG += grapeC
-//        grapeC = 0
-//
-//        preff.edit()
-//            .putInt("LemonSum", tmpL)
-//            .putInt("GrapeSum", tmpG)
-//            .putInt("MaxScore2", maxScoreC)
-//            .apply()
         val score1 = getSharedPreferences("Game_Data", Context.MODE_PRIVATE).getInt("MaxScore1", 0)
         maxScore1.text = "Maximum Score: $score1"
         if (score1 >= STAR1) {
@@ -224,10 +223,9 @@ class Achievements: AppCompatActivity() {
             grape3.visibility = VISIBLE
         }
 
-        val score3 = getSharedPreferences("Game_Data", Context.MODE_PRIVATE).getInt("MinScore3", 50)
-        if(score3 == 50) maxScore3.text = "N/A"
-        else maxScore3.text = "Minimum Mismatches: $score3"
-        if (score3 <= HARVEST1) {
+        val score3 = getSharedPreferences("Game_Data", Context.MODE_PRIVATE).getInt("MaxScore3", 0)
+        maxScore3.text = "Maximum Score: $score3"
+        if (score3 >= HARVEST1) {
             harvest1_b.visibility = INVISIBLE
             harvest1.visibility = VISIBLE
         }else{
@@ -238,13 +236,36 @@ class Achievements: AppCompatActivity() {
             harvest2_b.visibility = VISIBLE
             harvest3_b.visibility = VISIBLE
         }
-        if (score3 <= HARVEST2) {
+        if (score3 >= HARVEST2) {
             harvest2_b.visibility = INVISIBLE
             harvest2.visibility = VISIBLE
         }
-        if (score3 <= HARVEST3) {
+        if (score3 >= HARVEST3) {
             harvest3_b.visibility = INVISIBLE
             harvest3.visibility = VISIBLE
+        }
+
+        val vegSum = getSharedPreferences("Game_Data", Context.MODE_PRIVATE).getInt("VegSum", 0)
+        if(score3 == 0) maxScore3.text = "0"
+        else maxScore3.text = "Accumulative Score: $vegSum"
+        if (score3 <= VEG1) {
+            veg1_b.visibility = INVISIBLE
+            veg1.visibility = VISIBLE
+        }else{
+            veg1.visibility = INVISIBLE
+            veg2.visibility = INVISIBLE
+            veg3.visibility = INVISIBLE
+            veg1_b.visibility = VISIBLE
+            veg2_b.visibility = VISIBLE
+            veg3_b.visibility = VISIBLE
+        }
+        if (score3 <= VEG2) {
+            veg2_b.visibility = INVISIBLE
+            veg2.visibility = VISIBLE
+        }
+        if (score3 <= VEG3) {
+            veg3_b.visibility = INVISIBLE
+            veg3.visibility = VISIBLE
         }
     }
     private fun init(){
@@ -280,7 +301,6 @@ class Achievements: AppCompatActivity() {
         grape1 = findViewById(R.id.grape1_color)
         grape2 = findViewById(R.id.grape2_color)
         grape3 = findViewById(R.id.grape3_color)
-
         //game3
         maxScore3 = findViewById(R.id.max_score3)
         harvest1_b = findViewById(R.id.harvest1_outline)
@@ -289,6 +309,14 @@ class Achievements: AppCompatActivity() {
         harvest1 = findViewById(R.id.harvest1_color)
         harvest2 = findViewById(R.id.harvest2_color)
         harvest3 = findViewById(R.id.harvest3_color)
+
+        vegScore = findViewById(R.id.veg_score)
+        veg1_b = findViewById(R.id.veg1_outline)
+        veg2_b = findViewById(R.id.veg2_outline)
+        veg3_b = findViewById(R.id.veg3_outline)
+        veg1 = findViewById(R.id.veg1_color)
+        veg2 = findViewById(R.id.veg2_color)
+        veg3 = findViewById(R.id.veg3_color)
 
         rstBtn = findViewById(R.id.rst_btn)
     }
