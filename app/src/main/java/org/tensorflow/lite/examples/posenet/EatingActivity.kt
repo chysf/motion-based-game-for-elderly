@@ -93,6 +93,15 @@ class EatingActivity: AppCompatActivity() {
 
         scoreLabel.text = "Score: 0"
 
+
+
+        val builder2 = AlertDialog.Builder(this)
+        builder2.setTitle("Game Instruction")
+        builder2.setMessage("Raise up or Put down your hand to move the mouth **Eat the Poopoo will end the game**")
+        builder2.setPositiveButton("OK",null)
+        val alertDialog = builder2.create()
+        alertDialog.show()
+
     }
 
     override fun onPause() {
