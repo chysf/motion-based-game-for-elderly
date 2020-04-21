@@ -14,6 +14,31 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_achievement.*
 
 class Achievements: AppCompatActivity() {
+    //score to unlock achievement
+    private val STAR1 = 5
+    private val STAR2 = 15
+    private val STAR3 = 25
+
+    private val FRUIT1 = 100
+    private val FRUIT2 = 200
+    private val FRUIT3 = 300
+
+    private val LEMON1 = 5
+    private val LEMON2 = 15
+    private val LEMON3 = 20
+
+    private val GRAPE1 = 5
+    private val GRAPE2 = 15
+    private val GRAPE3 = 20
+
+    private val HARVEST1 = 1
+    private val HARVEST2 = 3
+    private val HARVEST3 = 6
+
+    private val VEG1 = 10
+    private val VEG2 = 20
+    private val VEG3 = 30
+
     private lateinit var maxScore1: TextView
     private lateinit var star1_b: ImageView
     private lateinit var star2_b: ImageView
@@ -64,31 +89,6 @@ class Achievements: AppCompatActivity() {
 
     private lateinit var rstBtn: Button
 
-    //score to unlock achievement
-    private val STAR1 = 5
-    private val STAR2 = 15
-    private val STAR3 = 20
-
-    private val FRUIT1 = 50
-    private val FRUIT2 = 100
-    private val FRUIT3 = 200
-
-    private val LEMON1 = 5
-    private val LEMON2 = 15
-    private val LEMON3 = 20
-
-    private val GRAPE1 = 5
-    private val GRAPE2 = 15
-    private val GRAPE3 = 20
-
-    private val HARVEST1 = 1
-    private val HARVEST2 = 3
-    private val HARVEST3 = 6
-
-    private val VEG1 = 10
-    private val VEG2 = 20
-    private val VEG3 = 30
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_achievement)
@@ -110,6 +110,13 @@ class Achievements: AppCompatActivity() {
                             .putInt("MaxScore3", 0)
                             .putInt("LemonSum", 0)
                             .putInt("GrapeSum", 0)
+                            .putInt("VegSum", 0)
+//                            .putInt("MaxScore1", 30)
+//                            .putInt("MaxScore2", 250)
+//                            .putInt("MaxScore3", 3)
+//                            .putInt("LemonSum", 6)
+//                            .putInt("GrapeSum", 10)
+//                            .putInt("VegSum", 20)
                             .apply()
                         refresh()
                         Toast.makeText(this, "reset", Toast.LENGTH_SHORT).show()
@@ -245,7 +252,7 @@ class Achievements: AppCompatActivity() {
 
         val vegSum = getSharedPreferences("Game_Data", Context.MODE_PRIVATE).getInt("VegSum", 0)
         vegScore.text = "Accumulative Score: $vegSum"
-        if (score3 <= VEG1) {
+        if (vegSum >= VEG1) {
             veg1_b.visibility = INVISIBLE
             veg1.visibility = VISIBLE
         }else{
@@ -256,11 +263,11 @@ class Achievements: AppCompatActivity() {
             veg2_b.visibility = VISIBLE
             veg3_b.visibility = VISIBLE
         }
-        if (score3 <= VEG2) {
+        if (vegSum >= VEG2) {
             veg2_b.visibility = INVISIBLE
             veg2.visibility = VISIBLE
         }
-        if (score3 <= VEG3) {
+        if (vegSum >= VEG3) {
             veg3_b.visibility = INVISIBLE
             veg3.visibility = VISIBLE
         }
