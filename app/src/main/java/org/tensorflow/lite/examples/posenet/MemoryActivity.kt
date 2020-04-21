@@ -1491,7 +1491,7 @@ class MemoryActivity : AppCompatActivity() {
 
         {
             val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
-            if(getPoints == 120){
+            if(getPoints == 6){
                 pref.edit()?.putInt("MaxScore3", getPoints)?.apply()
             }
             layout202.visibility = VISIBLE
