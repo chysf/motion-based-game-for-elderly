@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="@string/maxScore"
+                android:text="MaxImum Score: 11"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/game1_title" />
@@ -474,7 +474,7 @@
                 app:srcCompat="@drawable/farmer_color" />
 
             <TextView
-                android:id="@+id/veg_score"
+                android:id="@+id/score_veg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -492,7 +492,7 @@
                 app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/veg2_outline"
-                app:layout_constraintTop_toBottomOf="@id/veg_score"
+                app:layout_constraintTop_toBottomOf="@id/score_veg"
                 app:srcCompat="@drawable/veg_outline"
                 tools:layout_constraintLeft_toLeftOf="parent" />
 
@@ -503,7 +503,7 @@
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toStartOf="@id/veg3_outline"
                 app:layout_constraintStart_toEndOf="@id/veg1_outline"
-                app:layout_constraintTop_toBottomOf="@id/veg_score"
+                app:layout_constraintTop_toBottomOf="@id/score_veg"
                 app:srcCompat="@drawable/veg_outline" />
 
             <ImageView
@@ -513,7 +513,7 @@
                 android:layout_marginTop="10dp"
                 app:layout_constraintLeft_toRightOf="@id/veg2_outline"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/veg_score"
+                app:layout_constraintTop_toBottomOf="@id/score_veg"
                 app:srcCompat="@drawable/veg_outline" />
 
             <ImageView
@@ -525,7 +525,7 @@
                 app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/veg2_color"
-                app:layout_constraintTop_toBottomOf="@id/veg_score"
+                app:layout_constraintTop_toBottomOf="@id/score_veg"
                 app:srcCompat="@drawable/veg_color" />
 
             <ImageView
@@ -536,7 +536,7 @@
                 android:visibility="invisible"
                 app:layout_constraintLeft_toRightOf="@id/veg1_color"
                 app:layout_constraintRight_toLeftOf="@id/veg3_color"
-                app:layout_constraintTop_toBottomOf="@id/veg_score"
+                app:layout_constraintTop_toBottomOf="@id/score_veg"
                 app:srcCompat="@drawable/veg_color" />
 
             <ImageView
@@ -547,7 +547,7 @@
                 android:visibility="invisible"
                 app:layout_constraintLeft_toRightOf="@id/veg2_color"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/veg_score"
+                app:layout_constraintTop_toBottomOf="@id/score_veg"
                 app:srcCompat="@drawable/veg_color" />
 
             <Button

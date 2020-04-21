@@ -20,6 +20,7 @@ import android.Manifest
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -292,6 +293,12 @@ class PosenetActivity :
     remainingTime = view.findViewById(R.id.remainingTime)
     timeBar = view.findViewById(R.id.timeBar)
     scoreLabel = view.findViewById(R.id.scoreLabel)
+
+    val builder = AlertDialog.Builder(this@PosenetActivity.activity)
+    builder.setMessage("Press the start button and follow the text/audio commands!\n\nCatch me if you can A_A")
+    builder.setCancelable(true)
+    builder.setPositiveButton("OK!") { _, _ -> }
+    builder.create().show()
   }
 
   private fun playRandomCommand() {
@@ -354,10 +361,12 @@ class PosenetActivity :
     command.text = "GAME OVER!"
     val pref = this@PosenetActivity.activity?.getSharedPreferences("Game_Data", AppCompatActivity.MODE_PRIVATE)
     val maxScore = pref?.getInt("MaxScore1", 0)
+    var flag = false
     if(score > maxScore!!){
       pref?.edit()
         ?.putInt("MaxScore1", score)
         ?.apply()
+      flag = true
     }
     level = 0
     progress = 100
@@ -365,7 +374,13 @@ class PosenetActivity :
       timeBar.setProgress(progress, true)
     }
     remainingTime.text = "Time Remaining"
-
+    val builder = AlertDialog.Builder(this@PosenetActivity.activity)
+    if(flag) builder.setMessage("Congrats! You break the record!:D\n\n" +
+            "Press anywhere to close me ><")
+    else builder.setMessage("Add oil! You will get higher score next time!\n\n" +
+            "Press anywhere to close me ><")
+    builder.setCancelable(true)
+    builder.create().show()
   }
   private val timer0 = object: CountDownTimer(delayTime[0], 200) {
     @RequiresApi(Build.VERSION_CODES.N)
