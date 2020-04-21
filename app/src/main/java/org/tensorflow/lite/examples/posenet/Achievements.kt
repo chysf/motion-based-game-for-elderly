@@ -11,9 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import org.tensorflow.lite.examples.posenet.EatingActivity.Companion.grapeC
-import org.tensorflow.lite.examples.posenet.EatingActivity.Companion.lemonC
-import org.tensorflow.lite.examples.posenet.EatingActivity.Companion.maxScoreC
+import kotlinx.android.synthetic.main.activity_achievement.*
 
 class Achievements: AppCompatActivity() {
     private lateinit var maxScore1: TextView
@@ -246,8 +244,7 @@ class Achievements: AppCompatActivity() {
         }
 
         val vegSum = getSharedPreferences("Game_Data", Context.MODE_PRIVATE).getInt("VegSum", 0)
-        if(score3 == 0) maxScore3.text = "0"
-        else maxScore3.text = "Accumulative Score: $vegSum"
+        vegScore.text = "Accumulative Score: $vegSum"
         if (score3 <= VEG1) {
             veg1_b.visibility = INVISIBLE
             veg1.visibility = VISIBLE
@@ -310,7 +307,7 @@ class Achievements: AppCompatActivity() {
         harvest2 = findViewById(R.id.harvest2_color)
         harvest3 = findViewById(R.id.harvest3_color)
 
-        vegScore = findViewById(R.id.veg_score)
+        vegScore = findViewById(R.id.score_veg)
         veg1_b = findViewById(R.id.veg1_outline)
         veg2_b = findViewById(R.id.veg2_outline)
         veg3_b = findViewById(R.id.veg3_outline)
