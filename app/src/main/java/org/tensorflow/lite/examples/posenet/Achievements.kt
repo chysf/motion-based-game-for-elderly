@@ -82,8 +82,8 @@ class Achievements: AppCompatActivity() {
     private val GRAPE3 = 20
 
     private val HARVEST1 = 1
-    private val HARVEST2 = 2
-    private val HARVEST3 = 3
+    private val HARVEST2 = 3
+    private val HARVEST3 = 6
 
     private val VEG1 = 10
     private val VEG2 = 20

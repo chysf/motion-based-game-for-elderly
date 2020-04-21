@@ -9,7 +9,6 @@ import android.os.Build
 import android.widget.*
 import android.content.Intent
 import androidx.annotation.RequiresApi
-import android.app.AlertDialog
 import android.content.Context
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
@@ -26,10 +25,17 @@ class MemoryActivity : AppCompatActivity() {
 
     private lateinit var tvp1: TextView
     private lateinit var tvp2: TextView
+    private lateinit var tvp3: TextView
     private lateinit var btn1: Button
+    private lateinit var btn2: Button
+    private lateinit var btn3: Button
     private lateinit var container: FrameLayout
     private lateinit var layout101: RelativeLayout
     private lateinit var layout102: RelativeLayout
+    private lateinit var layout103: RelativeLayout
+    private lateinit var layout202: RelativeLayout
+
+    private lateinit var img101: ImageView
 
     private lateinit var iv11: ImageView
     private lateinit var iv12: ImageView
@@ -61,10 +67,12 @@ class MemoryActivity : AppCompatActivity() {
     private var cardsArray = listOf(101, 102, 103, 104, 105, 106, 201, 202, 203, 204, 205, 206)
 
     //Time of clicking
-    private var clicked01: Int = 0
-    private var clicked02: Int = 0
+    private var clicked00: Int = 0 //For click function instead of handup
+    private var clicked01: Int = 0 //For CAM preview
+    private var clicked02: Int = 0 //For the game
+    private var clicked03: Int = 0 //For stopping handlers
 
-    //Create STOP variables for each image button
+    //STOP variables for each image button
     private var x01: Int = 0
     private var x02: Int = 0
     private var x03: Int = 0
@@ -99,7 +107,10 @@ class MemoryActivity : AppCompatActivity() {
     private var cardNumber = 1
 
     private var mismatchPoints = 0
+    private var getPoints = 0
 
+    private var ha00 = Handler()
+    private var ha11 = Handler()
     private var ha03 = Handler()
     private var ha04 = Handler()
     private var ha05 = Handler()
@@ -113,8 +124,10 @@ class MemoryActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         musicTT.pause()
-        tvp2.text = null
-        container.visibility = INVISIBLE
+        clicked03 = 5
+        layout202.visibility = INVISIBLE
+        ha00.removeCallbacksAndMessages(null)
+        ha11.removeCallbacksAndMessages(null)
     }
 
 
@@ -130,10 +143,17 @@ class MemoryActivity : AppCompatActivity() {
 
         tvp1 = findViewById(R.id.tvp1)
         tvp2 = findViewById(R.id.tvp2)
+        tvp3 = findViewById(R.id.tvp3)
         btn1 = findViewById(R.id.btn1)
+        btn2 = findViewById(R.id.btn2)
+        btn3 = findViewById(R.id.btn3)
         container = findViewById(R.id.container)
         layout101 = findViewById(R.id.layout101)
         layout102 = findViewById(R.id.layout102)
+        layout103 = findViewById(R.id.layout103)
+        layout202 = findViewById(R.id.layout202)
+
+        img101 = findViewById(R.id.img101)
 
         //Question image
         iv11 = findViewById(R.id.iv11) //ImageView #11
@@ -189,6 +209,7 @@ class MemoryActivity : AppCompatActivity() {
         iv042.visibility = INVISIBLE
         iv043.visibility = INVISIBLE
 
+        img101.visibility = INVISIBLE
 
         //Loading the card images
         frontOfCardsResources()
@@ -227,8 +248,9 @@ class MemoryActivity : AppCompatActivity() {
         btn1.setOnClickListener {
             clicked01++
             if (clicked01%2 != 0) {
+                clicked00 = 1
                 container.visibility = INVISIBLE
-                Toast.makeText(applicationContext, "Click to OPEN", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Click to HANDUP", Toast.LENGTH_SHORT).show()
 
                 iv21.alpha = 1F
                 iv22.alpha = 1F
@@ -245,8 +267,9 @@ class MemoryActivity : AppCompatActivity() {
                 iv033.alpha = 1F
             }
             if (clicked01%2 == 0){
+                clicked00 = 0
                 container.visibility = VISIBLE
-                Toast.makeText(applicationContext, "Click to HIDE", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Choose to CLICK", Toast.LENGTH_SHORT).show()
 
                 iv21.alpha = 0.7F
                 iv22.alpha = 0.7F
@@ -262,6 +285,16 @@ class MemoryActivity : AppCompatActivity() {
                 iv032.alpha = 0.7F
                 iv033.alpha = 0.7F
             }
+        }
+
+        btn2.setOnClickListener {
+            val intent = Intent(applicationContext, MemoryActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        btn3.setOnClickListener {
+            finish()
         }
 
 
@@ -376,6 +409,23 @@ class MemoryActivity : AppCompatActivity() {
             tvp2.text = null
         }, 8000)
 
+        //No response after start in 1 mins 30 seconds to finish
+        Handler().postDelayed({
+            if (clicked02 == 0 && clicked03 == 0) {
+
+                layout202.visibility = VISIBLE
+                img101.visibility= VISIBLE
+                img101.setImageResource(R.drawable.cry101)
+                tvp3.text = "Time is running out!\nScore: 0"
+                musicTT.pause()
+
+                x01 = 5; x02 = 5; x03 = 5; x04 = 5; x05 = 5; x06 = 5
+                x07 = 5; x08 = 5; x09 = 5; x10 = 5; x11 = 5; x12 = 5
+                clicked03 = 5 //Stop this handler
+            }
+        }, 90000)
+
+
         //Set 12 time intervals and loop
         val ha02 = Handler()
         ha02.postDelayed(object : Runnable {
@@ -391,22 +441,26 @@ class MemoryActivity : AppCompatActivity() {
                         iv011.visibility = VISIBLE
                     }
                     //Use Posenet to handle 12 image buttons
-                    if (handup && x01 != 5 && iv43.visibility == VISIBLE) {
-                        clicked02++
-                        iv43.callOnClick() //Click previous image to fix Posenet delays
-                        handup = false
-                        x01 = 5
-                        x02 = 0
-                        x03 = 0
-                        x04 = 0
-                        x05 = 0
-                        x06 = 0
-                        x07 = 0
-                        x08 = 0
-                        x09 = 0
-                        x10 = 0
-                        x11 = 0
-                        x12 = 0
+                    if (clicked00 == 0) {
+                        if (handup && x01 != 5 && iv43.visibility == VISIBLE) {
+                            clicked02++
+                            iv43.callOnClick() //Click previous image to fix Posenet delays
+                            handup = false
+                            x01 = 5 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
+                    }
+                    //Click function instead of handup
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x01 != 5 && iv11.visibility == VISIBLE) {
+                                clicked02++
+                                iv11.callOnClick() //Click previous image to fix Posenet delays
+                                handup = false
+                                x01 = 5 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
                     }
                 },5000)
                 Handler().postDelayed({
@@ -416,22 +470,25 @@ class MemoryActivity : AppCompatActivity() {
                     if (iv12.visibility == INVISIBLE) {
                         iv012.visibility = VISIBLE
                     }
-                    if (handup && x02 != 5 && iv11.visibility == VISIBLE) {
-                        clicked02++
-                        iv11.callOnClick()
-                        handup = false
-                        x01 = 0
-                        x02 = 5
-                        x03 = 0
-                        x04 = 0
-                        x05 = 0
-                        x06 = 0
-                        x07 = 0
-                        x08 = 0
-                        x09 = 0
-                        x10 = 0
-                        x11 = 0
-                        x12 = 0
+                    if (clicked00 == 0) {
+                        if (handup && x02 != 5 && iv11.visibility == VISIBLE) {
+                            clicked02++
+                            iv11.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x02 != 5 && iv12.visibility == VISIBLE) {
+                                clicked02++
+                                iv12.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
                     }
                 }, 10000)
                 Handler().postDelayed({
@@ -441,22 +498,25 @@ class MemoryActivity : AppCompatActivity() {
                     if (iv13.visibility == INVISIBLE) {
                         iv013.visibility = VISIBLE
                     }
-                    if (handup && x03 != 5 && iv12.visibility == VISIBLE) {
-                        clicked02++
-                        iv12.callOnClick()
-                        handup = false
-                        x01 = 0
-                        x02 = 0
-                        x03 = 5
-                        x04 = 0
-                        x05 = 0
-                        x06 = 0
-                        x07 = 0
-                        x08 = 0
-                        x09 = 0
-                        x10 = 0
-                        x11 = 0
-                        x12 = 0
+                    if (clicked00 == 0) {
+                        if (handup && x03 != 5 && iv12.visibility == VISIBLE) {
+                            clicked02++
+                            iv12.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 5 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x03 != 5 && iv13.visibility == VISIBLE) {
+                                clicked02++
+                                iv13.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 5 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
                     }
                 }, 15000)
                 Handler().postDelayed({
@@ -466,22 +526,25 @@ class MemoryActivity : AppCompatActivity() {
                     if (iv21.visibility == INVISIBLE) {
                         iv021.visibility = VISIBLE
                     }
-                    if (handup && x04 != 5 && iv13.visibility == VISIBLE) {
-                        clicked02++
-                        iv13.callOnClick()
-                        handup = false
-                        x01 = 0
-                        x02 = 0
-                        x03 = 0
-                        x04 = 5
-                        x05 = 0
-                        x06 = 0
-                        x07 = 0
-                        x08 = 0
-                        x09 = 0
-                        x10 = 0
-                        x11 = 0
-                        x12 = 0
+                    if (clicked00 == 0) {
+                        if (handup && x04 != 5 && iv13.visibility == VISIBLE) {
+                            clicked02++
+                            iv13.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 5 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x04 != 5 && iv21.visibility == VISIBLE) {
+                                clicked02++
+                                iv21.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 5 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
                     }
                 }, 20000)
                 Handler().postDelayed({
@@ -491,22 +554,25 @@ class MemoryActivity : AppCompatActivity() {
                     if (iv22.visibility == INVISIBLE) {
                         iv022.visibility = VISIBLE
                     }
-                    if (handup && x05 != 5 && iv21.visibility == VISIBLE) {
-                        clicked02++
-                        iv21.callOnClick()
-                        handup = false
-                        x01 = 0
-                        x02 = 0
-                        x03 = 0
-                        x04 = 0
-                        x05 = 5
-                        x06 = 0
-                        x07 = 0
-                        x08 = 0
-                        x09 = 0
-                        x10 = 0
-                        x11 = 0
-                        x12 = 0
+                    if (clicked00 == 0) {
+                        if (handup && x05 != 5 && iv21.visibility == VISIBLE) {
+                            clicked02++
+                            iv21.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 5 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x05 != 5 && iv22.visibility == VISIBLE) {
+                                clicked02++
+                                iv22.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 5 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
                     }
                 }, 25000)
                 Handler().postDelayed({
@@ -516,22 +582,25 @@ class MemoryActivity : AppCompatActivity() {
                     if (iv23.visibility == INVISIBLE) {
                         iv023.visibility = VISIBLE
                     }
-                    if (handup && x06 != 5 && iv22.visibility == VISIBLE) {
-                        clicked02++
-                        iv22.callOnClick()
-                        handup = false
-                        x01 = 0
-                        x02 = 0
-                        x03 = 0
-                        x04 = 0
-                        x05 = 0
-                        x06 = 5
-                        x07 = 0
-                        x08 = 0
-                        x09 = 0
-                        x10 = 0
-                        x11 = 0
-                        x12 = 0
+                    if (clicked00 == 0) {
+                        if (handup && x06 != 5 && iv22.visibility == VISIBLE) {
+                            clicked02++
+                            iv22.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 5
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x06 != 5 && iv23.visibility == VISIBLE) {
+                                clicked02++
+                                iv23.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 5
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
                     }
                 }, 30000)
                 Handler().postDelayed({
@@ -541,22 +610,25 @@ class MemoryActivity : AppCompatActivity() {
                     if (iv31.visibility == INVISIBLE) {
                         iv031.visibility = VISIBLE
                     }
-                    if (handup && x07 != 5 && iv23.visibility == VISIBLE) {
-                        clicked02++
-                        iv23.callOnClick()
-                        handup = false
-                        x01 = 0
-                        x02 = 0
-                        x03 = 0
-                        x04 = 0
-                        x05 = 0
-                        x06 = 0
-                        x07 = 5
-                        x08 = 0
-                        x09 = 0
-                        x10 = 0
-                        x11 = 0
-                        x12 = 0
+                    if (clicked00 == 0) {
+                        if (handup && x07 != 5 && iv23.visibility == VISIBLE) {
+                            clicked02++
+                            iv23.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 5 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x07 != 5 && iv31.visibility == VISIBLE) {
+                                clicked02++
+                                iv31.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 5 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
                     }
                 }, 35000)
                 Handler().postDelayed({
@@ -566,22 +638,25 @@ class MemoryActivity : AppCompatActivity() {
                     if (iv32.visibility == INVISIBLE) {
                         iv032.visibility = VISIBLE
                     }
-                    if (handup && x08 != 5 && iv31.visibility == VISIBLE) {
-                        clicked02++
-                        iv31.callOnClick()
-                        handup = false
-                        x01 = 0
-                        x02 = 0
-                        x03 = 0
-                        x04 = 0
-                        x05 = 0
-                        x06 = 0
-                        x07 = 0
-                        x08 = 5
-                        x09 = 0
-                        x10 = 0
-                        x11 = 0
-                        x12 = 0
+                    if (clicked00 == 0) {
+                        if (handup && x08 != 5 && iv31.visibility == VISIBLE) {
+                            clicked02++
+                            iv31.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 5 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x08 != 5 && iv32.visibility == VISIBLE) {
+                                clicked02++
+                                iv32.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 5 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
                     }
                 }, 40000)
                 Handler().postDelayed({
@@ -591,22 +666,25 @@ class MemoryActivity : AppCompatActivity() {
                     if (iv33.visibility == INVISIBLE) {
                         iv033.visibility = VISIBLE
                     }
-                    if (handup && x09 != 5 && iv32.visibility == VISIBLE) {
-                        clicked02++
-                        iv32.callOnClick()
-                        handup = false
-                        x01 = 0
-                        x02 = 0
-                        x03 = 0
-                        x04 = 0
-                        x05 = 0
-                        x06 = 0
-                        x07 = 0
-                        x08 = 0
-                        x09 = 5
-                        x10 = 0
-                        x11 = 0
-                        x12 = 0
+                    if (clicked00 == 0) {
+                        if (handup && x09 != 5 && iv32.visibility == VISIBLE) {
+                            clicked02++
+                            iv32.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 5 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x09 != 5 && iv33.visibility == VISIBLE) {
+                                clicked02++
+                                iv33.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 5 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
                     }
                 }, 45000)
                 Handler().postDelayed({
@@ -616,22 +694,25 @@ class MemoryActivity : AppCompatActivity() {
                     if (iv41.visibility == INVISIBLE) {
                         iv041.visibility = VISIBLE
                     }
-                    if (handup && x10 != 5 && iv33.visibility == VISIBLE) {
-                        clicked02++
-                        iv33.callOnClick()
-                        handup = false
-                        x01 = 0
-                        x02 = 0
-                        x03 = 0
-                        x04 = 0
-                        x05 = 0
-                        x06 = 0
-                        x07 = 0
-                        x08 = 0
-                        x09 = 0
-                        x10 = 5
-                        x11 = 0
-                        x12 = 0
+                    if (clicked00 == 0) {
+                        if (handup && x10 != 5 && iv33.visibility == VISIBLE) {
+                            clicked02++
+                            iv33.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 5 ; x11 = 0 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x10 != 5 && iv41.visibility == VISIBLE) {
+                                clicked02++
+                                iv41.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 5 ; x11 = 0 ; x12 = 0
+                            }
+                        }
                     }
                 }, 50000)
                 Handler().postDelayed({
@@ -641,22 +722,25 @@ class MemoryActivity : AppCompatActivity() {
                     if (iv42.visibility == INVISIBLE) {
                         iv042.visibility = VISIBLE
                     }
-                    if (handup && x11 != 5 && iv41.visibility == VISIBLE) {
-                        clicked02++
-                        iv41.callOnClick()
-                        handup = false
-                        x01 = 0
-                        x02 = 0
-                        x03 = 0
-                        x04 = 0
-                        x05 = 0
-                        x06 = 0
-                        x07 = 0
-                        x08 = 0
-                        x09 = 0
-                        x10 = 0
-                        x11 = 5
-                        x12 = 0
+                    if (clicked00 == 0) {
+                        if (handup && x11 != 5 && iv41.visibility == VISIBLE) {
+                            clicked02++
+                            iv41.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 5 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x11 != 5 && iv42.visibility == VISIBLE) {
+                                clicked02++
+                                iv42.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 5 ; x12 = 0
+                            }
+                        }
                     }
                 }, 55000)
                 Handler().postDelayed({
@@ -666,22 +750,25 @@ class MemoryActivity : AppCompatActivity() {
                     if (iv43.visibility == INVISIBLE) {
                         iv043.visibility = VISIBLE
                     }
-                    if (handup && x12 != 5 && iv42.visibility == VISIBLE) {
-                        clicked02++
-                        iv42.callOnClick()
-                        handup = false
-                        x01 = 0
-                        x02 = 0
-                        x03 = 0
-                        x04 = 0
-                        x05 = 0
-                        x06 = 0
-                        x07 = 0
-                        x08 = 0
-                        x09 = 0
-                        x10 = 0
-                        x11 = 0
-                        x12 = 5
+                    if (clicked00 == 0) {
+                        if (handup && x12 != 5 && iv42.visibility == VISIBLE) {
+                            clicked02++
+                            iv42.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 5
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x12 != 5 && iv43.visibility == VISIBLE) {
+                                clicked02++
+                                iv43.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 5
+                            }
+                        }
                     }
                 }, 60000)
                 ha02.postDelayed(this, 60000)
@@ -698,11 +785,26 @@ class MemoryActivity : AppCompatActivity() {
                 iv011.visibility = VISIBLE
             }
             //Use Posenet to handle 12 image buttons
-            if (handup) {
-                clicked02++
-                iv11.callOnClick() // Double this to fix posenet delays
-                handup = false
-                x01 = 5
+            if (clicked00 == 0) {
+                if (handup && x01 != 5 && iv11.visibility == VISIBLE) {
+                    clicked02++
+                    iv11.callOnClick()
+                    handup = false
+                    x01 = 5 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            //Click function instead of handup
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x01 != 5 && iv11.visibility == VISIBLE) {
+                        clicked02++
+                        iv11.callOnClick() //Click previous image to fix Posenet delays
+                        handup = false
+                        x01 = 5 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
             }
         },5000)
         Handler().postDelayed({
@@ -712,12 +814,25 @@ class MemoryActivity : AppCompatActivity() {
             if (iv12.visibility == INVISIBLE) {
                 iv012.visibility = VISIBLE
             }
-            if (handup && x01 != 5) {
-                clicked02++
-                iv11.callOnClick()
-                handup = false
-                x01 = 0
-                x02 = 5
+            if (clicked00 == 0) {
+                if (handup && x02 != 5 && iv11.visibility == VISIBLE) {
+                    clicked02++
+                    iv11.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x02 != 5 && iv12.visibility == VISIBLE) {
+                        clicked02++
+                        iv12.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
             }
         }, 10000)
         Handler().postDelayed({
@@ -727,13 +842,25 @@ class MemoryActivity : AppCompatActivity() {
             if (iv13.visibility == INVISIBLE) {
                 iv013.visibility = VISIBLE
             }
-            if (handup) {
-                clicked02++
-                iv12.callOnClick()
-                handup = false
-                x01 = 0
-                x02 = 0
-                x03 = 5
+            if (clicked00 == 0) {
+                if (handup && x03 != 5 && iv12.visibility == VISIBLE) {
+                    clicked02++
+                    iv12.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 5 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x03 != 5 && iv13.visibility == VISIBLE) {
+                        clicked02++
+                        iv13.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 5 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
             }
         }, 15000)
         Handler().postDelayed({
@@ -743,14 +870,25 @@ class MemoryActivity : AppCompatActivity() {
             if (iv21.visibility == INVISIBLE) {
                 iv021.visibility = VISIBLE
             }
-            if (handup) {
-                clicked02++
-                iv13.callOnClick()
-                handup = false
-                x01 = 0
-                x02 = 0
-                x03 = 0
-                x04 = 5
+            if (clicked00 == 0) {
+                if (handup && x04 != 5 && iv13.visibility == VISIBLE) {
+                    clicked02++
+                    iv13.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 5 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x04 != 5 && iv21.visibility == VISIBLE) {
+                        clicked02++
+                        iv21.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 5 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
             }
         }, 20000)
         Handler().postDelayed({
@@ -760,15 +898,25 @@ class MemoryActivity : AppCompatActivity() {
             if (iv22.visibility == INVISIBLE) {
                 iv022.visibility = VISIBLE
             }
-            if (handup) {
-                clicked02++
-                iv21.callOnClick()
-                handup = false
-                x01 = 0
-                x02 = 0
-                x03 = 0
-                x04 = 0
-                x05 = 5
+            if (clicked00 == 0) {
+                if (handup && x05 != 5 && iv21.visibility == VISIBLE) {
+                    clicked02++
+                    iv21.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 5 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x05 != 5 && iv22.visibility == VISIBLE) {
+                        clicked02++
+                        iv22.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 5 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
             }
         }, 25000)
         Handler().postDelayed({
@@ -778,16 +926,25 @@ class MemoryActivity : AppCompatActivity() {
             if (iv23.visibility == INVISIBLE) {
                 iv023.visibility = VISIBLE
             }
-            if (handup) {
-                clicked02++
-                iv22.callOnClick()
-                handup = false
-                x01 = 0
-                x02 = 0
-                x03 = 0
-                x04 = 0
-                x05 = 0
-                x06 = 5
+            if (clicked00 == 0) {
+                if (handup && x06 != 5 && iv22.visibility == VISIBLE) {
+                    clicked02++
+                    iv22.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 5
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x06 != 5 && iv23.visibility == VISIBLE) {
+                        clicked02++
+                        iv23.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 5
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
             }
         }, 30000)
         Handler().postDelayed({
@@ -797,17 +954,25 @@ class MemoryActivity : AppCompatActivity() {
             if (iv31.visibility == INVISIBLE) {
                 iv031.visibility = VISIBLE
             }
-            if (handup) {
-                clicked02++
-                iv23.callOnClick()
-                handup = false
-                x01 = 0
-                x02 = 0
-                x03 = 0
-                x04 = 0
-                x05 = 0
-                x06 = 0
-                x07 = 5
+            if (clicked00 == 0) {
+                if (handup && x07 != 5 && iv23.visibility == VISIBLE) {
+                    clicked02++
+                    iv23.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 5 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x07 != 5 && iv31.visibility == VISIBLE) {
+                        clicked02++
+                        iv31.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 5 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
             }
         }, 35000)
         Handler().postDelayed({
@@ -817,18 +982,25 @@ class MemoryActivity : AppCompatActivity() {
             if (iv32.visibility == INVISIBLE) {
                 iv032.visibility = VISIBLE
             }
-            if (handup) {
-                clicked02++
-                iv31.callOnClick()
-                handup = false
-                x01 = 0
-                x02 = 0
-                x03 = 0
-                x04 = 0
-                x05 = 0
-                x06 = 0
-                x07 = 0
-                x08 = 5
+            if (clicked00 == 0) {
+                if (handup && x08 != 5 && iv31.visibility == VISIBLE) {
+                    clicked02++
+                    iv31.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 5 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x08 != 5 && iv32.visibility == VISIBLE) {
+                        clicked02++
+                        iv32.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 5 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
             }
         }, 40000)
         Handler().postDelayed({
@@ -838,19 +1010,25 @@ class MemoryActivity : AppCompatActivity() {
             if (iv33.visibility == INVISIBLE) {
                 iv033.visibility = VISIBLE
             }
-            if (handup) {
-                clicked02++
-                iv32.callOnClick()
-                handup = false
-                x01 = 0
-                x02 = 0
-                x03 = 0
-                x04 = 0
-                x05 = 0
-                x06 = 0
-                x07 = 0
-                x08 = 0
-                x09 = 5
+            if (clicked00 == 0) {
+                if (handup && x09 != 5 && iv32.visibility == VISIBLE) {
+                    clicked02++
+                    iv32.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 5 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x09 != 5 && iv33.visibility == VISIBLE) {
+                        clicked02++
+                        iv33.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 5 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
             }
         }, 45000)
         Handler().postDelayed({
@@ -860,20 +1038,25 @@ class MemoryActivity : AppCompatActivity() {
             if (iv41.visibility == INVISIBLE) {
                 iv041.visibility = VISIBLE
             }
-            if (handup) {
-                clicked02++
-                iv33.callOnClick()
-                handup = false
-                x01 = 0
-                x02 = 0
-                x03 = 0
-                x04 = 0
-                x05 = 0
-                x06 = 0
-                x07 = 0
-                x08 = 0
-                x09 = 0
-                x10 = 5
+            if (clicked00 == 0) {
+                if (handup && x10 != 5 && iv33.visibility == VISIBLE) {
+                    clicked02++
+                    iv33.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 5 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x10 != 5 && iv41.visibility == VISIBLE) {
+                        clicked02++
+                        iv41.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 5 ; x11 = 0 ; x12 = 0
+                    }
+                }
             }
         }, 50000)
         Handler().postDelayed({
@@ -883,21 +1066,25 @@ class MemoryActivity : AppCompatActivity() {
             if (iv42.visibility == INVISIBLE) {
                 iv042.visibility = VISIBLE
             }
-            if (handup) {
-                clicked02++
-                iv41.callOnClick()
-                handup = false
-                x01 = 0
-                x02 = 0
-                x03 = 0
-                x04 = 0
-                x05 = 0
-                x06 = 0
-                x07 = 0
-                x08 = 0
-                x09 = 0
-                x10 = 0
-                x11 = 5
+            if (clicked00 == 0) {
+                if (handup && x11 != 5 && iv41.visibility == VISIBLE) {
+                    clicked02++
+                    iv41.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 5 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x11 != 5 && iv42.visibility == VISIBLE) {
+                        clicked02++
+                        iv42.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 5 ; x12 = 0
+                    }
+                }
             }
         }, 55000)
         Handler().postDelayed({
@@ -907,22 +1094,25 @@ class MemoryActivity : AppCompatActivity() {
             if (iv43.visibility == INVISIBLE) {
                 iv043.visibility = VISIBLE
             }
-            if (handup) {
-                clicked02++
-                iv42.callOnClick()
-                handup = false
-                x01 = 0
-                x02 = 0
-                x03 = 0
-                x04 = 0
-                x05 = 0
-                x06 = 0
-                x07 = 0
-                x08 = 0
-                x09 = 0
-                x10 = 0
-                x11 = 0
-                x12 = 5
+            if (clicked00 == 0) {
+                if (handup && x12 != 5 && iv42.visibility == VISIBLE) {
+                    clicked02++
+                    iv42.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 5
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x12 != 5 && iv43.visibility == VISIBLE) {
+                        clicked02++
+                        iv43.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 5
+                    }
+                }
             }
         }, 60000)
 
@@ -1003,6 +1193,7 @@ class MemoryActivity : AppCompatActivity() {
     }
 
 
+    @android.annotation.SuppressLint("SetTextI18n")
     private fun doStuff(iv: ImageView, card: Int) {
 
         //Set the correct image to the ImageView
@@ -1046,6 +1237,32 @@ class MemoryActivity : AppCompatActivity() {
             }
             cardNumber = 2
             clickedFirst = card
+
+
+            //No response after first clicked in 1 mins 30 seconds to finish
+            if (clicked02%2 !=0) {
+
+                ha00 = Handler()
+                ha00.postDelayed({
+                    if (clicked03 == 0) {
+                        val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
+                        val maxScore = pref?.getInt("MaxScore3", 0)
+                        if (getPoints > maxScore!!) {
+                            pref.edit()?.putInt("MaxScore3", getPoints)?.apply()
+                        }
+                        layout202.visibility = VISIBLE
+                        img101.visibility= VISIBLE
+                        img101.setImageResource(R.drawable.cry101)
+                        tvp3.text = "Time is running out!\nScore: $getPoints"
+                        musicTT.pause()
+
+                        x01 = 5; x02 = 5; x03 = 5; x04 = 5; x05 = 5; x06 = 5
+                        x07 = 5; x08 = 5; x09 = 5; x10 = 5; x11 = 5; x12 = 5
+                        clicked03 = 5 //Stop this handler
+                    }
+                }, 90000)
+                ha11.removeCallbacksAndMessages(null)
+            }
 
             //Keep cardNumber 1 front images brighter
             ha03 = Handler()
@@ -1094,6 +1311,7 @@ class MemoryActivity : AppCompatActivity() {
                 }
             }, 60000)
 
+
         } else if (cardNumber == 2) {
             secondCard = cardsArray[card]
             if (secondCard > 200) {
@@ -1101,6 +1319,7 @@ class MemoryActivity : AppCompatActivity() {
             }
             cardNumber = 1
             clickedSecond = card
+
 
             //Keep cardNumber 1 front images brighter
             ha05 = Handler()
@@ -1122,7 +1341,30 @@ class MemoryActivity : AppCompatActivity() {
             }, 0)
 
             if (clicked02%2 == 0) {
-                //Shut down handler ha03, ha04 and ha05
+
+                //No response after second clicked in 1 mins 30 seconds to finish
+                ha11 = Handler()
+                ha11.postDelayed({
+                    if (clicked03 == 0) {
+                        val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
+                        val maxScore = pref?.getInt("MaxScore3", 0)
+                        if (getPoints > maxScore!!) {
+                            pref.edit()?.putInt("MaxScore3", getPoints)?.apply()
+                        }
+                        layout202.visibility = VISIBLE
+                        img101.visibility= VISIBLE
+                        img101.setImageResource(R.drawable.cry101)
+                        tvp3.text = "Time is running out!\nScore: $getPoints"
+                        musicTT.pause()
+
+                        x01 = 5; x02 = 5; x03 = 5; x04 = 5; x05 = 5; x06 = 5
+                        x07 = 5; x08 = 5; x09 = 5; x10 = 5; x11 = 5; x12 = 5
+                        clicked03 = 5 //Stop this handler
+                    }
+                }, 90000)
+
+                //Shut down those handlers
+                ha00.removeCallbacksAndMessages(null)
                 ha03.removeCallbacksAndMessages(null)
                 ha04.removeCallbacksAndMessages(null)
                 ha05.removeCallbacksAndMessages(null)
@@ -1143,7 +1385,9 @@ class MemoryActivity : AppCompatActivity() {
     private fun calculate() {
         //If Images are equal remove them otherwise add Mismatch point
         if (firstCard == secondCard) {
-            when (clickedFirst) {
+            getPoints++
+
+           when (clickedFirst) {
                 0 -> iv11.visibility = INVISIBLE
                 1 -> iv12.visibility = INVISIBLE
                 2 -> iv13.visibility = INVISIBLE
@@ -1175,7 +1419,40 @@ class MemoryActivity : AppCompatActivity() {
 
         } else {
             mismatchPoints++
-            tvp1.text = "MISMATCH: $mismatchPoints"
+            if (mismatchPoints == 1) {
+                tvp1.text = "❤❤❤❤❤  "
+            }
+            if (mismatchPoints == 2) {
+                tvp1.text = "❤❤❤❤    "
+            }
+            if (mismatchPoints == 3) {
+                tvp1.text = "❤❤❤      "
+            }
+            if (mismatchPoints == 4) {
+                tvp1.text = "❤❤        "
+            }
+            if (mismatchPoints == 5) {
+                tvp1.text = "❤          "
+            }
+            if (mismatchPoints == 6) {
+                tvp1.text = "No more chance!"
+
+                val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
+                val maxScore = pref?.getInt("MaxScore3", 0)
+                if(getPoints > maxScore!!){
+                    pref.edit()?.putInt("MaxScore3", getPoints)?.apply()
+                }
+                layout202.visibility = VISIBLE
+                img101.visibility= VISIBLE
+                img101.setImageResource(R.drawable.cry102)
+                tvp3.text = "GAME OVER!\nScore: $getPoints"
+
+                musicTT.pause()
+
+                x01 = 5 ; x02 = 5 ; x03 = 5 ; x04 = 5 ; x05 = 5 ; x06 = 5
+                x07 = 5 ; x08 = 5 ; x09 = 5 ; x10 = 5 ; x11 = 5 ; x12 = 5
+                clicked03 = 5
+            }
 
             iv11.setImageResource(R.drawable.ic_question)
             iv12.setImageResource(R.drawable.ic_question)
@@ -1196,6 +1473,7 @@ class MemoryActivity : AppCompatActivity() {
         checkEnd()
     }
 
+    @android.annotation.SuppressLint("SetTextI18n")
     private fun checkEnd() {
         if (iv11.visibility == INVISIBLE &&
             iv12.visibility == INVISIBLE &&
@@ -1213,22 +1491,19 @@ class MemoryActivity : AppCompatActivity() {
 
         {
             val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
-            val min = pref.getInt("MinScore3", 50)
-            if(mismatchPoints < min){
-                pref.edit().putInt("MinScore3", mismatchPoints).apply()
+            if(getPoints == 120){
+                pref.edit()?.putInt("MaxScore3", getPoints)?.apply()
             }
-            val alertDialogBuilder = AlertDialog.Builder(this@MemoryActivity)
-            alertDialogBuilder
-                .setMessage("GAME OVER!\nMISMATCH: $mismatchPoints")
-                .setCancelable(false)
-                .setPositiveButton("RESTART") { _, _ ->
-                    val intent = Intent(applicationContext, MemoryActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                .setNegativeButton("EXIT") { _, _ -> finish()}
-            val alertDialog = alertDialogBuilder.create()
-            alertDialog.show()
+            layout202.visibility = VISIBLE
+            img101.visibility= VISIBLE
+            img101.setImageResource(R.drawable.congrats)
+            tvp3.text = "Congratulation!\nYou win!"
+
+            musicTT.pause()
+
+            x01 = 5 ; x02 = 5 ; x03 = 5 ; x04 = 5 ; x05 = 5 ; x06 = 5
+            x07 = 5 ; x08 = 5 ; x09 = 5 ; x10 = 5 ; x11 = 5 ; x12 = 5
+            clicked03 = 5
         }
     }
 
