@@ -777,758 +777,753 @@ class MemoryActivity : AppCompatActivity() {
 
         //First cycle before looping
         Handler().postDelayed({
-        ha02.postDelayed(object : Runnable {
-
-            @RequiresApi(Build.VERSION_CODES.M)
-            override fun run() {
-                Handler().postDelayed({
-                    //Set foreground image and move to next
-                    iv43.foreground = null
-                    iv11.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv043.visibility = INVISIBLE
-                    if (iv11.visibility == INVISIBLE) {
-                        iv011.visibility = VISIBLE
-                    }
-                    //Use Posenet to handle 12 image buttons
-                    if (clicked00 == 0) {
-                        if (handup && x02 != 5 && iv43.visibility == VISIBLE) {
-                            clicked02++
-                            iv11.callOnClick() //Click previous image to fix Posenet delays
-                            handup = false
-                            x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                        }
-                    }
-                    //Click function instead of handup
-                    if (clicked00 == 1) {
-                        layout103.setOnClickListener {
-                            if (x02 != 5 && iv11.visibility == VISIBLE) {
-                                clicked02++
-                                iv11.callOnClick() //Click previous image to fix Posenet delays
-                                handup = false
-                                x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                            }
-                        }
-                    }
-                },5000)
-                Handler().postDelayed({
-                    iv11.foreground = null
-                    iv12.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv011.visibility = INVISIBLE
-                    if (iv12.visibility == INVISIBLE) {
-                        iv012.visibility = VISIBLE
-                    }
-                    if (clicked00 == 0) {
-                        if (handup && x02 != 5 && iv11.visibility == VISIBLE) {
-                            clicked02++
-                            iv11.callOnClick()
-                            handup = false
-                            x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                        }
-                    }
-                    if (clicked00 == 1) {
-                        layout103.setOnClickListener {
-                            if (x03 != 5 && iv12.visibility == VISIBLE) {
-                                clicked02++
-                                iv12.callOnClick()
-                                handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 5 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                            }
-                        }
-                    }
-                }, 10000)
-                Handler().postDelayed({
-                    iv12.foreground = null
-                    iv13.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv012.visibility = INVISIBLE
-                    if (iv13.visibility == INVISIBLE) {
-                        iv013.visibility = VISIBLE
-                    }
-                    if (clicked00 == 0) {
-                        if (handup && x03 != 5 && iv12.visibility == VISIBLE) {
-                            clicked02++
-                            iv12.callOnClick()
-                            handup = false
-                            x01 = 0 ; x02 = 0 ; x03 = 5 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                        }
-                    }
-                    if (clicked00 == 1) {
-                        layout103.setOnClickListener {
-                            if (x04 != 5 && iv13.visibility == VISIBLE) {
-                                clicked02++
-                                iv13.callOnClick()
-                                handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 5 ; x05 = 0 ; x06 = 0
-                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                            }
-                        }
-                    }
-                }, 15000)
-                Handler().postDelayed({
-                    iv13.foreground = null
-                    iv21.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv013.visibility = INVISIBLE
-                    if (iv21.visibility == INVISIBLE) {
-                        iv021.visibility = VISIBLE
-                    }
-                    if (clicked00 == 0) {
-                        if (handup && x04 != 5 && iv13.visibility == VISIBLE) {
-                            clicked02++
-                            iv13.callOnClick()
-                            handup = false
-                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 5 ; x05 = 0 ; x06 = 0
-                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                        }
-                    }
-                    if (clicked00 == 1) {
-                        layout103.setOnClickListener {
-                            if (x05 != 5 && iv21.visibility == VISIBLE) {
-                                clicked02++
-                                iv21.callOnClick()
-                                handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 5 ; x06 = 0
-                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                            }
-                        }
-                    }
-                }, 20000)
-                Handler().postDelayed({
-                    iv21.foreground = null
-                    iv22.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv021.visibility = INVISIBLE
-                    if (iv22.visibility == INVISIBLE) {
-                        iv022.visibility = VISIBLE
-                    }
-                    if (clicked00 == 0) {
-                        if (handup && x05 != 5 && iv21.visibility == VISIBLE) {
-                            clicked02++
-                            iv21.callOnClick()
-                            handup = false
-                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 5 ; x06 = 0
-                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                        }
-                    }
-                    if (clicked00 == 1) {
-                        layout103.setOnClickListener {
-                            if (x06 != 5 && iv22.visibility == VISIBLE) {
-                                clicked02++
-                                iv22.callOnClick()
-                                handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 5
-                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                            }
-                        }
-                    }
-                }, 25000)
-                Handler().postDelayed({
-                    iv22.foreground = null
-                    iv23.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv022.visibility = INVISIBLE
-                    if (iv23.visibility == INVISIBLE) {
-                        iv023.visibility = VISIBLE
-                    }
-                    if (clicked00 == 0) {
-                        if (handup && x06 != 5 && iv22.visibility == VISIBLE) {
-                            clicked02++
-                            iv22.callOnClick()
-                            handup = false
-                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 5
-                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                        }
-                    }
-                    if (clicked00 == 1) {
-                        layout103.setOnClickListener {
-                            if (x07 != 5 && iv23.visibility == VISIBLE) {
-                                clicked02++
-                                iv23.callOnClick()
-                                handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                                x07 = 5 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                            }
-                        }
-                    }
-                }, 30000)
-                Handler().postDelayed({
-                    iv23.foreground = null
-                    iv31.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv023.visibility = INVISIBLE
-                    if (iv31.visibility == INVISIBLE) {
-                        iv031.visibility = VISIBLE
-                    }
-                    if (clicked00 == 0) {
-                        if (handup && x07 != 5 && iv23.visibility == VISIBLE) {
-                            clicked02++
-                            iv23.callOnClick()
-                            handup = false
-                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                            x07 = 5 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                        }
-                    }
-                    if (clicked00 == 1) {
-                        layout103.setOnClickListener {
-                            if (x08 != 5 && iv31.visibility == VISIBLE) {
-                                clicked02++
-                                iv31.callOnClick()
-                                handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                                x07 = 0 ; x08 = 5 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                            }
-                        }
-                    }
-                }, 35000)
-                Handler().postDelayed({
-                    iv31.foreground = null
-                    iv32.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv031.visibility = INVISIBLE
-                    if (iv32.visibility == INVISIBLE) {
-                        iv032.visibility = VISIBLE
-                    }
-                    if (clicked00 == 0) {
-                        if (handup && x08 != 5 && iv31.visibility == VISIBLE) {
-                            clicked02++
-                            iv31.callOnClick()
-                            handup = false
-                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                            x07 = 0 ; x08 = 5 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                        }
-                    }
-                    if (clicked00 == 1) {
-                        layout103.setOnClickListener {
-                            if (x09 != 5 && iv32.visibility == VISIBLE) {
-                                clicked02++
-                                iv32.callOnClick()
-                                handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                                x07 = 0 ; x08 = 0 ; x09 = 5 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                            }
-                        }
-                    }
-                }, 40000)
-                Handler().postDelayed({
-                    iv32.foreground = null
-                    iv33.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv032.visibility = INVISIBLE
-                    if (iv33.visibility == INVISIBLE) {
-                        iv033.visibility = VISIBLE
-                    }
-                    if (clicked00 == 0) {
-                        if (handup && x09 != 5 && iv32.visibility == VISIBLE) {
-                            clicked02++
-                            iv32.callOnClick()
-                            handup = false
-                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                            x07 = 0 ; x08 = 0 ; x09 = 5 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                        }
-                    }
-                    if (clicked00 == 1) {
-                        layout103.setOnClickListener {
-                            if (x10 != 5 && iv33.visibility == VISIBLE) {
-                                clicked02++
-                                iv33.callOnClick()
-                                handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 5 ; x11 = 0 ; x12 = 0
-                            }
-                        }
-                    }
-                }, 45000)
-                Handler().postDelayed({
-                    iv33.foreground = null
-                    iv41.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv033.visibility = INVISIBLE
-                    if (iv41.visibility == INVISIBLE) {
-                        iv041.visibility = VISIBLE
-                    }
-                    if (clicked00 == 0) {
-                        if (handup && x10 != 5 && iv33.visibility == VISIBLE) {
-                            clicked02++
-                            iv33.callOnClick()
-                            handup = false
-                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 5 ; x11 = 0 ; x12 = 0
-                        }
-                    }
-                    if (clicked00 == 1) {
-                        layout103.setOnClickListener {
-                            if (x11 != 5 && iv41.visibility == VISIBLE) {
-                                clicked02++
-                                iv41.callOnClick()
-                                handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 5 ; x12 = 0
-                            }
-                        }
-                    }
-                }, 50000)
-                Handler().postDelayed({
-                    iv41.foreground = null
-                    iv42.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv041.visibility = INVISIBLE
-                    if (iv42.visibility == INVISIBLE) {
-                        iv042.visibility = VISIBLE
-                    }
-                    if (clicked00 == 0) {
-                        if (handup && x11 != 5 && iv41.visibility == VISIBLE) {
-                            clicked02++
-                            iv41.callOnClick()
-                            handup = false
-                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 5 ; x12 = 0
-                        }
-                    }
-                    if (clicked00 == 1) {
-                        layout103.setOnClickListener {
-                            if (x12 != 5 && iv42.visibility == VISIBLE) {
-                                clicked02++
-                                iv42.callOnClick()
-                                handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 5
-                            }
-                        }
-                    }
-                }, 55000)
-                Handler().postDelayed({
-                    iv42.foreground = null
-                    iv43.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-                    iv042.visibility = INVISIBLE
-                    if (iv43.visibility == INVISIBLE) {
-                        iv043.visibility = VISIBLE
-                    }
-                    if (clicked00 == 0) {
-                        if (handup && x12 != 5 && iv42.visibility == VISIBLE) {
-                            clicked02++
-                            iv42.callOnClick()
-                            handup = false
-                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 5
-                        }
-                    }
-                    if (clicked00 == 1) {
-                        layout103.setOnClickListener {
-                            if (x01 != 5 && iv43.visibility == VISIBLE) {
-                                clicked02++
-                                iv43.callOnClick()
-                                handup = false
-                                x01 = 5 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                            }
-                        }
-                    }
-                }, 60000)
-            
-
-
-        iv11.isEnabled = false
-        iv12.isEnabled = false
-        iv13.isEnabled = false
-        iv21.isEnabled = false
-        iv22.isEnabled = false
-        iv23.isEnabled = false
-        iv31.isEnabled = false
-        iv32.isEnabled = false
-        iv33.isEnabled = false
-        iv41.isEnabled = false
-        iv42.isEnabled = false
-        iv43.isEnabled = false
-
-
-        //Set ImageView OnClick
-        iv11.setOnClickListener { view ->
-            val theCard = Integer.parseInt(view.tag as String)
-            doStuff(iv11, theCard)
-        }
-
-        iv12.setOnClickListener { view ->
-            val theCard = Integer.parseInt(view.tag as String)
-            doStuff(iv12, theCard)
-        }
-
-        iv13.setOnClickListener { view ->
-            val theCard = Integer.parseInt(view.tag as String)
-            doStuff(iv13, theCard)
-        }
-
-        iv21.setOnClickListener { view ->
-            val theCard = Integer.parseInt(view.tag as String)
-            doStuff(iv21, theCard)
-        }
-
-        iv22.setOnClickListener { view ->
-            val theCard = Integer.parseInt(view.tag as String)
-            doStuff(iv22, theCard)
-        }
-
-        iv23.setOnClickListener { view ->
-            val theCard = Integer.parseInt(view.tag as String)
-            doStuff(iv23, theCard)
-        }
-
-        iv31.setOnClickListener { view ->
-            val theCard = Integer.parseInt(view.tag as String)
-            doStuff(iv31, theCard)
-        }
-
-        iv32.setOnClickListener { view ->
-            val theCard = Integer.parseInt(view.tag as String)
-            doStuff(iv32, theCard)
-        }
-
-        iv33.setOnClickListener { view ->
-            val theCard = Integer.parseInt(view.tag as String)
-            doStuff(iv33, theCard)
-        }
-
-        iv41.setOnClickListener { view ->
-            val theCard = Integer.parseInt(view.tag as String)
-            doStuff(iv41, theCard)
-        }
-
-        iv42.setOnClickListener { view ->
-            val theCard = Integer.parseInt(view.tag as String)
-            doStuff(iv42, theCard)
-        }
-        iv43.setOnClickListener { view ->
-            val theCard = Integer.parseInt(view.tag as String)
-            doStuff(iv43, theCard)
-        }
-    }
-
-
-    @android.annotation.SuppressLint("SetTextI18n")
-    private fun doStuff(iv: ImageView, card: Int) {
-
-        //Set the correct image to the ImageView
-        when {
-            cardsArray[card] == 101 -> iv.setImageResource(image101)
-            cardsArray[card] == 102 -> iv.setImageResource(image102)
-            cardsArray[card] == 103 -> iv.setImageResource(image103)
-            cardsArray[card] == 104 -> iv.setImageResource(image104)
-            cardsArray[card] == 105 -> iv.setImageResource(image105)
-            cardsArray[card] == 106 -> iv.setImageResource(image106)
-            cardsArray[card] == 201 -> iv.setImageResource(image201)
-            cardsArray[card] == 202 -> iv.setImageResource(image202)
-            cardsArray[card] == 203 -> iv.setImageResource(image203)
-            cardsArray[card] == 204 -> iv.setImageResource(image204)
-            cardsArray[card] == 205 -> iv.setImageResource(image205)
-            cardsArray[card] == 206 -> iv.setImageResource(image206)
-        }
-
-        if (cardNumber == 1 || cardNumber == 2) {
-
-            //Shake front images when click
-            Handler().postDelayed({
-                iv.animate().rotation(30F).setDuration(250).start()
-            }, 0)
-            Handler().postDelayed({
-                iv.animate().rotation(-30F).setDuration(250).start()
-            }, 250)
-            Handler().postDelayed({
-                iv.animate().rotation(30F).setDuration(250).start()
-            }, 500)
-            Handler().postDelayed({
-                iv.animate().rotation(0F).setDuration(250).start()
-            }, 750)
-        }
-
-        //Check which image is selected and save it temporarily
-        if (cardNumber == 1) {
-            firstCard = cardsArray[card]
-            if (firstCard > 200) {
-                firstCard -= 100
+            //Set foreground image and move to next
+            iv43.foreground = null
+            iv11.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+            iv043.visibility = INVISIBLE
+            if (iv11.visibility == INVISIBLE) {
+                iv011.visibility = VISIBLE
             }
-            cardNumber = 2
-            clickedFirst = card
-
-
-            //No response after first clicked in 1 mins 30 seconds to finish
-            if (clicked02%2 !=0) {
-
-                ha00 = Handler()
-                ha00.postDelayed({
-                    if (clicked03 == 0) {
-                        val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
-                        val maxScore = pref?.getInt("MaxScore3", 0)
-                        if (getPoints > maxScore!!) {
-                            pref.edit()?.putInt("MaxScore3", getPoints)?.apply()
-                        }
-                        layout202.visibility = VISIBLE
-                        img101.visibility= VISIBLE
-                        img101.setImageResource(R.drawable.cry101)
-                        tvp3.text = "Time is running out!\nScore: $getPoints"
-                        musicTT.pause()
-
-                        x01 = 5; x02 = 5; x03 = 5; x04 = 5; x05 = 5; x06 = 5
-                        x07 = 5; x08 = 5; x09 = 5; x10 = 5; x11 = 5; x12 = 5
-                        clicked03 = 5 //Stop this handler
-                    }
-                }, 90000)
-                ha11.removeCallbacksAndMessages(null)
-            }
-
-            //Keep cardNumber 1 front images brighter
-            ha03 = Handler()
-            ha03.postDelayed(object : Runnable {
-
-                @RequiresApi(Build.VERSION_CODES.M)
-                override fun run() {
-
-                    iv.foreground = null
-
-                    val matrix01 = ColorMatrix()
-                    matrix01.setSaturation(2f)
-
-                    val filter01 = ColorMatrixColorFilter(matrix01)
-                    iv.colorFilter = filter01
-
-                    ha03.postDelayed(this, 0)
+            //Use Posenet to handle 12 image buttons
+            if (clicked00 == 0) {
+                if (handup && x02 != 5 && iv43.visibility == VISIBLE) {
+                    clicked02++
+                    iv11.callOnClick() //Click previous image to fix Posenet delays
+                    handup = false
+                    x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
                 }
-            }, 0)
+            }
+            //Click function instead of handup
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x02 != 5 && iv11.visibility == VISIBLE) {
+                        clicked02++
+                        iv11.callOnClick() //Click previous image to fix Posenet delays
+                        handup = false
+                        x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
+            }
+        },5000)
+        Handler().postDelayed({
+            iv11.foreground = null
+            iv12.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+            iv011.visibility = INVISIBLE
+            if (iv12.visibility == INVISIBLE) {
+                iv012.visibility = VISIBLE
+            }
+            if (clicked00 == 0) {
+                if (handup && x02 != 5 && iv11.visibility == VISIBLE) {
+                    clicked02++
+                    iv11.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x03 != 5 && iv12.visibility == VISIBLE) {
+                        clicked02++
+                        iv12.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 5 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
+            }
+        }, 10000)
+        Handler().postDelayed({
+            iv12.foreground = null
+            iv13.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+            iv012.visibility = INVISIBLE
+            if (iv13.visibility == INVISIBLE) {
+                iv013.visibility = VISIBLE
+            }
+            if (clicked00 == 0) {
+                if (handup && x03 != 5 && iv12.visibility == VISIBLE) {
+                    clicked02++
+                    iv12.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 5 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x04 != 5 && iv13.visibility == VISIBLE) {
+                        clicked02++
+                        iv13.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 5 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
+            }
+        }, 15000)
+        Handler().postDelayed({
+            iv13.foreground = null
+            iv21.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+            iv013.visibility = INVISIBLE
+            if (iv21.visibility == INVISIBLE) {
+                iv021.visibility = VISIBLE
+            }
+            if (clicked00 == 0) {
+                if (handup && x04 != 5 && iv13.visibility == VISIBLE) {
+                    clicked02++
+                    iv13.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 5 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x05 != 5 && iv21.visibility == VISIBLE) {
+                        clicked02++
+                        iv21.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 5 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
+            }
+        }, 20000)
+        Handler().postDelayed({
+            iv21.foreground = null
+            iv22.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+            iv021.visibility = INVISIBLE
+            if (iv22.visibility == INVISIBLE) {
+                iv022.visibility = VISIBLE
+            }
+            if (clicked00 == 0) {
+                if (handup && x05 != 5 && iv21.visibility == VISIBLE) {
+                    clicked02++
+                    iv21.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 5 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x06 != 5 && iv22.visibility == VISIBLE) {
+                        clicked02++
+                        iv22.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 5
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
+            }
+        }, 25000)
+        Handler().postDelayed({
+            iv22.foreground = null
+            iv23.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+            iv022.visibility = INVISIBLE
+            if (iv23.visibility == INVISIBLE) {
+                iv023.visibility = VISIBLE
+            }
+            if (clicked00 == 0) {
+                if (handup && x06 != 5 && iv22.visibility == VISIBLE) {
+                    clicked02++
+                    iv22.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 5
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x07 != 5 && iv23.visibility == VISIBLE) {
+                        clicked02++
+                        iv23.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 5 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
+            }
+        }, 30000)
+        Handler().postDelayed({
+            iv23.foreground = null
+            iv31.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+            iv023.visibility = INVISIBLE
+            if (iv31.visibility == INVISIBLE) {
+                iv031.visibility = VISIBLE
+            }
+            if (clicked00 == 0) {
+                if (handup && x07 != 5 && iv23.visibility == VISIBLE) {
+                    clicked02++
+                    iv23.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 5 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x08 != 5 && iv31.visibility == VISIBLE) {
+                        clicked02++
+                        iv31.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 5 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
+            }
+        }, 35000)
+        Handler().postDelayed({
+            iv31.foreground = null
+            iv32.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+            iv031.visibility = INVISIBLE
+            if (iv32.visibility == INVISIBLE) {
+                iv032.visibility = VISIBLE
+            }
+            if (clicked00 == 0) {
+                if (handup && x08 != 5 && iv31.visibility == VISIBLE) {
+                    clicked02++
+                    iv31.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 5 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x09 != 5 && iv32.visibility == VISIBLE) {
+                        clicked02++
+                        iv32.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 5 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
+            }
+        }, 40000)
+        Handler().postDelayed({
+            iv32.foreground = null
+            iv33.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+            iv032.visibility = INVISIBLE
+            if (iv33.visibility == INVISIBLE) {
+                iv033.visibility = VISIBLE
+            }
+            if (clicked00 == 0) {
+                if (handup && x09 != 5 && iv32.visibility == VISIBLE) {
+                    clicked02++
+                    iv32.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 5 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x10 != 5 && iv33.visibility == VISIBLE) {
+                        clicked02++
+                        iv33.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 5 ; x11 = 0 ; x12 = 0
+                    }
+                }
+            }
+        }, 45000)
+        Handler().postDelayed({
+            iv33.foreground = null
+            iv41.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+            iv033.visibility = INVISIBLE
+            if (iv41.visibility == INVISIBLE) {
+                iv041.visibility = VISIBLE
+            }
+            if (clicked00 == 0) {
+                if (handup && x10 != 5 && iv33.visibility == VISIBLE) {
+                    clicked02++
+                    iv33.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 5 ; x11 = 0 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x11 != 5 && iv41.visibility == VISIBLE) {
+                        clicked02++
+                        iv41.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 5 ; x12 = 0
+                    }
+                }
+            }
+        }, 50000)
+        Handler().postDelayed({
+            iv41.foreground = null
+            iv42.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+            iv041.visibility = INVISIBLE
+            if (iv42.visibility == INVISIBLE) {
+                iv042.visibility = VISIBLE
+            }
+            if (clicked00 == 0) {
+                if (handup && x11 != 5 && iv41.visibility == VISIBLE) {
+                    clicked02++
+                    iv41.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 5 ; x12 = 0
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x12 != 5 && iv42.visibility == VISIBLE) {
+                        clicked02++
+                        iv42.callOnClick()
+                        handup = false
+                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 5
+                    }
+                }
+            }
+        }, 55000)
+        Handler().postDelayed({
+            iv42.foreground = null
+            iv43.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+            iv042.visibility = INVISIBLE
+            if (iv43.visibility == INVISIBLE) {
+                iv043.visibility = VISIBLE
+            }
+            if (clicked00 == 0) {
+                if (handup && x12 != 5 && iv42.visibility == VISIBLE) {
+                    clicked02++
+                    iv42.callOnClick()
+                    handup = false
+                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 5
+                }
+            }
+            if (clicked00 == 1) {
+                layout103.setOnClickListener {
+                    if (x01 != 5 && iv43.visibility == VISIBLE) {
+                        clicked02++
+                        iv43.callOnClick()
+                        handup = false
+                        x01 = 5 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    }
+                }
+            }
+        }, 60000)
 
-            //Shake the front image again if no response after first click
-            ha04 = Handler()
-            ha04.postDelayed(object : Runnable {
+
+
+                    iv11.isEnabled = false
+                    iv12.isEnabled = false
+                    iv13.isEnabled = false
+                    iv21.isEnabled = false
+                    iv22.isEnabled = false
+                    iv23.isEnabled = false
+                    iv31.isEnabled = false
+                    iv32.isEnabled = false
+                    iv33.isEnabled = false
+                    iv41.isEnabled = false
+                    iv42.isEnabled = false
+                    iv43.isEnabled = false
+
+
+                    //Set ImageView OnClick
+                    iv11.setOnClickListener { view ->
+                        val theCard = Integer.parseInt(view.tag as String)
+                        doStuff(iv11, theCard)
+                    }
+
+                    iv12.setOnClickListener { view ->
+                        val theCard = Integer.parseInt(view.tag as String)
+                        doStuff(iv12, theCard)
+                    }
+
+                    iv13.setOnClickListener { view ->
+                        val theCard = Integer.parseInt(view.tag as String)
+                        doStuff(iv13, theCard)
+                    }
+
+                    iv21.setOnClickListener { view ->
+                        val theCard = Integer.parseInt(view.tag as String)
+                        doStuff(iv21, theCard)
+                    }
+
+                    iv22.setOnClickListener { view ->
+                        val theCard = Integer.parseInt(view.tag as String)
+                        doStuff(iv22, theCard)
+                    }
+
+                    iv23.setOnClickListener { view ->
+                        val theCard = Integer.parseInt(view.tag as String)
+                        doStuff(iv23, theCard)
+                    }
+
+                    iv31.setOnClickListener { view ->
+                        val theCard = Integer.parseInt(view.tag as String)
+                        doStuff(iv31, theCard)
+                    }
+
+                    iv32.setOnClickListener { view ->
+                        val theCard = Integer.parseInt(view.tag as String)
+                        doStuff(iv32, theCard)
+                    }
+
+                    iv33.setOnClickListener { view ->
+                        val theCard = Integer.parseInt(view.tag as String)
+                        doStuff(iv33, theCard)
+                    }
+
+                    iv41.setOnClickListener { view ->
+                        val theCard = Integer.parseInt(view.tag as String)
+                        doStuff(iv41, theCard)
+                    }
+
+                    iv42.setOnClickListener { view ->
+                        val theCard = Integer.parseInt(view.tag as String)
+                        doStuff(iv42, theCard)
+                    }
+                    iv43.setOnClickListener { view ->
+                        val theCard = Integer.parseInt(view.tag as String)
+                        doStuff(iv43, theCard)
+                    }
+                }
+
 
                 @android.annotation.SuppressLint("SetTextI18n")
-                override fun run() {
-                    Handler().postDelayed({
-                        tvp2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30F)
-                        tvp2.text = "What are you waiting for?"
-                        tvp2.setBackgroundColor(0xCBFF166B.toInt())
-                        iv.animate().rotation(30F).setDuration(250).start()
-                    }, 0)
-                    Handler().postDelayed({
-                        iv.animate().rotation(-30F).setDuration(250).start()
-                    }, 250)
-                    Handler().postDelayed({
-                        iv.animate().rotation(30F).setDuration(250).start()
-                    }, 500)
-                    Handler().postDelayed({
-                        iv.animate().rotation(0F).setDuration(250).start()
-                    }, 750)
-                    Handler().postDelayed({
-                        tvp2.text = null
-                    }, 3000)
-                    ha04.postDelayed(this, 60000)
+                private fun doStuff(iv: ImageView, card: Int) {
+
+                    //Set the correct image to the ImageView
+                    when {
+                        cardsArray[card] == 101 -> iv.setImageResource(image101)
+                        cardsArray[card] == 102 -> iv.setImageResource(image102)
+                        cardsArray[card] == 103 -> iv.setImageResource(image103)
+                        cardsArray[card] == 104 -> iv.setImageResource(image104)
+                        cardsArray[card] == 105 -> iv.setImageResource(image105)
+                        cardsArray[card] == 106 -> iv.setImageResource(image106)
+                        cardsArray[card] == 201 -> iv.setImageResource(image201)
+                        cardsArray[card] == 202 -> iv.setImageResource(image202)
+                        cardsArray[card] == 203 -> iv.setImageResource(image203)
+                        cardsArray[card] == 204 -> iv.setImageResource(image204)
+                        cardsArray[card] == 205 -> iv.setImageResource(image205)
+                        cardsArray[card] == 206 -> iv.setImageResource(image206)
+                    }
+
+                    if (cardNumber == 1 || cardNumber == 2) {
+
+                        //Shake front images when click
+                        Handler().postDelayed({
+                            iv.animate().rotation(30F).setDuration(250).start()
+                        }, 0)
+                        Handler().postDelayed({
+                            iv.animate().rotation(-30F).setDuration(250).start()
+                        }, 250)
+                        Handler().postDelayed({
+                            iv.animate().rotation(30F).setDuration(250).start()
+                        }, 500)
+                        Handler().postDelayed({
+                            iv.animate().rotation(0F).setDuration(250).start()
+                        }, 750)
+                    }
+
+                    //Check which image is selected and save it temporarily
+                    if (cardNumber == 1) {
+                        firstCard = cardsArray[card]
+                        if (firstCard > 200) {
+                            firstCard -= 100
+                        }
+                        cardNumber = 2
+                        clickedFirst = card
+
+
+                        //No response after first clicked in 1 mins 30 seconds to finish
+                        if (clicked02%2 !=0) {
+
+                            ha00 = Handler()
+                            ha00.postDelayed({
+                                if (clicked03 == 0) {
+                                    val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
+                                    val maxScore = pref?.getInt("MaxScore3", 0)
+                                    if (getPoints > maxScore!!) {
+                                        pref.edit()?.putInt("MaxScore3", getPoints)?.apply()
+                                    }
+                                    layout202.visibility = VISIBLE
+                                    img101.visibility= VISIBLE
+                                    img101.setImageResource(R.drawable.cry101)
+                                    tvp3.text = "Time is running out!\nScore: $getPoints"
+                                    musicTT.pause()
+
+                                    x01 = 5; x02 = 5; x03 = 5; x04 = 5; x05 = 5; x06 = 5
+                                    x07 = 5; x08 = 5; x09 = 5; x10 = 5; x11 = 5; x12 = 5
+                                    clicked03 = 5 //Stop this handler
+                                }
+                            }, 90000)
+                            ha11.removeCallbacksAndMessages(null)
+                        }
+
+                        //Keep cardNumber 1 front images brighter
+                        ha03 = Handler()
+                        ha03.postDelayed(object : Runnable {
+
+                            @RequiresApi(Build.VERSION_CODES.M)
+                            override fun run() {
+
+                                iv.foreground = null
+
+                                val matrix01 = ColorMatrix()
+                                matrix01.setSaturation(2f)
+
+                                val filter01 = ColorMatrixColorFilter(matrix01)
+                                iv.colorFilter = filter01
+
+                                ha03.postDelayed(this, 0)
+                            }
+                        }, 0)
+
+                        //Shake the front image again if no response after first click
+                        ha04 = Handler()
+                        ha04.postDelayed(object : Runnable {
+
+                            @android.annotation.SuppressLint("SetTextI18n")
+                            override fun run() {
+                                Handler().postDelayed({
+                                    tvp2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30F)
+                                    tvp2.text = "What are you waiting for?"
+                                    tvp2.setBackgroundColor(0xCBFF166B.toInt())
+                                    iv.animate().rotation(30F).setDuration(250).start()
+                                }, 0)
+                                Handler().postDelayed({
+                                    iv.animate().rotation(-30F).setDuration(250).start()
+                                }, 250)
+                                Handler().postDelayed({
+                                    iv.animate().rotation(30F).setDuration(250).start()
+                                }, 500)
+                                Handler().postDelayed({
+                                    iv.animate().rotation(0F).setDuration(250).start()
+                                }, 750)
+                                Handler().postDelayed({
+                                    tvp2.text = null
+                                }, 3000)
+                                ha04.postDelayed(this, 60000)
+                            }
+                        }, 60000)
+
+
+                    } else if (cardNumber == 2) {
+                        secondCard = cardsArray[card]
+                        if (secondCard > 200) {
+                            secondCard -= 100
+                        }
+                        cardNumber = 1
+                        clickedSecond = card
+
+
+                        //Keep cardNumber 1 front images brighter
+                        ha05 = Handler()
+                        ha05.postDelayed(object : Runnable {
+
+                            @RequiresApi(Build.VERSION_CODES.M)
+                            override fun run() {
+
+                                iv.foreground = null
+
+                                val matrix02 = ColorMatrix()
+                                matrix02.setSaturation(2f)
+
+                                val filter02 = ColorMatrixColorFilter(matrix02)
+                                iv.colorFilter = filter02
+
+                                ha05.postDelayed(this, 0)
+                            }
+                        }, 0)
+
+                        if (clicked02%2 == 0) {
+
+                            //No response after second clicked in 1 mins 30 seconds to finish
+                            ha11 = Handler()
+                            ha11.postDelayed({
+                                if (clicked03 == 0) {
+                                    val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
+                                    val maxScore = pref?.getInt("MaxScore3", 0)
+                                    if (getPoints > maxScore!!) {
+                                        pref.edit()?.putInt("MaxScore3", getPoints)?.apply()
+                                    }
+                                    layout202.visibility = VISIBLE
+                                    img101.visibility= VISIBLE
+                                    img101.setImageResource(R.drawable.cry101)
+                                    tvp3.text = "Time is running out!\nScore: $getPoints"
+                                    musicTT.pause()
+
+                                    x01 = 5; x02 = 5; x03 = 5; x04 = 5; x05 = 5; x06 = 5
+                                    x07 = 5; x08 = 5; x09 = 5; x10 = 5; x11 = 5; x12 = 5
+                                    clicked03 = 5 //Stop this handler
+                                }
+                            }, 90000)
+
+                            //Shut down those handlers
+                            ha00.removeCallbacksAndMessages(null)
+                            ha03.removeCallbacksAndMessages(null)
+                            ha04.removeCallbacksAndMessages(null)
+
+                            tvp2.text = null
+                        }
+
+                        val handler = Handler()
+                        handler.postDelayed({
+
+                            ha05.removeCallbacksAndMessages(null)
+
+                            //Check if the images that are selected are equal
+                            calculate()
+                        }, 2000)
+                    }
                 }
-            }, 60000)
 
+                @AnnotationSuppressLint("SetTextI18n")
+                private fun calculate() {
+                    //If Images are equal remove them otherwise add Mismatch point
+                    if (firstCard == secondCard) {
+                        getPoints++
 
-        } else if (cardNumber == 2) {
-            secondCard = cardsArray[card]
-            if (secondCard > 200) {
-                secondCard -= 100
-            }
-            cardNumber = 1
-            clickedSecond = card
+                        when (clickedFirst) {
+                            0 -> iv11.visibility = INVISIBLE
+                            1 -> iv12.visibility = INVISIBLE
+                            2 -> iv13.visibility = INVISIBLE
+                            3 -> iv21.visibility = INVISIBLE
+                            4 -> iv22.visibility = INVISIBLE
+                            5 -> iv23.visibility = INVISIBLE
+                            6 -> iv31.visibility = INVISIBLE
+                            7 -> iv32.visibility = INVISIBLE
+                            8 -> iv33.visibility = INVISIBLE
+                            9 -> iv41.visibility = INVISIBLE
+                            10 -> iv42.visibility = INVISIBLE
+                            11 -> iv43.visibility = INVISIBLE
+                        }
 
+                        when (clickedSecond) {
+                            0 -> iv11.visibility = INVISIBLE
+                            1 -> iv12.visibility = INVISIBLE
+                            2 -> iv13.visibility = INVISIBLE
+                            3 -> iv21.visibility = INVISIBLE
+                            4 -> iv22.visibility = INVISIBLE
+                            5 -> iv23.visibility = INVISIBLE
+                            6 -> iv31.visibility = INVISIBLE
+                            7 -> iv32.visibility = INVISIBLE
+                            8 -> iv33.visibility = INVISIBLE
+                            9 -> iv41.visibility = INVISIBLE
+                            10 -> iv42.visibility = INVISIBLE
+                            11 -> iv43.visibility = INVISIBLE
+                        }
 
-            //Keep cardNumber 1 front images brighter
-            ha05 = Handler()
-            ha05.postDelayed(object : Runnable {
+                    } else {
+                        mismatchPoints++
+                        if (mismatchPoints == 1) {
+                            tvp1.text = "❤❤❤❤❤  "
+                        }
+                        if (mismatchPoints == 2) {
+                            tvp1.text = "❤❤❤❤    "
+                        }
+                        if (mismatchPoints == 3) {
+                            tvp1.text = "❤❤❤      "
+                        }
+                        if (mismatchPoints == 4) {
+                            tvp1.text = "❤❤        "
+                        }
+                        if (mismatchPoints == 5) {
+                            tvp1.text = "❤          "
+                        }
+                        if (mismatchPoints == 6) {
+                            tvp1.text = "No more chance!"
 
-                @RequiresApi(Build.VERSION_CODES.M)
-                override fun run() {
+                            val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
+                            val maxScore = pref?.getInt("MaxScore3", 0)
+                            if(getPoints > maxScore!!){
+                                pref.edit()?.putInt("MaxScore3", getPoints)?.apply()
+                            }
+                            layout202.visibility = VISIBLE
+                            img101.visibility= VISIBLE
+                            img101.setImageResource(R.drawable.cry102)
+                            tvp3.text = "GAME OVER!\nScore: $getPoints"
 
-                    iv.foreground = null
+                            musicTT.pause()
 
-                    val matrix02 = ColorMatrix()
-                    matrix02.setSaturation(2f)
+                            x01 = 5 ; x02 = 5 ; x03 = 5 ; x04 = 5 ; x05 = 5 ; x06 = 5
+                            x07 = 5 ; x08 = 5 ; x09 = 5 ; x10 = 5 ; x11 = 5 ; x12 = 5
+                            clicked03 = 5
+                        }
 
-                    val filter02 = ColorMatrixColorFilter(matrix02)
-                    iv.colorFilter = filter02
+                        iv11.setImageResource(R.drawable.ic_question)
+                        iv12.setImageResource(R.drawable.ic_question)
+                        iv13.setImageResource(R.drawable.ic_question)
+                        iv21.setImageResource(R.drawable.ic_question)
+                        iv22.setImageResource(R.drawable.ic_question)
+                        iv23.setImageResource(R.drawable.ic_question)
+                        iv31.setImageResource(R.drawable.ic_question)
+                        iv32.setImageResource(R.drawable.ic_question)
+                        iv33.setImageResource(R.drawable.ic_question)
+                        iv41.setImageResource(R.drawable.ic_question)
+                        iv42.setImageResource(R.drawable.ic_question)
+                        iv43.setImageResource(R.drawable.ic_question)
 
-                    ha05.postDelayed(this, 0)
+                    }
+
+                    //Check if the Game is Over
+                    checkEnd()
                 }
-            }, 0)
 
-            if (clicked02%2 == 0) {
+                @android.annotation.SuppressLint("SetTextI18n")
+                private fun checkEnd() {
+                    if (iv11.visibility == INVISIBLE &&
+                        iv12.visibility == INVISIBLE &&
+                        iv13.visibility == INVISIBLE &&
+                        iv21.visibility == INVISIBLE &&
+                        iv22.visibility == INVISIBLE &&
+                        iv23.visibility == INVISIBLE &&
+                        iv31.visibility == INVISIBLE &&
+                        iv32.visibility == INVISIBLE &&
+                        iv33.visibility == INVISIBLE &&
+                        iv41.visibility == INVISIBLE &&
+                        iv42.visibility == INVISIBLE &&
+                        iv43.visibility == INVISIBLE
+                    )
 
-                //No response after second clicked in 1 mins 30 seconds to finish
-                ha11 = Handler()
-                ha11.postDelayed({
-                    if (clicked03 == 0) {
+                    {
                         val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
-                        val maxScore = pref?.getInt("MaxScore3", 0)
-                        if (getPoints > maxScore!!) {
+                        if(getPoints == 6){
                             pref.edit()?.putInt("MaxScore3", getPoints)?.apply()
                         }
                         layout202.visibility = VISIBLE
                         img101.visibility= VISIBLE
-                        img101.setImageResource(R.drawable.cry101)
-                        tvp3.text = "Time is running out!\nScore: $getPoints"
+                        img101.setImageResource(R.drawable.congrats)
+                        tvp3.text = "Congratulation!\nYou win!"
+
                         musicTT.pause()
 
-                        x01 = 5; x02 = 5; x03 = 5; x04 = 5; x05 = 5; x06 = 5
-                        x07 = 5; x08 = 5; x09 = 5; x10 = 5; x11 = 5; x12 = 5
-                        clicked03 = 5 //Stop this handler
+                        x01 = 5 ; x02 = 5 ; x03 = 5 ; x04 = 5 ; x05 = 5 ; x06 = 5
+                        x07 = 5 ; x08 = 5 ; x09 = 5 ; x10 = 5 ; x11 = 5 ; x12 = 5
+                        clicked03 = 5
                     }
-                }, 90000)
-
-                //Shut down those handlers
-                ha00.removeCallbacksAndMessages(null)
-                ha03.removeCallbacksAndMessages(null)
-                ha04.removeCallbacksAndMessages(null)
-
-                tvp2.text = null
-            }
-
-            val handler = Handler()
-            handler.postDelayed({
-
-                ha05.removeCallbacksAndMessages(null)
-                
-                //Check if the images that are selected are equal
-                calculate()
-            }, 2000)
-        }
-    }
-
-    @AnnotationSuppressLint("SetTextI18n")
-    private fun calculate() {
-        //If Images are equal remove them otherwise add Mismatch point
-        if (firstCard == secondCard) {
-            getPoints++
-
-           when (clickedFirst) {
-                0 -> iv11.visibility = INVISIBLE
-                1 -> iv12.visibility = INVISIBLE
-                2 -> iv13.visibility = INVISIBLE
-                3 -> iv21.visibility = INVISIBLE
-                4 -> iv22.visibility = INVISIBLE
-                5 -> iv23.visibility = INVISIBLE
-                6 -> iv31.visibility = INVISIBLE
-                7 -> iv32.visibility = INVISIBLE
-                8 -> iv33.visibility = INVISIBLE
-                9 -> iv41.visibility = INVISIBLE
-                10 -> iv42.visibility = INVISIBLE
-                11 -> iv43.visibility = INVISIBLE
-            }
-
-            when (clickedSecond) {
-                0 -> iv11.visibility = INVISIBLE
-                1 -> iv12.visibility = INVISIBLE
-                2 -> iv13.visibility = INVISIBLE
-                3 -> iv21.visibility = INVISIBLE
-                4 -> iv22.visibility = INVISIBLE
-                5 -> iv23.visibility = INVISIBLE
-                6 -> iv31.visibility = INVISIBLE
-                7 -> iv32.visibility = INVISIBLE
-                8 -> iv33.visibility = INVISIBLE
-                9 -> iv41.visibility = INVISIBLE
-                10 -> iv42.visibility = INVISIBLE
-                11 -> iv43.visibility = INVISIBLE
-            }
-
-        } else {
-            mismatchPoints++
-            if (mismatchPoints == 1) {
-                tvp1.text = "❤❤❤❤❤  "
-            }
-            if (mismatchPoints == 2) {
-                tvp1.text = "❤❤❤❤    "
-            }
-            if (mismatchPoints == 3) {
-                tvp1.text = "❤❤❤      "
-            }
-            if (mismatchPoints == 4) {
-                tvp1.text = "❤❤        "
-            }
-            if (mismatchPoints == 5) {
-                tvp1.text = "❤          "
-            }
-            if (mismatchPoints == 6) {
-                tvp1.text = "No more chance!"
-
-                val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
-                val maxScore = pref?.getInt("MaxScore3", 0)
-                if(getPoints > maxScore!!){
-                    pref.edit()?.putInt("MaxScore3", getPoints)?.apply()
                 }
-                layout202.visibility = VISIBLE
-                img101.visibility= VISIBLE
-                img101.setImageResource(R.drawable.cry102)
-                tvp3.text = "GAME OVER!\nScore: $getPoints"
 
-                musicTT.pause()
+                private fun frontOfCardsResources() {
 
-                x01 = 5 ; x02 = 5 ; x03 = 5 ; x04 = 5 ; x05 = 5 ; x06 = 5
-                x07 = 5 ; x08 = 5 ; x09 = 5 ; x10 = 5 ; x11 = 5 ; x12 = 5
-                clicked03 = 5
+                    image101 = R.drawable.ic_img101
+                    image102 = R.drawable.ic_img102
+                    image103 = R.drawable.ic_img103
+                    image104 = R.drawable.ic_img104
+                    image105 = R.drawable.ic_img105
+                    image106 = R.drawable.ic_img106
+                    image201 = R.drawable.ic_img201
+                    image202 = R.drawable.ic_img202
+                    image203 = R.drawable.ic_img203
+                    image204 = R.drawable.ic_img204
+                    image205 = R.drawable.ic_img205
+                    image206 = R.drawable.ic_img206
+
+                }
+
             }
-
-            iv11.setImageResource(R.drawable.ic_question)
-            iv12.setImageResource(R.drawable.ic_question)
-            iv13.setImageResource(R.drawable.ic_question)
-            iv21.setImageResource(R.drawable.ic_question)
-            iv22.setImageResource(R.drawable.ic_question)
-            iv23.setImageResource(R.drawable.ic_question)
-            iv31.setImageResource(R.drawable.ic_question)
-            iv32.setImageResource(R.drawable.ic_question)
-            iv33.setImageResource(R.drawable.ic_question)
-            iv41.setImageResource(R.drawable.ic_question)
-            iv42.setImageResource(R.drawable.ic_question)
-            iv43.setImageResource(R.drawable.ic_question)
-
-        }
-
-        //Check if the Game is Over
-        checkEnd()
-    }
-
-    @android.annotation.SuppressLint("SetTextI18n")
-    private fun checkEnd() {
-        if (iv11.visibility == INVISIBLE &&
-            iv12.visibility == INVISIBLE &&
-            iv13.visibility == INVISIBLE &&
-            iv21.visibility == INVISIBLE &&
-            iv22.visibility == INVISIBLE &&
-            iv23.visibility == INVISIBLE &&
-            iv31.visibility == INVISIBLE &&
-            iv32.visibility == INVISIBLE &&
-            iv33.visibility == INVISIBLE &&
-            iv41.visibility == INVISIBLE &&
-            iv42.visibility == INVISIBLE &&
-            iv43.visibility == INVISIBLE
-        )
-
-        {
-            val pref = getSharedPreferences("Game_Data", Context.MODE_PRIVATE)
-            if(getPoints == 6){
-                pref.edit()?.putInt("MaxScore3", getPoints)?.apply()
-            }
-            layout202.visibility = VISIBLE
-            img101.visibility= VISIBLE
-            img101.setImageResource(R.drawable.congrats)
-            tvp3.text = "Congratulation!\nYou win!"
-
-            musicTT.pause()
-
-            x01 = 5 ; x02 = 5 ; x03 = 5 ; x04 = 5 ; x05 = 5 ; x06 = 5
-            x07 = 5 ; x08 = 5 ; x09 = 5 ; x10 = 5 ; x11 = 5 ; x12 = 5
-            clicked03 = 5
-        }
-    }
-
-    private fun frontOfCardsResources() {
-
-        image101 = R.drawable.ic_img101
-        image102 = R.drawable.ic_img102
-        image103 = R.drawable.ic_img103
-        image104 = R.drawable.ic_img104
-        image105 = R.drawable.ic_img105
-        image106 = R.drawable.ic_img106
-        image201 = R.drawable.ic_img201
-        image202 = R.drawable.ic_img202
-        image203 = R.drawable.ic_img203
-        image204 = R.drawable.ic_img204
-        image205 = R.drawable.ic_img205
-        image206 = R.drawable.ic_img206
-
-    }
-
-}
