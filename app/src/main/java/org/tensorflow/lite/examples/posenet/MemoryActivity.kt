@@ -250,7 +250,7 @@ class MemoryActivity : AppCompatActivity() {
             if (clicked01%2 != 0) {
                 clicked00 = 1
                 container.visibility = INVISIBLE
-                Toast.makeText(applicationContext, "Click to HANDUP", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "CLICK Mode", Toast.LENGTH_SHORT).show()
 
                 iv21.alpha = 1F
                 iv22.alpha = 1F
@@ -269,7 +269,7 @@ class MemoryActivity : AppCompatActivity() {
             if (clicked01%2 == 0){
                 clicked00 = 0
                 container.visibility = VISIBLE
-                Toast.makeText(applicationContext, "Choose to CLICK", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "HANDUP Mode", Toast.LENGTH_SHORT).show()
 
                 iv21.alpha = 0.7F
                 iv22.alpha = 0.7F
