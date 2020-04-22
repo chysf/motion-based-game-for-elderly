@@ -453,11 +453,11 @@ class MemoryActivity : AppCompatActivity() {
                     //Click function instead of handup
                     if (clicked00 == 1) {
                         layout103.setOnClickListener {
-                            if (x01 != 5 && iv11.visibility == VISIBLE) {
+                            if (x02 != 5 && iv11.visibility == VISIBLE) {
                                 clicked02++
                                 iv11.callOnClick() //Click previous image to fix Posenet delays
                                 handup = false
-                                x01 = 5 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
                                 x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
                             }
                         }
@@ -481,11 +481,11 @@ class MemoryActivity : AppCompatActivity() {
                     }
                     if (clicked00 == 1) {
                         layout103.setOnClickListener {
-                            if (x02 != 5 && iv12.visibility == VISIBLE) {
+                            if (x03 != 5 && iv12.visibility == VISIBLE) {
                                 clicked02++
                                 iv12.callOnClick()
                                 handup = false
-                                x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x01 = 0 ; x02 = 0 ; x03 = 5 ; x04 = 0 ; x05 = 0 ; x06 = 0
                                 x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
                             }
                         }
@@ -509,11 +509,11 @@ class MemoryActivity : AppCompatActivity() {
                     }
                     if (clicked00 == 1) {
                         layout103.setOnClickListener {
-                            if (x03 != 5 && iv13.visibility == VISIBLE) {
+                            if (x04 != 5 && iv13.visibility == VISIBLE) {
                                 clicked02++
                                 iv13.callOnClick()
                                 handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 5 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 5 ; x05 = 0 ; x06 = 0
                                 x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
                             }
                         }
@@ -537,11 +537,11 @@ class MemoryActivity : AppCompatActivity() {
                     }
                     if (clicked00 == 1) {
                         layout103.setOnClickListener {
-                            if (x04 != 5 && iv21.visibility == VISIBLE) {
+                            if (x05 != 5 && iv21.visibility == VISIBLE) {
                                 clicked02++
                                 iv21.callOnClick()
                                 handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 5 ; x05 = 0 ; x06 = 0
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 5 ; x06 = 0
                                 x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
                             }
                         }
@@ -565,11 +565,11 @@ class MemoryActivity : AppCompatActivity() {
                     }
                     if (clicked00 == 1) {
                         layout103.setOnClickListener {
-                            if (x05 != 5 && iv22.visibility == VISIBLE) {
+                            if (x06 != 5 && iv22.visibility == VISIBLE) {
                                 clicked02++
                                 iv22.callOnClick()
                                 handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 5 ; x06 = 0
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 6
                                 x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
                             }
                         }
@@ -593,12 +593,12 @@ class MemoryActivity : AppCompatActivity() {
                     }
                     if (clicked00 == 1) {
                         layout103.setOnClickListener {
-                            if (x06 != 5 && iv23.visibility == VISIBLE) {
+                            if (x07 != 5 && iv23.visibility == VISIBLE) {
                                 clicked02++
                                 iv23.callOnClick()
                                 handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 5
-                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 5 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
                             }
                         }
                     }
@@ -621,12 +621,12 @@ class MemoryActivity : AppCompatActivity() {
                     }
                     if (clicked00 == 1) {
                         layout103.setOnClickListener {
-                            if (x07 != 5 && iv31.visibility == VISIBLE) {
+                            if (x08 != 5 && iv31.visibility == VISIBLE) {
                                 clicked02++
                                 iv31.callOnClick()
                                 handup = false
                                 x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                                x07 = 5 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                                x07 = 0 ; x08 = 5 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
                             }
                         }
                     }
@@ -649,12 +649,12 @@ class MemoryActivity : AppCompatActivity() {
                     }
                     if (clicked00 == 1) {
                         layout103.setOnClickListener {
-                            if (x08 != 5 && iv32.visibility == VISIBLE) {
+                            if (x09 != 5 && iv32.visibility == VISIBLE) {
                                 clicked02++
                                 iv32.callOnClick()
                                 handup = false
                                 x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                                x07 = 0 ; x08 = 5 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 5 ; x10 = 0 ; x11 = 0 ; x12 = 0
                             }
                         }
                     }
@@ -677,12 +677,12 @@ class MemoryActivity : AppCompatActivity() {
                     }
                     if (clicked00 == 1) {
                         layout103.setOnClickListener {
-                            if (x09 != 5 && iv33.visibility == VISIBLE) {
+                            if (x10 != 5 && iv33.visibility == VISIBLE) {
                                 clicked02++
                                 iv33.callOnClick()
                                 handup = false
                                 x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                                x07 = 0 ; x08 = 0 ; x09 = 5 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 5 ; x11 = 0 ; x12 = 0
                             }
                         }
                     }
@@ -705,12 +705,12 @@ class MemoryActivity : AppCompatActivity() {
                     }
                     if (clicked00 == 1) {
                         layout103.setOnClickListener {
-                            if (x10 != 5 && iv41.visibility == VISIBLE) {
+                            if (x11 != 5 && iv41.visibility == VISIBLE) {
                                 clicked02++
                                 iv41.callOnClick()
                                 handup = false
                                 x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 5 ; x11 = 0 ; x12 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 5 ; x12 = 0
                             }
                         }
                     }
@@ -733,12 +733,12 @@ class MemoryActivity : AppCompatActivity() {
                     }
                     if (clicked00 == 1) {
                         layout103.setOnClickListener {
-                            if (x11 != 5 && iv42.visibility == VISIBLE) {
+                            if (x12 != 5 && iv42.visibility == VISIBLE) {
                                 clicked02++
                                 iv42.callOnClick()
                                 handup = false
                                 x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 5 ; x12 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 5
                             }
                         }
                     }
@@ -761,12 +761,12 @@ class MemoryActivity : AppCompatActivity() {
                     }
                     if (clicked00 == 1) {
                         layout103.setOnClickListener {
-                            if (x12 != 5 && iv43.visibility == VISIBLE) {
+                            if (x01 != 5 && iv43.visibility == VISIBLE) {
                                 clicked02++
                                 iv43.callOnClick()
                                 handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 5
+                                x01 =  ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
                             }
                         }
                     }
@@ -777,344 +777,350 @@ class MemoryActivity : AppCompatActivity() {
 
         //First cycle before looping
         Handler().postDelayed({
-            //Set foreground image and move to next
-            iv43.foreground = null
-            iv11.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv043.visibility = INVISIBLE
-            if (iv11.visibility == INVISIBLE) {
-                iv011.visibility = VISIBLE
-            }
-            //Use Posenet to handle 12 image buttons
-            if (clicked00 == 0) {
-                if (handup && x01 != 5 && iv11.visibility == VISIBLE) {
-                    clicked02++
-                    iv11.callOnClick()
-                    handup = false
-                    x01 = 5 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                }
-            }
-            //Click function instead of handup
-            if (clicked00 == 1) {
-                layout103.setOnClickListener {
-                    if (x01 != 5 && iv11.visibility == VISIBLE) {
-                        clicked02++
-                        iv11.callOnClick() //Click previous image to fix Posenet delays
-                        handup = false
-                        x01 = 5 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+        ha02.postDelayed(object : Runnable {
+
+            @RequiresApi(Build.VERSION_CODES.M)
+            override fun run() {
+                Handler().postDelayed({
+                    //Set foreground image and move to next
+                    iv43.foreground = null
+                    iv11.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+                    iv043.visibility = INVISIBLE
+                    if (iv11.visibility == INVISIBLE) {
+                        iv011.visibility = VISIBLE
                     }
-                }
-            }
-        },5000)
-        Handler().postDelayed({
-            iv11.foreground = null
-            iv12.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv011.visibility = INVISIBLE
-            if (iv12.visibility == INVISIBLE) {
-                iv012.visibility = VISIBLE
-            }
-            if (clicked00 == 0) {
-                if (handup && x02 != 5 && iv11.visibility == VISIBLE) {
-                    clicked02++
-                    iv11.callOnClick()
-                    handup = false
-                    x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                }
-            }
-            if (clicked00 == 1) {
-                layout103.setOnClickListener {
-                    if (x02 != 5 && iv12.visibility == VISIBLE) {
-                        clicked02++
-                        iv12.callOnClick()
-                        handup = false
-                        x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    //Use Posenet to handle 12 image buttons
+                    if (clicked00 == 0) {
+                        if (handup && x02 != 5 && iv43.visibility == VISIBLE) {
+                            clicked02++
+                            iv11.callOnClick() //Click previous image to fix Posenet delays
+                            handup = false
+                            x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
                     }
-                }
-            }
-        }, 10000)
-        Handler().postDelayed({
-            iv12.foreground = null
-            iv13.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv012.visibility = INVISIBLE
-            if (iv13.visibility == INVISIBLE) {
-                iv013.visibility = VISIBLE
-            }
-            if (clicked00 == 0) {
-                if (handup && x03 != 5 && iv12.visibility == VISIBLE) {
-                    clicked02++
-                    iv12.callOnClick()
-                    handup = false
-                    x01 = 0 ; x02 = 0 ; x03 = 5 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                }
-            }
-            if (clicked00 == 1) {
-                layout103.setOnClickListener {
-                    if (x03 != 5 && iv13.visibility == VISIBLE) {
-                        clicked02++
-                        iv13.callOnClick()
-                        handup = false
-                        x01 = 0 ; x02 = 0 ; x03 = 5 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    //Click function instead of handup
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x02 != 5 && iv11.visibility == VISIBLE) {
+                                clicked02++
+                                iv11.callOnClick() //Click previous image to fix Posenet delays
+                                handup = false
+                                x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
                     }
-                }
-            }
-        }, 15000)
-        Handler().postDelayed({
-            iv13.foreground = null
-            iv21.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv013.visibility = INVISIBLE
-            if (iv21.visibility == INVISIBLE) {
-                iv021.visibility = VISIBLE
-            }
-            if (clicked00 == 0) {
-                if (handup && x04 != 5 && iv13.visibility == VISIBLE) {
-                    clicked02++
-                    iv13.callOnClick()
-                    handup = false
-                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 5 ; x05 = 0 ; x06 = 0
-                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                }
-            }
-            if (clicked00 == 1) {
-                layout103.setOnClickListener {
-                    if (x04 != 5 && iv21.visibility == VISIBLE) {
-                        clicked02++
-                        iv21.callOnClick()
-                        handup = false
-                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 5 ; x05 = 0 ; x06 = 0
-                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                },5000)
+                Handler().postDelayed({
+                    iv11.foreground = null
+                    iv12.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+                    iv011.visibility = INVISIBLE
+                    if (iv12.visibility == INVISIBLE) {
+                        iv012.visibility = VISIBLE
                     }
-                }
-            }
-        }, 20000)
-        Handler().postDelayed({
-            iv21.foreground = null
-            iv22.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv021.visibility = INVISIBLE
-            if (iv22.visibility == INVISIBLE) {
-                iv022.visibility = VISIBLE
-            }
-            if (clicked00 == 0) {
-                if (handup && x05 != 5 && iv21.visibility == VISIBLE) {
-                    clicked02++
-                    iv21.callOnClick()
-                    handup = false
-                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 5 ; x06 = 0
-                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                }
-            }
-            if (clicked00 == 1) {
-                layout103.setOnClickListener {
-                    if (x05 != 5 && iv22.visibility == VISIBLE) {
-                        clicked02++
-                        iv22.callOnClick()
-                        handup = false
-                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 5 ; x06 = 0
-                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    if (clicked00 == 0) {
+                        if (handup && x02 != 5 && iv11.visibility == VISIBLE) {
+                            clicked02++
+                            iv11.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 5 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
                     }
-                }
-            }
-        }, 25000)
-        Handler().postDelayed({
-            iv22.foreground = null
-            iv23.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv022.visibility = INVISIBLE
-            if (iv23.visibility == INVISIBLE) {
-                iv023.visibility = VISIBLE
-            }
-            if (clicked00 == 0) {
-                if (handup && x06 != 5 && iv22.visibility == VISIBLE) {
-                    clicked02++
-                    iv22.callOnClick()
-                    handup = false
-                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 5
-                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                }
-            }
-            if (clicked00 == 1) {
-                layout103.setOnClickListener {
-                    if (x06 != 5 && iv23.visibility == VISIBLE) {
-                        clicked02++
-                        iv23.callOnClick()
-                        handup = false
-                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 5
-                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x03 != 5 && iv12.visibility == VISIBLE) {
+                                clicked02++
+                                iv12.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 5 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
                     }
-                }
-            }
-        }, 30000)
-        Handler().postDelayed({
-            iv23.foreground = null
-            iv31.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv023.visibility = INVISIBLE
-            if (iv31.visibility == INVISIBLE) {
-                iv031.visibility = VISIBLE
-            }
-            if (clicked00 == 0) {
-                if (handup && x07 != 5 && iv23.visibility == VISIBLE) {
-                    clicked02++
-                    iv23.callOnClick()
-                    handup = false
-                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                    x07 = 5 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                }
-            }
-            if (clicked00 == 1) {
-                layout103.setOnClickListener {
-                    if (x07 != 5 && iv31.visibility == VISIBLE) {
-                        clicked02++
-                        iv31.callOnClick()
-                        handup = false
-                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                        x07 = 5 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                }, 10000)
+                Handler().postDelayed({
+                    iv12.foreground = null
+                    iv13.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+                    iv012.visibility = INVISIBLE
+                    if (iv13.visibility == INVISIBLE) {
+                        iv013.visibility = VISIBLE
                     }
-                }
-            }
-        }, 35000)
-        Handler().postDelayed({
-            iv31.foreground = null
-            iv32.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv031.visibility = INVISIBLE
-            if (iv32.visibility == INVISIBLE) {
-                iv032.visibility = VISIBLE
-            }
-            if (clicked00 == 0) {
-                if (handup && x08 != 5 && iv31.visibility == VISIBLE) {
-                    clicked02++
-                    iv31.callOnClick()
-                    handup = false
-                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                    x07 = 0 ; x08 = 5 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                }
-            }
-            if (clicked00 == 1) {
-                layout103.setOnClickListener {
-                    if (x08 != 5 && iv32.visibility == VISIBLE) {
-                        clicked02++
-                        iv32.callOnClick()
-                        handup = false
-                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                        x07 = 0 ; x08 = 5 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    if (clicked00 == 0) {
+                        if (handup && x03 != 5 && iv12.visibility == VISIBLE) {
+                            clicked02++
+                            iv12.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 5 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
                     }
-                }
-            }
-        }, 40000)
-        Handler().postDelayed({
-            iv32.foreground = null
-            iv33.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv032.visibility = INVISIBLE
-            if (iv33.visibility == INVISIBLE) {
-                iv033.visibility = VISIBLE
-            }
-            if (clicked00 == 0) {
-                if (handup && x09 != 5 && iv32.visibility == VISIBLE) {
-                    clicked02++
-                    iv32.callOnClick()
-                    handup = false
-                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                    x07 = 0 ; x08 = 0 ; x09 = 5 ; x10 = 0 ; x11 = 0 ; x12 = 0
-                }
-            }
-            if (clicked00 == 1) {
-                layout103.setOnClickListener {
-                    if (x09 != 5 && iv33.visibility == VISIBLE) {
-                        clicked02++
-                        iv33.callOnClick()
-                        handup = false
-                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                        x07 = 0 ; x08 = 0 ; x09 = 5 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x04 != 5 && iv13.visibility == VISIBLE) {
+                                clicked02++
+                                iv13.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 5 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
                     }
-                }
-            }
-        }, 45000)
-        Handler().postDelayed({
-            iv33.foreground = null
-            iv41.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv033.visibility = INVISIBLE
-            if (iv41.visibility == INVISIBLE) {
-                iv041.visibility = VISIBLE
-            }
-            if (clicked00 == 0) {
-                if (handup && x10 != 5 && iv33.visibility == VISIBLE) {
-                    clicked02++
-                    iv33.callOnClick()
-                    handup = false
-                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 5 ; x11 = 0 ; x12 = 0
-                }
-            }
-            if (clicked00 == 1) {
-                layout103.setOnClickListener {
-                    if (x10 != 5 && iv41.visibility == VISIBLE) {
-                        clicked02++
-                        iv41.callOnClick()
-                        handup = false
-                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 5 ; x11 = 0 ; x12 = 0
+                }, 15000)
+                Handler().postDelayed({
+                    iv13.foreground = null
+                    iv21.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+                    iv013.visibility = INVISIBLE
+                    if (iv21.visibility == INVISIBLE) {
+                        iv021.visibility = VISIBLE
                     }
-                }
-            }
-        }, 50000)
-        Handler().postDelayed({
-            iv41.foreground = null
-            iv42.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv041.visibility = INVISIBLE
-            if (iv42.visibility == INVISIBLE) {
-                iv042.visibility = VISIBLE
-            }
-            if (clicked00 == 0) {
-                if (handup && x11 != 5 && iv41.visibility == VISIBLE) {
-                    clicked02++
-                    iv41.callOnClick()
-                    handup = false
-                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 5 ; x12 = 0
-                }
-            }
-            if (clicked00 == 1) {
-                layout103.setOnClickListener {
-                    if (x11 != 5 && iv42.visibility == VISIBLE) {
-                        clicked02++
-                        iv42.callOnClick()
-                        handup = false
-                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 5 ; x12 = 0
+                    if (clicked00 == 0) {
+                        if (handup && x04 != 5 && iv13.visibility == VISIBLE) {
+                            clicked02++
+                            iv13.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 5 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
                     }
-                }
-            }
-        }, 55000)
-        Handler().postDelayed({
-            iv42.foreground = null
-            iv43.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
-            iv042.visibility = INVISIBLE
-            if (iv43.visibility == INVISIBLE) {
-                iv043.visibility = VISIBLE
-            }
-            if (clicked00 == 0) {
-                if (handup && x12 != 5 && iv42.visibility == VISIBLE) {
-                    clicked02++
-                    iv42.callOnClick()
-                    handup = false
-                    x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                    x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 5
-                }
-            }
-            if (clicked00 == 1) {
-                layout103.setOnClickListener {
-                    if (x12 != 5 && iv43.visibility == VISIBLE) {
-                        clicked02++
-                        iv43.callOnClick()
-                        handup = false
-                        x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
-                        x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 5
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x05 != 5 && iv21.visibility == VISIBLE) {
+                                clicked02++
+                                iv21.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 5 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
                     }
-                }
-            }
-        }, 60000)
+                }, 20000)
+                Handler().postDelayed({
+                    iv21.foreground = null
+                    iv22.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+                    iv021.visibility = INVISIBLE
+                    if (iv22.visibility == INVISIBLE) {
+                        iv022.visibility = VISIBLE
+                    }
+                    if (clicked00 == 0) {
+                        if (handup && x05 != 5 && iv21.visibility == VISIBLE) {
+                            clicked02++
+                            iv21.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 5 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x06 != 5 && iv22.visibility == VISIBLE) {
+                                clicked02++
+                                iv22.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 6
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
+                    }
+                }, 25000)
+                Handler().postDelayed({
+                    iv22.foreground = null
+                    iv23.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+                    iv022.visibility = INVISIBLE
+                    if (iv23.visibility == INVISIBLE) {
+                        iv023.visibility = VISIBLE
+                    }
+                    if (clicked00 == 0) {
+                        if (handup && x06 != 5 && iv22.visibility == VISIBLE) {
+                            clicked02++
+                            iv22.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 5
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x07 != 5 && iv23.visibility == VISIBLE) {
+                                clicked02++
+                                iv23.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 5 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
+                    }
+                }, 30000)
+                Handler().postDelayed({
+                    iv23.foreground = null
+                    iv31.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+                    iv023.visibility = INVISIBLE
+                    if (iv31.visibility == INVISIBLE) {
+                        iv031.visibility = VISIBLE
+                    }
+                    if (clicked00 == 0) {
+                        if (handup && x07 != 5 && iv23.visibility == VISIBLE) {
+                            clicked02++
+                            iv23.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 5 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x08 != 5 && iv31.visibility == VISIBLE) {
+                                clicked02++
+                                iv31.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 5 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
+                    }
+                }, 35000)
+                Handler().postDelayed({
+                    iv31.foreground = null
+                    iv32.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+                    iv031.visibility = INVISIBLE
+                    if (iv32.visibility == INVISIBLE) {
+                        iv032.visibility = VISIBLE
+                    }
+                    if (clicked00 == 0) {
+                        if (handup && x08 != 5 && iv31.visibility == VISIBLE) {
+                            clicked02++
+                            iv31.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 5 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x09 != 5 && iv32.visibility == VISIBLE) {
+                                clicked02++
+                                iv32.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 5 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
+                    }
+                }, 40000)
+                Handler().postDelayed({
+                    iv32.foreground = null
+                    iv33.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+                    iv032.visibility = INVISIBLE
+                    if (iv33.visibility == INVISIBLE) {
+                        iv033.visibility = VISIBLE
+                    }
+                    if (clicked00 == 0) {
+                        if (handup && x09 != 5 && iv32.visibility == VISIBLE) {
+                            clicked02++
+                            iv32.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 5 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x10 != 5 && iv33.visibility == VISIBLE) {
+                                clicked02++
+                                iv33.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 5 ; x11 = 0 ; x12 = 0
+                            }
+                        }
+                    }
+                }, 45000)
+                Handler().postDelayed({
+                    iv33.foreground = null
+                    iv41.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+                    iv033.visibility = INVISIBLE
+                    if (iv41.visibility == INVISIBLE) {
+                        iv041.visibility = VISIBLE
+                    }
+                    if (clicked00 == 0) {
+                        if (handup && x10 != 5 && iv33.visibility == VISIBLE) {
+                            clicked02++
+                            iv33.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 5 ; x11 = 0 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x11 != 5 && iv41.visibility == VISIBLE) {
+                                clicked02++
+                                iv41.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 5 ; x12 = 0
+                            }
+                        }
+                    }
+                }, 50000)
+                Handler().postDelayed({
+                    iv41.foreground = null
+                    iv42.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+                    iv041.visibility = INVISIBLE
+                    if (iv42.visibility == INVISIBLE) {
+                        iv042.visibility = VISIBLE
+                    }
+                    if (clicked00 == 0) {
+                        if (handup && x11 != 5 && iv41.visibility == VISIBLE) {
+                            clicked02++
+                            iv41.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 5 ; x12 = 0
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x12 != 5 && iv42.visibility == VISIBLE) {
+                                clicked02++
+                                iv42.callOnClick()
+                                handup = false
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 5
+                            }
+                        }
+                    }
+                }, 55000)
+                Handler().postDelayed({
+                    iv42.foreground = null
+                    iv43.foreground = ContextCompat.getDrawable(applicationContext, R.drawable.ic_scissor)
+                    iv042.visibility = INVISIBLE
+                    if (iv43.visibility == INVISIBLE) {
+                        iv043.visibility = VISIBLE
+                    }
+                    if (clicked00 == 0) {
+                        if (handup && x12 != 5 && iv42.visibility == VISIBLE) {
+                            clicked02++
+                            iv42.callOnClick()
+                            handup = false
+                            x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                            x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 5
+                        }
+                    }
+                    if (clicked00 == 1) {
+                        layout103.setOnClickListener {
+                            if (x01 != 5 && iv43.visibility == VISIBLE) {
+                                clicked02++
+                                iv43.callOnClick()
+                                handup = false
+                                x01 =  ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
+                            }
+                        }
+                    }
+                }, 60000)
+            
 
 
         iv11.isEnabled = false
