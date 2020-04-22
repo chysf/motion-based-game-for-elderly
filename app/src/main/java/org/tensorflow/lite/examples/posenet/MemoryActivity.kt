@@ -1367,7 +1367,6 @@ class MemoryActivity : AppCompatActivity() {
                 ha00.removeCallbacksAndMessages(null)
                 ha03.removeCallbacksAndMessages(null)
                 ha04.removeCallbacksAndMessages(null)
-                ha05.removeCallbacksAndMessages(null)
 
                 tvp2.text = null
             }
@@ -1375,6 +1374,8 @@ class MemoryActivity : AppCompatActivity() {
             val handler = Handler()
             handler.postDelayed({
 
+                ha05.removeCallbacksAndMessages(null)
+                
                 //Check if the images that are selected are equal
                 calculate()
             }, 2000)
