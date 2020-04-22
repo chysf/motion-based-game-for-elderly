@@ -569,7 +569,7 @@ class MemoryActivity : AppCompatActivity() {
                                 clicked02++
                                 iv22.callOnClick()
                                 handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 6
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 5
                                 x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
                             }
                         }
@@ -765,7 +765,7 @@ class MemoryActivity : AppCompatActivity() {
                                 clicked02++
                                 iv43.callOnClick()
                                 handup = false
-                                x01 =  ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x01 = 5 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
                                 x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
                             }
                         }
@@ -918,7 +918,7 @@ class MemoryActivity : AppCompatActivity() {
                                 clicked02++
                                 iv22.callOnClick()
                                 handup = false
-                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 6
+                                x01 = 0 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 5
                                 x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
                             }
                         }
@@ -1114,7 +1114,7 @@ class MemoryActivity : AppCompatActivity() {
                                 clicked02++
                                 iv43.callOnClick()
                                 handup = false
-                                x01 =  ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
+                                x01 = 5 ; x02 = 0 ; x03 = 0 ; x04 = 0 ; x05 = 0 ; x06 = 0
                                 x07 = 0 ; x08 = 0 ; x09 = 0 ; x10 = 0 ; x11 = 0 ; x12 = 0
                             }
                         }
