@@ -179,6 +179,7 @@ class PosenetActivity :
   private lateinit var remainingTime: TextView
   private lateinit var timeBar: ProgressBar
   private lateinit var scoreLabel: TextView
+  private lateinit var startBtn: ImageButton
 
   private var rnd = 0 //random number for motion direction
   private var match = false
@@ -264,9 +265,9 @@ class PosenetActivity :
             }
           }
         }
-        val bt: ImageButton = view.findViewById(R.id.playButton)
-        bt.setOnClickListener(clickListener)
-        bt.visibility = VISIBLE
+
+        startBtn.setOnClickListener(clickListener)
+        startBtn.visibility = VISIBLE
         command.visibility = VISIBLE
         scoreLabel.visibility = VISIBLE
         timeBar.visibility = VISIBLE
@@ -293,6 +294,7 @@ class PosenetActivity :
     remainingTime = view.findViewById(R.id.remainingTime)
     timeBar = view.findViewById(R.id.timeBar)
     scoreLabel = view.findViewById(R.id.scoreLabel)
+    startBtn= view.findViewById(R.id.playButton)
 
     val builder = AlertDialog.Builder(this@PosenetActivity.activity)
     builder.setMessage("Press the start button and follow the text/audio commands!\n\nCatch me if you can A_A")
@@ -302,6 +304,8 @@ class PosenetActivity :
   }
 
   private fun playRandomCommand() {
+//    startBtn.isEnabled = false
+    startBtn.visibility = GONE
     upLeftCompass.visibility = GONE
     upRightCompass.visibility = GONE
     downLeftCompass.visibility = GONE
@@ -374,8 +378,9 @@ class PosenetActivity :
       timeBar.setProgress(progress, true)
     }
     remainingTime.text = "Time Remaining"
+    startBtn.visibility = VISIBLE
     val builder = AlertDialog.Builder(this@PosenetActivity.activity)
-    if(flag) builder.setMessage("Congrats! You break the record!:D\n\n" +
+    if(flag) builder.setMessage("Congrats! You broke the record!:D\n\n" +
             "Press anywhere to close me ><")
     else builder.setMessage("Add oil! You will get higher score next time!\n\n" +
             "Press anywhere to close me ><")
@@ -513,8 +518,8 @@ class PosenetActivity :
         // We don't use a front facing camera in this sample.
         val cameraDirection = characteristics.get(CameraCharacteristics.LENS_FACING)
         if (cameraDirection != null &&
-//        cameraDirection == CameraCharacteristics.LENS_FACING_BACK
-        cameraDirection == CameraCharacteristics.LENS_FACING_FRONT //DEBUG
+        cameraDirection == CameraCharacteristics.LENS_FACING_BACK
+//        cameraDirection == CameraCharacteristics.LENS_FACING_FRONT //DEBUG
         ) {
           continue
         }
@@ -666,10 +671,10 @@ class PosenetActivity :
 
       // Create rotated version for portrait display
       val rotateMatrix = Matrix()
-//      rotateMatrix.postRotate(-90.0f)
-//      rotateMatrix.postScale(-1f, 1f)
+      rotateMatrix.postRotate(-90.0f)
+      rotateMatrix.postScale(-1f, 1f)
       /*DEBUG*/
-      rotateMatrix.postRotate(90.0f)
+//      rotateMatrix.postRotate(90.0f)
 
       val rotatedBitmap = Bitmap.createBitmap(
         imageBitmap, 0, 0, previewWidth, previewHeight,
